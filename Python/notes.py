@@ -125,6 +125,27 @@ if __name__ == "__main__":
     true == directly
     false == imported
 
+--> Error Handling
+
+3 Keywords:
+    1) try - block of code to be executed, may lead to Error
+    2) except - block of code to be executed, if there is error in try block
+    3) finally - block of code to be executed, regardless of error
+    4) else - with no error it will execute
+    
+    while TRUE:
+        try:
+            "ssdaf"
+        except TypeError:     // can also look for specific errors
+            "sdfas"
+            continue
+        else:
+            "sadfsdf"
+            break
+        finally:
+            "sadsdf"
+    
+
 
     
  
