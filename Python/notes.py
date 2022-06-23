@@ -1,4 +1,4 @@
-"""   Jupyter Notebook
+  Jupyter Notebook
 
 --> Shift + Enter = Run Current Cell and Add new Cell
 
@@ -112,5 +112,21 @@
 
 
 
+--> Pypi and pip install
 
-""" 
+--> Modules and Packages
+ 
+Modules are .py scripts and Packages are a collection of Modules
+ 
+add __init__.py file in your folder to make it a Packages
+ 
+if __name__ == "__main__":
+    #tells if the .py file is called directly or imported
+    true == directly
+    false == imported
+
+
+    
+ 
+ 
+
