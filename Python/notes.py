@@ -98,6 +98,13 @@
 
 --> Functions
 
+    def hello():
+        print("asdas")
+    
+    hello()     --- > Will EXECUTE the function
+    hello       --- > Will GIVE INFO about the function and can be used 
+                      as an argument
+
     def my_func(param1 = "Default Name"):
         print(param1)
 
@@ -156,9 +163,12 @@ if __name__ == "__main__":
     import unittest as ut
 
 
---> Python decorators (Advanced topic)
+--> Python DECORATORS (Advanced topic) - 
 
-    decorators allow us to "decorate" a Function
+    Used when we want to add new capabilities to our function
+    
+    
+    --> DECORATOR and RETURN A FUNCTION
     
     def new_decorator(og_func):
         
@@ -170,22 +180,40 @@ if __name__ == "__main__":
             
             print("weqwwq")
             
-        return wrap_func
+        return wrap_func    // this will execute the wrap_func() function
     
-    @new_decorator()  // this is will input func_needs_decorator in new_decorator()
+    @new_decorator  // this will input func_needs_decorator in new_decorator()
     def func_needs_decorator():
+       
         print("sdfsdf")
         
-    -> function inside a function
+    NOTE --> We can call func_needs_decorator() and it will execute new_decorator
+             with func_needs_decorator() as an argument
+             
+             
+  
+    --> function inside a function
     
     def cool(args):
-        return qewr
         
         def supercool():
             return 100
     
+        return supercool
     
- --> Python Generators(Advanced topic) (YIELD, NEXT, ITER)
+  
+  
+    --> Passing a function as an argument
+    
+    def other(some_def_func):
+        
+        print("weerwer")
+        
+        return(some_def_func())
+    
+    
+    
+ --> Python GENERATORS (Advanced topic) (YIELD, NEXT, ITER)
  
     Generator functions send back a single value and then pick up where
     it left 
@@ -197,11 +225,11 @@ if __name__ == "__main__":
     the last point of value generation 
     
     Advantage is that it computes one value at a time instead of computing 
-    entire series of value up front.
+    entire series of values up front.
     
     NOTE - range is a gen. function
     
-    list(range(0,10))    --> Creates a list of 10 elements in Memory
+    list(range(0,10))    
  
     def create_cubes(n):
         for x in range(n):
@@ -228,12 +256,12 @@ if __name__ == "__main__":
             
     print(next(simple_gen()))
     
-    ITER FUNCTION: Allows us to iter upon an object or a data type
+    ITER FUNCTION: Allows us to iter upon ANY  OBJECT  or a DATA TYPE
     
     s = iter('hello')
     print(next(s))
         
-qwerqwdsfcxcv c zcasdf wedfaewdfedf  ewrwe adfsadfsdaf
+
     
  
  
