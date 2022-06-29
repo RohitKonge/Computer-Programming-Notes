@@ -15,10 +15,13 @@
       
       type(    )  --> give info about the data type of the object()
       pass        --> passes the function or class without doing anything 
+      del         --> deletes the object from the memory
+
 
 --> num=12
     name = Rohit 
     'my number is {} and name is{}'.format(num,name)
+   f'my number is {num} and name is {name}'
     
 --> s = 'hello'
     s[0] will give 'h'
@@ -128,6 +131,7 @@
 
 
 --> Class (Methods, Attributes/Characteristics, Instance)
+
 class Dog():      -->Class Name is given in CamelCase
 
     species = 'mammal'    ---> CLASS OBJECT ATTRIBUTE 
@@ -150,6 +154,78 @@ sample_instance.name
 
 sample_instance.species
     
+--> INHERITANCE AND POLYMORPHISM AND ABSTRACT CLASSES
+
+INHERITANCE
+
+class Dessert():
+    
+    def __init__(self):
+        print("sweet dish")
+    
+    def what_kind(self,kind):
+        self.kind = kind
+        print(self.kind)
+    
+class IceCream(Dessert):
+    
+    NOTE --> Desert.__init__(self) executes only once 
+             Dessert().__init__(self) executes twice
+    
+    def __init__(self, name):
+        Dessert.__init__(self)
+        self.name = name
+        
+    def give_name(self):
+        print(self.name)
+
+vanilla = IceCream('chocolate vanilla')
+vanilla.what_kind('sweet kind of vanilla')
+vanilla.give_name()    
+
+
+POLYMORPHISM
+
+    (POLYMORPHISM will be used much later in your python carreer)
+    
+    Polymorphism means the condition of occuring in several different forms
+
+class Dessert():
+    
+    def __init__(self):
+        print("sweet dish")
+    
+    def what_kind(self,kind):
+        self.kind = kind
+        print(self.kind + "Good Desert")
+
+class Soup():
+    
+    def __init__(self):
+        print("nice soup")
+    
+    def what_kind(self,kind):
+        self.kind = kind
+        print(self.kind + "Good Soup")
+        
+
+food1 = Dessert()
+food1.what_kind("Vanilla")
+
+food2 = Soup()
+food2.what_kind('Carrot')
+
+def our_food(food3):
+    print(food3.what_kind("jhjkhk"))
+
+our_food(food1)
+our_food(food2)
+
+
+ABSTRACT CLASSES
+
+We NEVER EXPECT to create an instance of the abstract class and it is designed to only 
+serve as a BASE CLASS
 
 
 
