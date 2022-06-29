@@ -145,7 +145,94 @@ if __name__ == "__main__":
         finally:
             "sadsdf"
     
+-> Pylint and Unittest (Testing tools)
 
+    Pylint - lib that looks at the code and reports possible issues
+    
+    Unittest - built-in lib , allows to test code and check desired output
+    
+    Python has a set of style convention rules known as PEP-8
+    
+    import unittest as ut
+
+
+--> Python decorators (Advanced topic)
+
+    decorators allow us to "decorate" a Function
+    
+    def new_decorator(og_func):
+        
+        def wrap_func():
+            
+            print("dssdv")
+            
+            og_func()
+            
+            print("weqwwq")
+            
+        return wrap_func
+    
+    @new_decorator()  // this is will input func_needs_decorator in new_decorator()
+    def func_needs_decorator():
+        print("sdfsdf")
+        
+    -> function inside a function
+    
+    def cool(args):
+        return qewr
+        
+        def supercool():
+            return 100
+    
+    
+ --> Python Generators(Advanced topic) (YIELD, NEXT, ITER)
+ 
+    Generator functions send back a single value and then pick up where
+    it left 
+    
+    Generates a sequence over time and the main difference will be 
+    the 'yield' statement 
+    
+    Gen. func. will automatically suspend and resume their execution from 
+    the last point of value generation 
+    
+    Advantage is that it computes one value at a time instead of computing 
+    entire series of value up front.
+    
+    NOTE - range is a gen. function
+    
+    list(range(0,10))    --> Creates a list of 10 elements in Memory
+ 
+    def create_cubes(n):
+        for x in range(n):
+            yield x**3
+    
+    for num in create_cubes(10):
+        print(num)        
+    
+    FIBONACCI NUMBERS:
+        
+    def fib_num(n):
+        a = 1
+        b = 1
+        for x in range(n):
+            yield a
+            a, b = b, a+b
+            
+    
+    NEXT FUNCTION:
+        
+    def simple_gen():
+        for i in range(5):
+            yield i
+            
+    print(next(simple_gen()))
+    
+    ITER FUNCTION: Allows us to iter upon an object or a data type
+    
+    s = iter('hello')
+    print(next(s))
+        
 
     
  
