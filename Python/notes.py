@@ -11,6 +11,10 @@
 """
 
       Python
+      
+      
+      type(    )  --> give info about the data type of the object()
+      pass        --> passes the function or class without doing anything 
 
 --> num=12
     name = Rohit 
@@ -58,6 +62,9 @@
 
     s = {1,2,3}         contains ony unique elements
     
+    my_set = [1,2,3]   --> this is a list
+    my_set = set()    --> This will turn it into a set
+    
     set([1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3])
     {1,2,3}
 
@@ -98,6 +105,8 @@
 
 --> Functions
 
+    Methods  - Fucntions that are defined in a Class are called Methods
+
     def hello():
         print("asdas")
     
@@ -116,6 +125,32 @@
             return(sum**2)
 
         my_func(6)
+
+
+--> Class (Methods, Attributes/Characteristics, Instance)
+class Dog():      -->Class Name is given in CamelCase
+
+    species = 'mammal'    ---> CLASS OBJECT ATTRIBUTE 
+                          ---> SAME FOR AMY INSTANCE OF THE CLASS
+                          ---> Can be called as Dog.species (this is convention) or self.species
+        
+    def __init__(self, breed, name, age = 12):    --> Also known as the constructor in C++ and is called every time an instance is created
+                                                  --> 'self' connects the instance to the Class
+        self.breed = breed                        --> 'breed' is the Attribute of the Dog Class
+        self.name = name
+        print(breed)
+        
+    def bark(self, num):                --> Methods for the Class
+        print(num + self.species)       --> 'num' is not connected to the particular instance of the class 
+                                            so self is not used 
+
+sample_instance = Dog('Labra', 'asdf', 26) # --> This is an object and an instance of the 'Sample' Class
+sample_instance.breed
+sample_instance.name
+
+sample_instance.species
+    
+
 
 
 
