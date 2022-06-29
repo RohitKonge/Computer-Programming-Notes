@@ -233,7 +233,7 @@ if __name__ == "__main__":
     s = iter('hello')
     print(next(s))
         
-
+qwerqwdsfcxcv c zcasdf wedfaewdfedf  ewrwe adfsadfsdaf
     
  
  
