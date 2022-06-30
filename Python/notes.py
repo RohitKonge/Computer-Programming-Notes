@@ -270,7 +270,7 @@ class Book:
     def __del__(self):
         do something
 
-print(str(Book("Potter", 240)))  --> we overrided the str for our class to return the txt = hello, and welcome to my world.
+print(str(Book("Potter", 240)))  --> we overrided the str for our class to return string representation of the BOOK Class
 
 likewise we can also override ---> len, del 
 
@@ -419,7 +419,47 @@ if __name__ == "__main__":
     print(next(s))
         
 
-    
- 
+-->Advanced Python Packages
+
+
+--> from collections import Counter
+
+print(Counter('sadfsdfsdfsdf'))  --> Returns a dictionary 
+Counter.values()
+Counter.most_common(self)
+
+
+--> from collections import defaultdict
+
+This sets a default 'value' for the new 'key's which are created
+
+d = defaultdict(lambda : 10)
+
+d['correct'] = 100
+
+print(d['WRONG KEY'])
+
+now DEFAULTDICT is a little different from DICT here if we search a key that is
+not present in the dict then it will return '10' as its value
+
+
+--> from collections import namedtuple
+
+NAMEDTUPLE expand over TUPLE by having 'Named Indicies'
+
+namedtuple has a numeric connection as well as Named index connection
+
+Dog = namedtuple('Dog1', ['name', 'age'])
+
+my_dog = Dog("sam", 12)
+
+print(my_dog.name)
+
+
+
+
+
+
+
  
 
