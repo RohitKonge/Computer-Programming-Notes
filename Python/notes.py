@@ -189,6 +189,9 @@ POLYMORPHISM
     (POLYMORPHISM will be used much later in your python carreer)
     
     Polymorphism means the condition of occuring in several different forms
+    
+    One such use case is when we want a "open" method to open PDF, Excel, Word, CSV we can 
+    use Polymorphism and have muliple methods with the name 'open'
 
 class Dessert():
     
@@ -251,7 +254,25 @@ class Dog(Animal) :
 
 --> SPECIAL/MAGIC/DUNDER Methods of a CLASS
 
+Here we override the builtin functions to suit our Data Type made with the use of Class
 
+class Book:
+    def __init__(self, name, page):
+        self.name = name
+        self.page = page
+
+    def __str__(self):
+       return self.name
+   
+    def __len__(self):
+        do something
+        
+    def __del__(self):
+        do something
+
+print(str(Book("Potter", 240)))  --> we overrided the str for our class to return the txt = hello, and welcome to my world.
+
+likewise we can also override ---> len, del 
 
 
 
