@@ -453,7 +453,31 @@ Dog = namedtuple('Dog1', ['name', 'age'])
 
 my_dog = Dog("sam", 12)
 
-print(my_dog.name)
+
+--> Opening and Reading, Files and Folders using Python OS Modules
+
+Python OS Module and Shell Utilities Module allow us to move or delete Files
+
+f = open('practice.txt', 'w')
+f.write('This is a practice file')
+
+import os   --> Get current/all files in a dir and works across all Operating Sys.
+
+print(os.getcwd())  --> cwd = Current Working Dir
+print(os.listdir())
+
+os.walk(top) --> Walks through every Folder, Sub-Folder, and File in its path
+
+NOTE - Os module permanently deletes files so we import 'send2trash' to send it to Trash Can
+
+import send2trash
+
+send2trash.send2trash('e:\Computer Programming\GithubCPNotes\practice.txt' )
+
+import shutil      --> Helps to Move the files around
+                   --> Shell Utilities Module
+                   
+shutil.move('practice.txt', 'e:\Computer Programming\GithubCPNotes')
 
 
 
