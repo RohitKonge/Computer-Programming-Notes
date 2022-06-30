@@ -227,6 +227,31 @@ ABSTRACT CLASSES
 We NEVER EXPECT to create an instance of the abstract class and it is designed to only 
 serve as a BASE CLASS
 
+class Animal():
+    
+    def __init__(self,name):
+        self.name = name
+        
+    def speak(self):
+        raise NotImplementedError("Subclass must implement this abstract method")
+    
+---> It expects us to use the abstract class to override the 'speak' method
+    
+my_Animal = Animal('fred')
+
+class Dog(Animal) :
+    def __init__(self, name, age):
+      self.name = name
+      self.age = age
+
+    def speak(self):        --> This has been based on the Abstract Class - Animal
+        print("Woof woof")
+
+
+
+--> SPECIAL/MAGIC/DUNDER Methods of a CLASS
+
+
 
 
 
