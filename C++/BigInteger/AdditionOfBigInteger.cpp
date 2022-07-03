@@ -6,7 +6,6 @@
 using namespace std;
 
 
-
 void solve(string a, string b)
 {
     int n = a.length(), p = b.length();
