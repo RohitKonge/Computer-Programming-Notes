@@ -1,0 +1,49 @@
+/* ************************** TAG SELECTORS************************* */
+body{      
+    font-family: cursive;     
+    background-color:#D3EBCD;
+}
+hr{
+    background-color: transparent;
+    width: 10%;
+    border-width: 10px;
+    border-bottom: 0px;
+    border-style: dotted;
+    border-color: white;            
+}
+h1{
+    color: rgb(121, 121, 182);
+}
+h2{
+    color: rgb(224, 57, 213);
+}
+h3{
+    color: blue;
+}
+
+img :hover{
+    background-color: yellow;
+}
+/* ************************** CLASS SELECTORS************************* */
+.emoji1{
+    background-color: black;
+    border-radius: 20px;
+    
+}
+.emoji1:hover{
+    background-color: yellow;
+}
+
+
+/* ************************** ID SELECTORS************************* */
+#emoji2{
+    background-color: blue;
+    border-radius: 20px;
+}
+
+/* NOTE : ID is unique to only one item and CLASS can be use for multiple
+elements */
+
+/* NOTE : We can have more than 1 class names for a single element */
+
+/* NOTE : ID's & CLASS's override TAGS */
