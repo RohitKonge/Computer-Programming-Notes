@@ -1,7 +1,8 @@
 /* ************************** TAG SELECTORS************************* */
 body{      
-    font-family: cursive;     
+    font-family: 'Ubuntu', sans-serif;   
     background-color:#D3EBCD;
+    text-align: center;
 }
 hr{
     background-color: transparent;
@@ -34,6 +35,9 @@ img :hover{
     background-color: yellow;
 }
 
+.table{
+    margin: 0 auto 0 auto;
+}
 
 /* ************************** ID SELECTORS************************* */
 #emoji2{
