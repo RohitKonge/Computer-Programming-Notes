@@ -33,7 +33,7 @@ NOTE- We can change the width the Block Display and we cannot change the width w
 -->Common Block Display Elements:
 
 By default some elements are calle block display, Block Elements take the whole width on the display
-essentially blocking other elements
+essentially blocking other elements but height is decided by the content
 
 Paragraphs(<p>)
 Headers(<h></h>)
@@ -69,4 +69,85 @@ WE use display:None to remove the element from the display i.e to hide it
 
 also we can use "visibility:hidden;" its like it will become invisible but still 
 act like a normal element as in it will still take space
+
+
+
+----------------------- CSS STATIC AND RELATIVE POSITIONING ---------------------
+
+--> Understanding Default POSITIONING
+
+1. Content is Everything
+
+2. Order of the display of elements comes from the Code
+
+3. Children Sit on top of parents
+
+<div>
+    <h1>
+        a <span>
+            pro
+        </span>
+        grammer
+    </h1>
+</div>
+
+
+---> Changing the Positionj Property to our will instead of using the Default
+
+ 1. STATIC
+
+ 
+ All Html elements are static in their position by default
+
+
+ 2. RELATIVE
+
+It measure the distance from the edges of the element
+
+img{
+    position : relative;
+    left : 30px;        -->give this image 30 px of space from the left
+    right : 30px;       -->give this image 30 px of space from the right
+    top : 30px;         -->give this image 30 px of space from the top
+    bottom : 30px;      -->give this image 30 px of space from the bottom
+}
+
+This does not the effect the position of any other elements
+
+It can even be used to overplap other elements
+
+ 3. ABSOLUTE
+
+Its position is accordingly relative to the Parent 
+ 
+Here the other elements position does get effected
+
+img{
+    position : absolute;
+    left : 30px;        -->give this image 30 px of space from the left of the parent
+    right : 30px;       -->give this image 30 px of space from the right of the parent
+    top : 30px;         -->give this image 30 px of space from the top of the parent
+    bottom : 30px;      -->give this image 30 px of space from the bottom of the parent
+}
+
+
+
+ 
+ 4. FIXED
+
+position : fixed ;
+
+this fixes the element to the page as we scroll the page
+
+
+
+
+
+
+
+
+
+
+
+
 
