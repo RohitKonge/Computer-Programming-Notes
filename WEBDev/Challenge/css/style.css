@@ -1,12 +1,14 @@
 body{
    font-family: 'Ubuntu', sans-serif;   
    text-align: center;
-   margin: 0;
+   background-color: #EAF6F6;
+   margin: 0px;
+   line-height: 30px;
 }
 
 h1{
     font-size: 60px;
-    color: #66BFBF;
+    color: #0a4e4e;
 }
 
 h2{
@@ -29,26 +31,33 @@ hr{
     border: 10px;
     border-bottom: 0;
     border-style: dotted;
-    border-color: #EAF6F6;
+    border-color: #0a4e4e;
 }
 
 
 
 .computer_div{
     text-align: center;
-    
+    margin: 30px auto;
+    width: 730px;
 }
 
 .chillies_div{
     text-align: center;
+    margin: 30px auto;  
+    width: 730px;
 }
 
 .computer_text{
    float: right;
+   text-align: left;
+
 }
 
 .chillies_text{
     float: left;
+    text-align: left;
+
 }
 
 .bkg_of_name{
@@ -56,6 +65,7 @@ hr{
     background-color: #EAF6F6 ;
     text-align: center;
     margin-bottom: 0px;
+    margin-top: 30px;
 }
 
 .bkg_of_name_under{
@@ -71,6 +81,12 @@ hr{
     position: absolute;
     top: 25%;
     left: 25%;
+}
+
+.programmer_text{
+    position: absolute;
+    top: 47%;
+    left: 35%;
 }
 
 .bkg_of_contact{
