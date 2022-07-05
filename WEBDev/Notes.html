@@ -18,6 +18,8 @@ border : solid;
 padding             Space between content and border of the element
 margin              Space between the neighbouring element
 
+We can use line-height to change the spacing between the text lines
+
 ----------------------- CSS DISPLAY PROPERTY ---------------------
 
 Display has 4 different values:
@@ -92,7 +94,7 @@ act like a normal element as in it will still take space
 </div>
 
 
----> Changing the Positionj Property to our will instead of using the Default
+---> Changing the Position Property to our will instead of using the Default
 
  1. STATIC
 
@@ -166,4 +168,24 @@ margin as per above
 Use font.google.com for free fonts
 
 
+---> CSS Sizing
 
+font size = 16px = 100% = 1em = 1rem
+
+use rem as it is the most adaptable and reliable of them all
+
+inherits value from the parent
+
+em and % sizes do scale up as per the size of the page and px does not
+
+rem - root em , it does not get affected by the inherited value of the parent
+
+
+
+--> CSS Float and Clear
+
+float : left  --> Makes the element float to the left of the parent and wrap the elements to its right
+
+clear : right --> its like anti - float
+
+float has many corner cases so only use it for wrapping TEXT around a certain element and dont use it for positioning
