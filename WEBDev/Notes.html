@@ -5,7 +5,7 @@
 
 
 
--- We can use line-height to change the spacing between the text lines
+-- We can use 'line-height' to change the spacing between the text lines
 
 -- text-decoration : none   --> removes the underline from anchor element
 
@@ -46,7 +46,7 @@ None;
 NOTE- We can change the width the Block Display and we cannot change the width with Inline Display
 
 
--->Common Block Display Elements:
+-->Common Block Display Elements: (PHDLF)
 
 By default some elements are called block display, Block Elements take the whole width on the display
 essentially blocking other elements but height is decided by the content
@@ -57,7 +57,7 @@ Divisions(<div></div>)
 List and List Items(<ol></ol>, <ul></ul>, <li></li>)
 Forms(<form></form>)
 
--->Common Inline Display Elements:
+-->Common Inline Display Elements: (SIA)
 
 Inline Elements only take as much space as needed and do not block other elements from being at the side
 
@@ -108,6 +108,9 @@ act like a normal element as in it will still take space
 </div>
 
 
+position : fixed, absolute, relative, static  (FARS)
+
+
 ---> Changing the Position Property to our will instead of using the Default
 
  1. STATIC
@@ -118,14 +121,15 @@ act like a normal element as in it will still take space
 
  2. RELATIVE
 
-It measure the distance from the edges of the element
+It measures the distance from the edges of the element
+or its position is relative to the static position 
 
 img{
     position : relative;
-    left : 30px;        -->give this image 30 px of space from the left
-    right : 30px;       -->give this image 30 px of space from the right
-    top : 30px;         -->give this image 30 px of space from the top
-    bottom : 30px;      -->give this image 30 px of space from the bottom
+    left : 30px;        -->give this image 30 px of space from the left of its static position
+    right : 30px;       -->give this image 30 px of space from the right of its static position
+    top : 30px;         -->give this image 30 px of space from the top of its static position
+    bottom : 30px;      -->give this image 30 px of space from the bottom of its static position
 }
 
 This does not the effect the position of any other elements
@@ -134,9 +138,17 @@ It can even be used to overplap other elements
 
  3. ABSOLUTE
 
+ When we use Absolute positioning we are actually taking it out of the flow
+
 Its position is accordingly relative to the Parent 
  
-Here the other elements position does get effected
+Here the other elements position do get effected
+
+Below the div is the parent of img
+
+div{
+    position : relative;
+}
 
 img{
     position : absolute;
@@ -147,8 +159,9 @@ img{
 }
 
 
-
+NOTE - if the parents position is not set to Relative then the childs position will be relative to the BODY
  
+
  4. FIXED
 
 position : fixed ;
@@ -168,8 +181,9 @@ body{
 
 h1{
     margin : 0 auto 0 auto;  --> This sets Left = 0, Top  = auto, Right = 0, Bottom = auto;
+    margin : 0 auto;         --> This set Top = Bottom = 0 , Left = Right = auto;
 }       
-
+ 
 If its a Parent Element use Text-Align and for a Block Element with Width u have to use 
 margin as per above
 
@@ -202,3 +216,13 @@ float : left  --> Makes the element float to the left of the parent and wrap the
 clear : right --> its like anti - float
 
 float has many corner cases so only use it for wrapping TEXT around a certain element and dont use it for positioning
+
+
+
+
+
+-------------------------------- Section 6 -- Bootstrap   ----------------------------------------------
+
+
+
+
