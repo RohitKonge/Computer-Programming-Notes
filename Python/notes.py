@@ -555,6 +555,38 @@ DATA includes images or information
 3. Basic HTML & CSS 
 
 
+--> Setting up web Scraping
+
+pip install requests  ---  Allows us to make a request to a website and then grab the info off of it. 
+
+pip install lxml      --- Used by BeautifulSoup to decipher whats inside the requests
+
+pip install bs4       --- BeautifulSoup
+
+
+--> Grabbing the Title
+
+import requests
+
+result = requests.get("https://en.wikipedia.org/wiki/Jonas_Salk")
+
+print(type(result))
+
+result.text  # --> this gives the html as a giant string
+
+import bs4
+
+soup = bs4.BeautifulSoup(result.text,"lxml")
+
+a = soup.select(".toctext")  # soup.select("p")  
+
+ print(a[0].getText())
+
+for item in a:
+    print(item.getText())
+
+
+
 
 
 
