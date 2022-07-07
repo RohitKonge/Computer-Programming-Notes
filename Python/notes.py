@@ -586,6 +586,34 @@ for item in a:
     print(item.getText())
 
 
+--> Grabbing All Elements of a Class
+
+
+A big part of web scraping is knowing what string syntax to pass in to the soup.select(" ") method
+
+            Syntax                                   Match results
+            
+1.  soup.select("div")                     --> Elements with "div" Tag
+
+2.  soup.select("#some_id")                --> Elements with id="some_id"
+
+3.  soup.select(".some_class")             --> Elements with class="some_class"
+
+4.  soup.select("div example")             --> Elements named "example" with div element
+
+5.  soup.select("div > example")           --> Elements named "example" directly within div element,
+                                               wit nothing in between
+
+(The Code for grabbing Class is written in "Grabbing the title" section)
+
+
+
+--> Grabbing an Image 
+
+Images have their own Link ending with .jpg or .png
+
+Here we serach for the <img> tag 
+
 
 
 
