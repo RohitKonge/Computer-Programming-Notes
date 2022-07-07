@@ -614,14 +614,27 @@ Images have their own Link ending with .jpg or .png
 
 Here we serach for the <img> tag 
 
+import requests
 
+result = requests.get("https://en.wikipedia.org/wiki/Jonas_Salk")
 
+import bs4
 
+soup = bs4.BeautifulSoup(result.text, "lxml")
 
+imglist = soup.select(".thumbimage")
 
+ print(imglist[0]["src"])
 
+imglink = requests.get("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Roosevelt_OConnor.jpg/220px-Roosevelt_OConnor.jpg")
 
+ print(imglink.content)
 
+f = open("roosevelt.jpg", "wb")   -->  wb = write binary
+
+f.write(imglink.content)
+
+f.close()
 
 
 
