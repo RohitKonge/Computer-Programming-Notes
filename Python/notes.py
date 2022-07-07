@@ -637,6 +637,38 @@ f.write(imglink.content)
 f.close()
 
 
+--> Working with Multiple Pages and Items 
+
+
+We want to grab multiple elements, most likely across multiple pages.
+
+to go across multiple pages we can use .format(" ") on the url
+
+Eg. 
+
+http://books.toscrape.com/catalogue/page-2.html
+
+site_page = (http://books.toscrape.com/catalogue/page-{ }.html).format(" ")
+
+And then Loop over the pages to get the relevant info 
+
+import requests
+import bs4
+        
+for j  in range(1,51):
+    result = requests.get(("http://books.toscrape.com/catalogue/page-{}.html").format(j))
+
+    soup = bs4.BeautifulSoup(result.text, "lxml")
+
+    two_star_list =  soup.select(".product_pod")
+    
+    for i in two_star_list:
+        if(i.select(".star-rating.Two")):
+            print(i.select("a")[1]["title"])
+    
+
+
+
 
 
 
