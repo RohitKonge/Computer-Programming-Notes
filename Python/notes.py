@@ -666,6 +666,11 @@ for j  in range(1,51):
         if(i.select(".star-rating.Two")):
             print(i.select("a")[1]["title"])
     
+    
+Note - When accessing nested elements make sure to use [0] or [1] .select gives a list
+
+Note -  i.select("asd").text     will print the string
+
 
 
 
