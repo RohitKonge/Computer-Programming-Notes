@@ -419,7 +419,7 @@ if __name__ == "__main__":
     print(next(s))
         
 
--->Advanced Python Packages
+-->Advanced Python Packages and Modules
 
 
 --> from collections import Counter
@@ -529,6 +529,50 @@ import timeit
 1. Tracking the time elapsed 
 2. Timeit Module
 3. %%timeit    which works only on Jupyter Notebook
+
+
+
+----------------------- WebScrapping with Python  --------------------------
+
+
+--> Intro to Web Scraping
+
+Automating the gathering of data from a website is called WEB SCRAPING 
+
+DATA includes images or information 
+
+3 important Things to keep in Mind:
+
+1. Rules of web Scraping
+    - Always get permission 
+    - Too many scraping requests will block your IP Address
+    - Sometimes sites automatically block scraping software
+
+2. Limitation of Web Scraping
+    - Every Website is unique so we Need unique Web Scraping Scripts for everyone 
+    - Slight Change/Update to a website will break your Web Scraping Code
+
+3. Basic HTML & CSS 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
