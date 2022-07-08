@@ -47,10 +47,15 @@ Eg. img.filename()          ---> Gives an error as  -> 'str' object is not calla
 --> List
  
     my_list = [1,2,3,4]   
+    my_list = []          # Creates an empty list
     my_list.append(5)  --> [1,2,3,4,5]
     my_list[0]  -> 1
     
     List can also be Sliced
+
+      for i in my_list[1:]:
+          This will iterate from index 1 to the end
+
 
     nesting --> nest = [1, 2, [3,4,'target']]
     nest[2][2][3]  -> 'g'
@@ -719,7 +724,7 @@ img.filename
 
 --> Cropping Images
 
-Here the co-ordinates start from the Top-Left corner and they are all co-ordinates from the origin and not lengths 
+Here the co-ordinates start from the Top-Left corner and they are all co-ordinates from the origin(i.e (0,0)) and not lengths 
 
 print(img.size)
 
@@ -744,6 +749,100 @@ img.save("purple.png")    ---> This saves the image and if it already exists , i
 
 
 
+----------------------- Working with PDFs and CSV files in Python  --------------------------
+
+
+----> Working with CSV Files
+
+- top sentence contains the names of the columns
+
+- We can export EXCEL, GOOGE SPREADSHEETS to .csv files but it only exports the info 
+
+- .csv files do not contain images and macros
+
+- "Openpyxl" is designed specifically for EXCEL Files & "python-excel.org" has other Excel based python libs
+
+- "Google Sheets Python API"
+
+     - Python interface for working with Google Spreadsheets
+     - Make changes to spreadsheets hosted online 
+     
+     
+
+Step for a typical CSV files
+
+1. Open the file
+2. CSV. Reader
+3. Reformat it into a Python Object . List of Lists 
+
+
+import csv
+
+data = open("example.csv")
+
+csv_data = csv.reader(data)       -- Converting it into CSV Data
+
+data_line = list(csv_data)        -- Reformatting
+
+- Now this will give a UnicodeDecode Error 
+
+- Encoding is ability to read/not-read the different types of special characters 
+    Eg. '@' symbol
+
+data = open("Python/example.csv",mode= "rt", encoding='utf-8')       
+---> This helps it to read the special characters
+
+
+csv_data = csv.reader(data)     
+
+data_line = list(csv_data)
+
+-- On getting UnicodeDecode Error look for different ENCODING online and it is useful if we know what kind of special characters are in our CSV file
+
+print(data_line[1])
+print(len(data_line))
+
+all_emails = []  
+
+for i in data_line[1:3]:
+    all_emails.append(i[3])   
 
 
 
+--> Writing to a CSV File
+
+import csv
+
+file_to_output = open("Python/to_save_file.csv", mode="w", newline = "")
+
+csv_writer = csv.writer(file_to_output, delimiter = ",")    ---> Delimiter is something that separates the columns, in this case since its a CSV(comma sepraterd values) file we have ","
+
+- we can have ";" or "\t" , TSV(tab separated values)
+ 
+csv_writer.writerow([["1", "2", "3"],["4", "5", "6"]])   ---> Here we have a list of list 
+csv_writer.writerow(["sdsdafsdf", ["4", "5", "6"]])
+     
+file_to_output.close()
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
