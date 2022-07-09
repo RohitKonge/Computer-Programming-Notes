@@ -853,6 +853,7 @@ f.close()     ----> The Above Code is for Reading only
 
 
 
+
 f = open("Python/Working_Business_Proposal.pdf", "rb")
 pdf_reader = PyPDF2.PdfFileReader(f)
 
@@ -870,4 +871,62 @@ f.close
      
      
      
+---------------------- Emails with Python  --------------------------
+    
+
+-----> Steps to send Emails with Python
+
+1. Connecting to an Email Server
+2. Confirming Connection
+3. Setting a Protocol
+4. Logging on
+5. Sending Message
+     
+SMTP (Simple Mail Transfer Protocol)
+
+- Here we use an APP PASSWORD instead of our NORMAL PASSWORD to let Gmail know that I am the one trying to access my account
+
+import smtplib
+
+smtp = smtplib.SMTP("smtp.gmail.com", 587)
+
+smtp.ehlo()   --> This methods calls and makes the connection to the server
+              -->   NOTE- This method call should be made directly after creating the SMTP Object
+
+smtp.starttls()
+
+import getpass
+
+email    = getpass.getpass("Enter Email : ")
+password = getpass.getpass("Enter Password : ")
+smtp.login(email, password)
+
+--> Set up app password on Google 
+
+from_addr = email
+to_addrs = email
+subject = input("Enter Subject: ")
+msg = input("Enter Message: ")
+
+smtp.sendmail(from_addr, to_addrs, msg)
+
+--- If we get an empty dictionary that means the email was successful 
+
+smtp.quit()    ----  this will close the connection
+     
+     
+     
+-----> Steps for Recieved Email with Python
+
+import imaplib
+
+imap = imaplib.IMAP4_SSL("imap.gmail.com")
+
+import getpass
+email = getpass.getpass("Email : ")
+password = getpass.getpass("Password : ")
+
+imap.login(email, password)
+
+imap.login("rohitkonge08@gmail.com", "thepasswordisincorrect")
 
