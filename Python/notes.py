@@ -930,3 +930,131 @@ imap.login(email, password)
 
 imap.login("rohitkonge08@gmail.com", "thepasswordisincorrect")
 
+
+---------------------- Advanced Python Objects and Data Structures --------------------------
+
+-----> Advanced Numbers
+
+hex(number)     --> Hexadecimal form of a Number  -->   0x200  = 512
+bin(number)     --> Binary      form of a Number  -->   0b1011 = 11
+
+2**4        == 16
+pow(2,4)    == 16
+pow(x,y,z)  == (x^y) % z     <----
+
+abs(-3)     == 3
+
+round(3.1)  == 3.0          --> Round will always a Int Number
+round(3.9)  == 4.0
+
+Python also has a Math library
+
+
+-----> Advanced Strings
+
+s = "hello world"
+
+s.capitalize()  ---> Capitalizes the first letter
+s.upper()       ---> Capitalizes the whole word 
+s.lower()       ---> Lowers the whole word
+s.count("o")    ---> Counts the total number of 'o'
+s.find("o")     ---> Finds the 1st index of the occurence of 'o'
+
+s.isalnum()     ---> These are usful when using
+s.isalpha()         for NLP(Natural Language Processing)
+
+s.islower()     ---> True if all letter are lowercase 
+s.isspace()     ---> True if all characters are whitespace 
+s.endswith("o") ---> True if it ends with 'o'
+
+s[-1]           ---> Will give the last letter
+s[-2]           ---> Will give the 2nd last letter
+
+s.split("o")    ---> Returns a list with the string being separated at every 'o'
+
+s.partition("ll") ---> Returns a list with the input, the part before and after it 
+                       i.e it will have 3 elements in the list
+                       
+\t              ---> tab 
+
+
+-----> Advanced Sets
+
+s = set()
+s.add(1)
+s.add(2)
+
+print(s)            ---> Prints the whole Set
+
+s.clear()           ---> Removes all elements of the Set
+
+s_new = s.copy()    ---> Returns a copy and changes to the Original Set wont affect the new Set
+
+s_new.add(3)
+s_new.add(4)
+
+s.difference(s_new)             ---> Returns new set by deleting all the common elements
+
+s.difference_update(s_new)      ---> Removes the elements that are in both s and s_new and return s
+
+s.discard(2)                    ---> Removes 2 from s , wont show error if 2 is not present in s
+
+s.intersection(s_new)           ---> Returns a new set which has elements common in s and s_new
+
+s.intersection_update(s_new)    ---> Returns s as a new set which has elements common in s and s_new 
+
+s.isdisjoint(s_new)             ---> Returns True if s intersection s_new == Null
+
+s.issubset(s_new)               ---> Returns true if all elements of s are in s_new
+
+s.issuperset(s_new)             ---> Returns true if all elements of s_new are in s
+ 
+s.symmetric_difference(s_new)   ---> Returns all the elements that are in exactly one of the sets
+
+s.union(s_new)                  ---> Returns a set that has the combination of the 2 sets
+
+s.update(s_new)                 ---> Returns s as a new set which have union of elements of s_new
+
+
+
+-----> Advanced Dictionaries
+
+d = {"k1" : 1, "k2" : 2}
+
+-- Dictionary Comprehension  
+
+a = {x:y for x,y in zip([1,2],[3,4])}
+
+NOTE - zip methods yields tuples and stops when the shortest input range is exhausted
+
+
+
+-- Iterating through Dictionaries
+
+for k in a.items() / a.keys() / a.values() :
+    print(k)
+
+
+-----> Advanced Lists
+
+l = [1,2,3]
+
+l.count(3)              ---> Returns the Times number 3 is present
+
+l.append([4,5,6])       ---> Adds [4,5,6] to the list ->  [1,2,3,[4,5,6,]]
+l.extend([4,5,6])       ---> Adds  4,5,6  to the list ->  [1,2,3,4,5,6]
+
+l.index(2)              ---> Returns the index of 2
+
+l.insert(3,[4,5])       ---> Inserts [4,5] before index 3
+
+l.pop()                 ---> By default it removes the last element of the list 
+l.pop(2)                ---> Removes the element at index 2 in the list
+
+l.remove(2)             ---> Removes the first occurence of the value '2' in the list
+
+l.reverse()             ---> Reverses the list
+
+l.sort()                ---> Sorts the list
+
+
