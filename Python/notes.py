@@ -827,22 +827,47 @@ file_to_output.close()
      
      
      
+--> Working with PDF Files in Python
+
+
+- We will use PYPDF2 library
+
+Images, Table make a PDF unreadable by python although there are PAID PDF programs that can extract from these files
+
+import PyPDF2
+
+f = open("Python/Working_Business_Proposal.pdf", "rb")
+
+pdf_reader = PyPDF2.PdfFileReader(f)
+
+print(pdf_reader.numPages)
+
+page_one = pdf_reader.getPage(0)
+
+page_one_text = page_one.extract_text
+
+print(page_one_text)
+     
+f.close()     ----> The Above Code is for Reading only
+
+
+
+
+f = open("Python/Working_Business_Proposal.pdf", "rb")
+pdf_reader = PyPDF2.PdfFileReader(f)
+
+first_page = pdf_reader.getPage(0)
+
+pdf_writer =  PyPDF2.PdfFileWriter( )
+     
+pdf_writer = pdf_writer.addPage(first_page)
+
+pdf_output = open("Python/SomePdf.pdf","wb")
+
+pdf_writer.write(pdf_output)
+f.close
      
      
      
      
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
+
