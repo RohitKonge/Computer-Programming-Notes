@@ -11,10 +11,16 @@
     type(    )          --> give info about the data type of the object()
     pass                --> passes the function or class without doing anything 
     del                 --> deletes the object from the memory
-    map(func, iter1)    --> Just like a "for i in range(0,10)" this applies iter1 elements to the Function
+    map(func, iter1)    --> Just like a "for i in range(0,10)" this applies iter1 elements to the Function. Usually we use Lambda Functions.
+    filter(func, iter1) --> Here we return a Boolean in the Lambda Expression & Return/Filter the Elements from the Iterable. 
+    
     
     list(map(lambda arguments : expression , sequ))
 eg. list(map(lambda x:x**3, [1,2,3,4]))
+
+    
+    list(filter(lambda arguments : expression , sequ))
+eg. list(filter(lambda x:x**3 >= 8, [1,2,3,4]))
 
 
 print(list(map(lambda x:x**3, [1,2,3,4])))          --> Use of lambda Expression
@@ -114,7 +120,14 @@ print("asdasf")             ---> This is the correct Indentation
 
     for item in seq:
         print(item)
-            
+    
+    Tuple Unpacking:
+        
+    x =[(1,2),(3,4)(4,5)]
+        
+    for a,b in x:
+        print(a,b)
+    
 --> while loop 
 
     i = 1
@@ -988,6 +1001,8 @@ Python also has a Math library
 
 s = "hello world"
 
+"h" in s        ---> Will return True 
+
 s.capitalize()  ---> Capitalizes the first letter
 s.upper()       ---> Capitalizes the whole word 
 s.lower()       ---> Lowers the whole word
@@ -1004,12 +1019,16 @@ s.endswith("o") ---> True if it ends with 'o'
 s[-1]           ---> Will give the last letter
 s[-2]           ---> Will give the 2nd last letter
 
+s.split()       ---> Split the String with Whitespace
 s.split("o")    ---> Returns a list with the string being separated at every 'o'
 
 s.partition("ll") ---> Returns a list with the input, the part before and after it 
                        i.e it will have 3 elements in the list
                        
 \t              ---> tab 
+
+NOTE - The difference between split and partition - In SPLI the input does not get returned in the List but in PARTITION we do get the input in the list.
+
 
 
 -----> Advanced Sets
