@@ -5,17 +5,19 @@
 --> Alt + Enter = Add New Cell
 
 
-
-"""
-
-"""
-
-      Python
+    Python
       
       
-      type(    )  --> give info about the data type of the object()
-      pass        --> passes the function or class without doing anything 
-      del         --> deletes the object from the memory
+    type(    )          --> give info about the data type of the object()
+    pass                --> passes the function or class without doing anything 
+    del                 --> deletes the object from the memory
+    map(func, iter1)    --> Just like a "for i in range(0,10)" this applies iter1 elements to the Function
+    
+    list(map(lambda arguments : expression , sequ))
+eg. list(map(lambda x:x**3, [1,2,3,4]))
+
+
+print(list(map(lambda x:x**3, [1,2,3,4])))          --> Use of lambda Expression
 
 
 NOTE - Always use the backward slash when typing the Path of file/folder/image .etc 
@@ -30,6 +32,11 @@ NOTE - If you get an error as " object is not Callable"
 Eg. img.filename()          ---> Gives an error as  -> 'str' object is not callable
     img.filename            ---> Then remove the parentheses , this will work
 
+NOTE - If you get an error as "Unexpected Indent"
+
+    print("asdasf")         ---> This will give the error "Unexpected Indent"
+    
+print("asdasf")             ---> This is the correct Indentation
 
 --> num=12
     name = Rohit 
@@ -532,9 +539,36 @@ random.uniform(a, b)
 
 
  --> Python Debugger
+ 
 import pdb
  
 pdb.set_trace()
+
+
+--> Python Regular Expression - 1
+
+- to search a small string in a large string use
+
+    a = "dog" in "who is that dog"
+
+    The Problem here is that we need to know the exact pattern and structure
+
+
+
+- Now we want to search for a GENERAL TYPE of data like all emails in a file
+
+    Regular Expressions(RegEx) allow us to search general patterns in text data
+
+    Eg. user@email.com          --> Here we dont know "user" and "email" but we do know '@' and '.com'
+
+    Phone Number Pattern -  (555)-555-5555
+    Regex Pattern        - r"(\d\d\d)-\d\d\d-\d\d\d\d"
+                         = r"(\d{3})-\d{3}-\d{4}"
+                         
+    Here '\d'            - Identifier 
+        (  ) , ' - '     - Format String
+
+
  
 
 --> Timing your Python code
@@ -988,7 +1022,7 @@ print(s)            ---> Prints the whole Set
 
 s.clear()           ---> Removes all elements of the Set
 
-s_new = s.copy()    ---> Returns a copy and changes to the Original Set wont affect the new Set
+s_new = s.copy()    ---> Returns a copy of s and changes to the Original Set wont affect the new Set
 
 s_new.add(3)
 s_new.add(4)
@@ -1056,5 +1090,17 @@ l.remove(2)             ---> Removes the first occurence of the value '2' in the
 l.reverse()             ---> Reverses the list
 
 l.sort()                ---> Sorts the list
+
+
+---------------------- Introduction to GUI (Graphical User Interface) --------------------------
+
+from ipywidgets import interact, interactive, fixed
+import ipywidgets as wdgts 
+
+def func(x):
+    return x
+
+interact(func, x = 10)
+
 
 

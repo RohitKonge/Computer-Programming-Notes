@@ -34,28 +34,32 @@
 
 # img_mask.show()
 
-import csv
+# import csv
 
-a_file = open("Python/find_the_link.csv", encoding="utf-8")
+# a_file = open("Python/find_the_link.csv", encoding="utf-8")
 
-a_file_reader = csv.reader(a_file)
+# a_file_reader = csv.reader(a_file)
 
-a_file_data = list(a_file_reader)
+# a_file_data = list(a_file_reader)
 
-i = 0
-link = ""
-for t in a_file_data:
-    link = link + t[i]
-    i = i + 1
+# i = 0
+# link = ""
+# for t in a_file_data:
+#     link = link + t[i]
+#     i = i + 1
 
-print(link)
+# print(link)
 
-import PyPDF2
+# import PyPDF2
 
-pdf_file = open("Python/Find_the_Phone_Number.pdf", "rb")
+# pdf_file = open("Python/Find_the_Phone_Number.pdf", "rb")
 
-pdf_file_reader = PyPDF2.PdfFileReader(pdf_file)
+# pdf_file_reader = PyPDF2.PdfFileReader(pdf_file)
 
-print(pdf_file_reader.getPage(0).extract_text())
+# print(pdf_file_reader.getPage(0).extract_text())
 
 # pdf_file_page = pdf_file_reader.getPage(pageNumber)
+
+
+dict = {x : x**3 for x in range(0,5)}
+print(dict)
