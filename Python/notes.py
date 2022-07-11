@@ -1,10 +1,3 @@
-  Jupyter Notebook
-
---> Shift + Enter = Run Current Cell and Add new Cell
-
---> Alt + Enter = Add New Cell
-
-
     Python
       
       
