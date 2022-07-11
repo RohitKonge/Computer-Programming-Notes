@@ -551,7 +551,7 @@ import pdb
 pdb.set_trace()
 
 
---> Python Regular Expression - 1
+-----------------------------> Python Regular Expression - 1
 
 - to search a small string in a large string use
 
@@ -569,13 +569,105 @@ pdb.set_trace()
 
     Phone Number Pattern -  (555)-555-5555
     Regex Pattern        - r"(\d\d\d)-\d\d\d-\d\d\d\d"
-                         = r"(\d{3})-\d{3}-\d{4}"
+                         = r"(\d{3})-\d{3}-\d{4}")
                          
     Here '\d'            - Identifier 
+        '\d{3}'          - {3} is called Quantifier
         (  ) , ' - '     - Format String
 
+import re 
 
+txt = "asd qwe etry"
+pattern = "asd"
+
+ -- re.search(pattern, txt)     --> returns None if it is not present
+                                Return span(x,y) i.e the indexs of the founded pattern
+
+NOTE - This returns a "match" Objects where we can use the following Methods
+
+- match.span()
+- match.start()
+- match.end()
+
+
+ -- re.findall(pattern, txt)    --> Returns a List with the number of findings in the txt
  
+ -- To Search & Iterate through the txt we Use
+ 
+ for match in re.finditer(pattern, txt):
+    print(match)
+    
+    
+-----------------------------> Python Regular Expression - 2
+
+
+---- Character Identifiers 
+
+
+            Description         Pattern Code            Match
+\d          Digit               file_\d\d\d             file_123
+\w          Alphanumeric        \w-\w\w                 A-b_
+\s          Whitespace          a\sb\sc                 a b c
+
+\D          Non-Digit           \D\D\D                  ABC
+\W          Non-Alphanumeric    \W\W\W\W                *-+=)
+\S          Non-Whitespace      \S\S\S\S                YoYo
+
+
+---- Quantifiers
+
+
+            Description                         Pattern Code        Match
+            
+?           Once or None                        plurals?            plural
+*           Occurs Zero or More Times           A*B*C*              AAAACC
++           Occurs One  or More Times           \d-\d+              9-99999 
+
+{3}         Occurs Exactly 3    Times           \d{3}               897
+{3,5}       Occurs 3 to 5       Times           \d{3,5}             1234
+{3,}        Occurs min     3    Times           \d{3,}              1234567
+
+import re
+
+f = re.findall(r"\d\d\d{3,6}", "   33342323232344121   11111111111111111  2222222222222")
+print(f)
+
+-- if we want to search for multiple patterns in the text we can use re.compile(pattern)
+
+
+f = re.fullmatch()(re.compile(r"(\d{1})(\d{2})(\d{3})"), "33342323232344121   11111111111111111  2222222222222")
+print(f.group(3))
+
+
+
+-----------------------------> Python Regular Expression - 3
+
+---- Additional Regex Syntax
+
+import re
+
+
+---> Finding multiple strings
+
+re.search(r"cat | dog", "asd cat adsfasd f asdfds sda fdsa dog")        ---> Returns cat or dog Match objects
+
+
+---> Finding the string and n letters before the string 
+print(re.findall(r"....at", "sd sd swe waat s at adsf asdat erw tat"))  ---> Return at + the four letters before that note- this can also inlcude whitespace 
+
+
+---> Start and End 
+
+print(re.findall(r"^\d", "1dsf  sdsdf 4s  fs 75asdfasd"))      #--> ^ this symbol searchs at the start of the string
+
+print(re.findall(r"\d$", "asd3 asda asaq 999asda wqeqw12"))    --> $ this symbol searchs at the end of the string
+
+
+Exclude something from the search and Search everything else
+
+
+re.findall(r"[\d]", string)
+
 
 --> Timing your Python code
 

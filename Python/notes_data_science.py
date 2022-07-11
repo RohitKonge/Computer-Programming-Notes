@@ -57,3 +57,12 @@ arr = np.random.randint(3,8,9)
 print(arr.reshape(3,3).shape)
 
 print(arr.dtype)
+
+---------------------    NUMPY Indexing and Selection     -------------------------
+
+arr = np.arange(3, 10)
+
+We can slice the Array Just Like Slicing List in Python
+
+arr[0:3] = 100                  ---> This sets the value of arr[0] = arr[1] = arr[2] = 100 
+
