@@ -7,6 +7,10 @@
     map(func, iter1)    --> Just like a "for i in range(0,10)" this applies iter1 elements to the Function. Usually we use Lambda Functions.
     filter(func, iter1) --> Here we return a Boolean in the Lambda Expression & Return/Filter the Elements from the Iterable. 
     
+    NOTE - Defining a Lot of variables takes a lot of memory so as we get better at Python we move more and more towards One Liner Code
+    NOTE - and , or are used for   Single Bool comaprisions 
+           &   , |  are used for a Series Bool Comparisions
+    
     
     list(map(lambda arguments : expression , sequ))
 eg. list(map(lambda x:x**3, [1,2,3,4]))

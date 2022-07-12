@@ -4,7 +4,11 @@
 
 --> Alt + Enter = Add New Cell
 
-
+NOTE - Defining a Lot of variables takes a lot of memory so as we get better at Python we move more and more towards One Liner Code
+NOTE - and , or are used for   Single Bool comaprisions 
+       &   , |  are used for a Series Bool Comparisions
+           
+           
 ---------------------------- PYTHON FOR DATA ANALYSIS - NUMPY ---------------------------
 
 Its a Linear Algebra Library
@@ -196,15 +200,46 @@ df.drop(["b"], axis = 0, inplace = True)
 
 
 
+---------------------> 3. DataFrames - 2
 
 
+--->   Conditional Selection
+
+bool_df = df > 0      i.e this returns a DF
+
+print(df > 0)         ---> This will print the DF but with True/False at every cell 
+
+import numpy as np, pandas as pd
+from numpy.random import randn
+
+df = pd.DataFrame(randn(4,4))
+
+print(df[ df > 0])    ---> This is same as print(df > 0) but for "false" cells it will write NAN
+
+          0         1         2         3
+0       NaN  0.948022  0.641107  0.697116
+1  0.769657       NaN  0.086328  0.282669
+2  0.191764       NaN       NaN  0.087429
+3  0.509276       NaN       NaN       NaN
+
+df[df[0]>0]           ---> This will return the DF but with column 0 elements > 0
+
+NOTE - when we use df[sdfasdf]  here "df" tells that it will return the whole DataFrame
 
 
+---> To add an index of [0,1,2,3.......n] besides the rows
+
+df.reset_index(inplace=True)    ----> This is also a temporary change so we use inplace
+
+   index         0         1         2         3
+0      0 -0.774455 -1.598083 -1.401992 -0.650946
+1      1  1.019981  1.059463  0.022018  0.087523
+2      2 -1.478124  0.219193 -0.678391  1.314480
+3      3  0.208541  0.611723  0.377006  0.921247
 
 
-
-
-
+df.set_index(3,drop =  False, append = False, inplace = True)
+print(df)
 
 
 
