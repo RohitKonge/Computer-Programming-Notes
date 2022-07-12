@@ -33,7 +33,9 @@ arr = np.array([[1,2,3],[4,6,9]])      # ---> Here different length list are Dep
 print(arr)
 
 print(np.arange( 0, 10, 3))    # (Inclusive, Exclusive, Steps to Jump) Just like Python Range
-                               #  Return an array
+                               #  Returns an array
+                               
+np.arange(50)                   ---> Returns a list from 0 to 49
 
 np.zeros(3)                     ---> Matrix of 3 Zero's
 np.zeros(3,4)                   ---> Matrix of 3 rows and 4 columns
@@ -65,7 +67,7 @@ arr.argmin()                    ---> Return the Index of the Max and Min value o
 arr.shape
 
 arr = np.random.randint(3,8,9)
-print(arr.reshape(3,3).shape)
+print(arr.reshape(3,3).shape)     ----> This is way to make a 1D Array to N dimensional Array
 
 print(arr.dtype)
 
@@ -103,26 +105,46 @@ print(slice_of_arr)
 
 ------------> For 2D Array, matrix
 
+import numpy as np
+
+# 2 Ways to Select elements of a 2D Array
+
+arr = np.array([[1,2,3,4],[12,13,543,123]])
+
+1. arr[1][2]
+
+2. arr[1,2]         ---> NOTE - This is available only in Numpy Arrays
+
+------->  Conditional Selection
+
+new_arr = arr[arr>5]      ---> This applies the condition on each element and returns the elements(if true) into a new array
 
 
 
+---------------------     Numpy Operations     -------------------------
 
+This is true only for Numpy Arrays
 
+1. Array with Array
 
+    arr +-*/ arr
 
+2. Array with Scalar 
 
+    arr +-*/ some_number
+    arr ** some_number 
+    
+    
+NOTE - In Array with Array and Array with Scalar, the Length of Arrays should be same
 
+3. Universal Array Functions (ufunc)
 
-
-
-
-
-
-
-
-
-
-
+arr = np.sqrt(arr)
+    = np.exp(arr)
+    = np.max()
+    = np.min()
+    = np.sin(arr)         -----> i.e we can use trigonometric signs as well
+    = np.log(arr)         -----> 
 
 
 
