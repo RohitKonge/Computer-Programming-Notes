@@ -242,6 +242,48 @@ df.set_index(3,drop =  False, append = False, inplace = True)
 print(df)
 
 
+---------------------> 4. DataFrames - 3
+
+
+import numpy as np, pandas as pd
+from numpy.random import randn
+
+
+heir_index = list(zip(["G1","G1","G1","G2","G2","G2",], [1,2,3,1,2,3],))
+
+heir_index = pd.MultiIndex.from_tuples(heir_index)
+
+df = pd.DataFrame(randn(6,2), heir_index, ["A", "B"])   #---> Starting a MultiIndex Level DataFrame
+
+print(df)
+print(df.loc["G2"].loc[2]["A"])               #  ---> Gives out ( 2 G2 A ) as output
+
+# G1 1  0.182514  0.037724
+#    2 -0.311561  0.208268
+#    3 -0.584162  0.513384
+# G2 1  1.491018  0.442598
+#    2 -0.227964  0.488629
+#    3  0.309178 -1.137197
+# -0.22796427665097835
+
+df.index.names = ["Group", "Numbers"]
+print(df)
+
+                      A         B
+Group Numbers                    
+G1    1       -0.982985  0.048941
+      2        0.443154 -0.699686
+      3       -0.106319  0.364710
+G2    1        0.212434 -0.745369
+      2       -0.659790  1.080584
+      3       -0.176113  0.177451
+
+df.xs("G1")                     ---> Returns the G1 Row
+df.xs(1, Level ="Numbers")      ---> Returns a Cross-Section of ROWS & COLUMNS
+
+Same as .loc but it can grab all rows with 1 as their index
+Here, we will get G1[1] & G2[2]
+
 
 
 
