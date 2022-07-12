@@ -137,3 +137,80 @@ S2 = pd.Series(data= ['a', 'd', 'c'], index = [20,30,40])
 
 print(S1+S2)
 
+---------------> 2. DataFrames - 1
+
+
+---> Creating DataFrame
+
+import numpy as np, pandas as pd
+from numpy.random import randn
+
+np.random.seed(101)     ---> We set a seed to get the same random nums across different users 
+
+pd.DataFrame(Elements, Row Indices, Column Indices)
+
+df = pd.DataFrame(randn(3,3), ['a','b','c'], [1,2,3])
+print(df)
+
+          1         2         3
+a  2.706850  0.628133  0.907969
+b  0.503826  0.651118 -0.319318
+c -0.848077  0.605965 -2.018168
+
+
+
+---> Getting Data From DataFrame (Here we can get and also give the data as well)
+
+3 Ways to retrive COLUMN Data
+
+1. print(df[1])       ---> This is recommended --> Will print out a Series of Column 1
+
+2. print(df.1)        ---> Will also print out a Series of Column 1
+
+3. print(df[[1,2]])   ---> calling multiple Columns
+
+
+NOTE - Calling a Single Column will give a Series 
+       Calling Multiple Columns will give a DataFrame    
+       
+       
+2 Ways to retrive ROW Data
+
+1. df.loc[["a","c"], [2,3]]       ---> You can also get individual cell info
+2. df.iloc[[1,2],[2,3]]           ---> Here we are using the Indicse of the Rows and Columns
+
+
+
+---> Making Extra Columns in DataFrame
+
+df[4] = df[1] + df[2] | randn(3,1)    ---> This will add 1 more column 
+
+
+---> Deleting Rows and Columns
+
+NOTE - df.shape == (3,3) which is a tuple so (axis = 0 == Rows) and (axis = 1 == Columns)
+
+df.drop([1], axis = 1, inplace = True)  --> here inplace confirms that we want to delete the column permanently if inplace == False then it wont delete it permanently
+
+df.drop(["b"], axis = 0, inplace = True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
