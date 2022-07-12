@@ -53,6 +53,7 @@ print("asdasf")             ---> This is the correct Indentation
 
     s[0:] will give 'hello'
     s[:3] will give 'hell'
+    s[:]  will give 'hello'
     
 --> List
  

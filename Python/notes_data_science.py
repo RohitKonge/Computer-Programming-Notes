@@ -9,13 +9,20 @@ NOTE - and , or are used for   Single Bool comaprisions
        &   , |  are used for a Series Bool Comparisions
            
            
+           
+           
+           
 ---------------------------- PYTHON FOR DATA ANALYSIS - NUMPY ---------------------------
 
+
 Its a Linear Algebra Library
+
 
 ---------------------    NUMPY ARRAYs     -------------------------
 
 import numpy as np 
+
+Numpy Arrays differ from Python List because of its ability to Broadcast
 
 we can call randint as ---> from numpy.random import randint
 
@@ -64,14 +71,37 @@ print(arr.dtype)
 
 ---------------------    NUMPY Indexing and Selection     -------------------------
 
+
+
+------------> For 1D Array
+
+
+import numpy as np
+
 arr = np.arange(3, 10)
 
 We can slice the Array Just Like Slicing List in Python
 
-arr[0:3] = 100                  ---> This sets the value of arr[0] = arr[1] = arr[2] = 100 
+arr[:3] = 100              # ---> This sets the value of arr[0] = arr[1] = arr[2] = 100 
+                           ---> This is called Broadcast
+
+NOTE - To avoid Memory Issues with very large arrays Numpy makes a reference to the Original Variable which changes its data too 
+
+slice_of_arr = arr[:]
+
+slice_of_arr[:] = 12
+
+print(arr)              #---> Both Will Give same output
+print(slice_of_arr)
+
+So to Avoid that we make a Copy of arr and then set it to slice_of_arr after which making any change to slice_of_arr will not affect arr 
+
+slice_of_arr = np.copy(arr) = arr.copy()
+print(slice_of_arr)
 
 
 
+------------> For 2D Array, matrix
 
 
 
