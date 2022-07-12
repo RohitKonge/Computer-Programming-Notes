@@ -66,3 +66,74 @@ We can slice the Array Just Like Slicing List in Python
 
 arr[0:3] = 100                  ---> This sets the value of arr[0] = arr[1] = arr[2] = 100 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------   Python for Data Analysis - PANDAS     -----------------------
+
+- Pandas is Open Source and built on top of NUMPY
+
+Things to Learn :
+  
+1. Series & how they interact with Pandas
+2. DataFrames of Pandas
+3. Work of Missing Data
+4. GroupBy of Pandas
+5. Merging, Joining and Concatenating DataFrames of Pandas
+6. Operations of Pandas
+7. Data In and Out of Pandas, Such as CSV, Excel, SQL Files
+
+
+---------------> 1. Series
+
+import numpy as np
+import pandas as pd 
+
+list1 = ['a', 'b', 'c']
+list2 = [10, 20, 30]
+arr   = np.array(list2)
+d     = {'a' : 10, 'b' : 20, 'c' : 30}
+
+print()   # ---> Here list2 is the Label
+
+# we can also use builtin functions as data 
+
+print(pd.Series(data= [sum, len, print], index = list2)) 
+
+
+a = pd.Series(data= list1, index = list2)
+
+print(a[10])        # Wil Print 'a'
+
+# lets say S1 and S2 are 2 Series Then (S1 + S2) will give Add the Label/Indexs and return NAN if the data is not found in both of them
+
+S1 = pd.Series(data= list1, index = list2)
+S2 = pd.Series(data= ['a', 'd', 'c'], index = [20,30,40])
+
+print(S1+S2)
+
