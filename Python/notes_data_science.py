@@ -17,6 +17,7 @@ NOTE - and , or are used for   Single Bool comaprisions
 
 Its a Linear Algebra Library
 
+np.nan  == Not A Number
 
 ---------------------    NUMPY ARRAYs     -------------------------
 
@@ -170,6 +171,8 @@ Things to Learn :
 import numpy as np
 import pandas as pd 
 
+We can create Series from Dictionary
+
 list1 = ['a', 'b', 'c']
 list2 = [10, 20, 30]
 arr   = np.array(list2)
@@ -200,6 +203,16 @@ print(S1+S2)
 
 import numpy as np, pandas as pd
 from numpy.random import randn
+
+We can create DataFrame from Dictionary
+
+print(pd.DataFrame({"A":[np.NAN, 2, 3], "B":[4, np.NaN, 5], "C":[6, 7, np.NaN],}, [96,97,98]))
+
+      A    B    C
+96  NaN  4.0  6.0
+97  2.0  NaN  7.0
+98  3.0  5.0  NaN
+
 
 np.random.seed(101)     ---> We set a seed to get the same random nums across different users 
 
@@ -335,6 +348,28 @@ df.xs(1, Level ="Numbers")      ---> Returns a Cross-Section of ROWS & COLUMNS
 
 Same as .loc but it can grab all rows with 1 as their index
 Here, we will get G1[1] & G2[2]
+
+
+---------------------> 5. Missing Data
+
+
+-----> To Drop Nan Value in Rows/Columns
+
+Pandas fills in the missing data as NULL or ANY Value
+
+df.dropna(axis=1)    -----> Will Drop Column with at least 1 NAN
+df.dropna(thresh=2)  -----> Will Drop if no. of non-Nan values are less than 2
+
+
+-----> To Fill in Values of Nan in Rows/Columns
+
+df.fillna(value = "New Vlue", inplace=True)
+
+df["A"].fillna(value=df["A"].mean())
+
+
+
+
 
 
 

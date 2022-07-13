@@ -10,17 +10,17 @@
 
 #             for k in soup.select(".author"):
 #                 authors.add(k.text)
-                
+
 #             for j in authors:
 #                 print(j)
-                
+
 #             i = i + 1
-        
+
 #     except:
 #         print(result.text)
 #         print("asdasf")
 #         break
-    
+
 # from PIL import Image
 
 # img_word_matrix = Image.open("Python/word_matrix.png")
@@ -61,5 +61,29 @@
 # pdf_file_page = pdf_file_reader.getPage(pageNumber)
 
 
-dict = {x : x**3 for x in range(0,5)}
-print(dict)
+# dict = {x : x**3 for x in range(0,5)}
+# print(dict)
+
+import numpy as np
+import pandas as pd
+
+# print(np.zeros(10))
+# print(np.ones(10))
+# print(np.ones(10)*5)
+# print(np.arange(10,51))
+# print(np.arange(10,51,2))
+# print(np.arange(0, 9).reshape(3,3))
+# print(np.eye(3))
+# print(np.random.rand(1))
+# print(np.random.randn(25))
+# print(np.array(np.linspace(0.01, 1.00, 100)).reshape(10,10))
+# print(np.array(np.linspace(0,1,20)))
+mat = np.arange(1, 26).reshape(5, 5)
+print(mat)
+print(mat[2:, 1:])
+print(mat[0:3, 1])
+print(mat[4])
+print(mat[3:])
+print(np.sum(mat))
+print(np.std(mat))
+print(np.sum(mat, axis = 0))
