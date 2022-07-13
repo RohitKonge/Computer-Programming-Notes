@@ -228,7 +228,7 @@ a  2.706850  0.628133  0.907969
 b  0.503826  0.651118 -0.319318
 c -0.848077  0.605965 -2.018168
 
-
+print(df.head())                ----> Print n number of rows of the DataFrame
 
 ---> Getting Data From DataFrame (Here we can get and also give the data as well)
 
@@ -497,12 +497,65 @@ Use this if we have mutiple key columns
 
 
 ---------> Joining DataFrames
+                        
+Its a method for combining the columns of 2 "Different Indexed" DataFrames into 1 DataFrame                     
+                        
+Same as Merge but we use Index Columns instead of Keys Columns                      
+                        
+                        
+df1.join(df2)                       
+                        
+                        
+-------------------- -> 8. Operations                       
+                        
+import pandas as pd                     
+df = pd.DataFrame({'col1':[1,2,3,4],'col2':[444,555,666,444],'col3':['abc','def','ghi','xyz']})
+print(df.head())
 
-Its a method for combining the columns of 2 "Different Indexed" DataFrames into 1 DataFrame
+df["col1"].unique()         ---> returns an array with the unique elements of "col1"
 
-Same as Merge but we use Index Columns instead of Keys Columns
+df["col1"].nunique()        ---> returns the number of unique elements    
 
-df1.join(df2)
+df["col1"].value_counts()   ---> returns a table, how may times a value got repeated in the column   
+
+
+NOTE - Apply Method is th Most Powerful Method in Pandas 
+
+df["col1"].apply(func)      ---> Applys the Custom Function on the elements
+
+print(df.applymap(lambda x : x*2))
+
+df["col1"].apply(len)       ---> Returns the Length of each element into a Series 
+
+df.columns                  ---> Returns the name of the columns as an object
+
+df.index                    ---> Returns the info about the Index
+
+df.sort_values("col1")      ---> Sorts Values of the Column
+
+df.isnull()                 ---> Returns a DF with Bool for Cell Items whether NAN or not
+
+--> Pivot Table 
+
+Creating a MultiIndex Table out of the DataFrame
+
+df.pivot_table(value = "some_column", index=["A", "B"], columns=["D"])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
