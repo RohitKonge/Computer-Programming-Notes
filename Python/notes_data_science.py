@@ -412,3 +412,105 @@ df.groupby().describe().transpose()["G2"]       --->
 .describe()     ---> Gives all the aggregate functions
 .transpose()    ---> Makes the DataFrame/Matrix transpose
 ["G2"]          ---> Gives only the Info about G2
+
+
+
+-------------------- -> 7. Merging , Joining and Concatenating DataFrames
+
+
+---------> Concatenating DataFrames
+
+NOTE - Both of the DataFrames should have the same dimensions
+
+import numpy as np, pandas as pd
+from numpy.random import randn
+
+df1 = pd.DataFrame(np.arange(1,10).reshape(3,3), index=np.arange(1, 4))
+df2 = pd.DataFrame(np.arange(10,19).reshape(3,3), index=np.arange(4, 7))
+df3 = pd.DataFrame(np.arange(19,28).reshape(3,3), index=np.arange(7, 10))
+
+# print(df1)
+# print(df2)
+# print(df3)
+
+print(pd.concat([df1, df2, df3], axis = 1))
+
+     0    1    2     0     1     2     0     1     2
+1  1.0  2.0  3.0   NaN   NaN   NaN   NaN   NaN   NaN
+2  4.0  5.0  6.0   NaN   NaN   NaN   NaN   NaN   NaN
+3  7.0  8.0  9.0   NaN   NaN   NaN   NaN   NaN   NaN
+4  NaN  NaN  NaN  10.0  11.0  12.0   NaN   NaN   NaN
+5  NaN  NaN  NaN  13.0  14.0  15.0   NaN   NaN   NaN
+6  NaN  NaN  NaN  16.0  17.0  18.0   NaN   NaN   NaN
+7  NaN  NaN  NaN   NaN   NaN   NaN  19.0  20.0  21.0
+8  NaN  NaN  NaN   NaN   NaN   NaN  22.0  23.0  24.0
+9  NaN  NaN  NaN   NaN   NaN   NaN  25.0  26.0  27.0
+
+
+print(pd.concat([df1, df2, df3], axis = 0))
+
+    0   1   2
+1   1   2   3
+2   4   5   6
+3   7   8   9
+4  10  11  12
+5  13  14  15
+6  16  17  18
+7  19  20  21
+8  22  23  24
+9  25  26  27
+
+Here the Indices do not contain an element so we get NaN
+
+Note - We can concat them Vertically(axis = 0) or Horizontally(axis = 1)
+
+
+
+---------> Merging DataFrames
+
+NOTE -  We use Merge when we have a Common Column. 
+        We can have multiple Common Columns
+        
+        how = "inner", "right", "left"  & default is "inner"
+        on = ["key1", "key2"]       
+        
+        
+import numpy as np, pandas as pd
+from numpy.random import randn
+
+df1 = pd.DataFrame(np.arange(1,10).reshape(3,3), index=np.arange(1, 4))
+df1["key"] = np.arange(1, 4).reshape(3,1)
+df2 = pd.DataFrame(np.arange(10,19).reshape(3,3), index=np.arange(4, 7))
+df2["key"] = np.arange(1, 4).reshape(3,1)
+
+# When you are merging we are gonna merge it on a key column
+
+print(pd.merge(df1, df2, how="inner", on="key"))
+
+   0_x  1_x  2_x  key  0_y  1_y  2_y
+0    1    2    3    1   10   11   12
+1    4    5    6    2   13   14   15
+2    7    8    9    3   16   17   18
+
+print(pd.merge(df1, df2, how="inner", on=["key1", key2]))
+Use this if we have mutiple key columns
+
+
+---------> Joining DataFrames
+
+Its a method for combining the columns of 2 "Different Indexed" DataFrames into 1 DataFrame
+
+Same as Merge but we use Index Columns instead of Keys Columns
+
+df1.join(df2)
+
+
+
+
+
+
+
+
+
+
+
