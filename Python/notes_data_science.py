@@ -543,8 +543,16 @@ df.pivot_table(value = "some_column", index=["A", "B"], columns=["D"])
 
 
 
+-------------------- -> 9. Data Input and output
 
+CSV 
+EXCEL
+HTML 
+SQL
+                 
+import pandas as pd
 
+pd.rea
 
 
 

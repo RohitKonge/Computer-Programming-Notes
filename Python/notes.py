@@ -671,10 +671,33 @@ print(re.findall(r"\d$", "asd3 asda asaq 999asda wqeqw12"))    --> $ this symbol
 Exclude something from the search and Search everything else
 
 
-re.findall(r"[\d]", string)
+re.findall(r"[^\d]+", string)
+
+re.findall(r"[^?.!]+", string)
+
+" ".join(clean)     ---> It joins all the individual strings in to a 1 string
 
 
---> Timing your Python code
+
+Include something from the search and Search everything else
+
+import re
+
+print(re.findall(r"[\w]+-[\w]", "qwe asd-qwe wqefvxb-wqexcv ewqr"))
+
+['asd-q', 'wqefvxb-w']
+
+
+
+txt1 = "catfish"
+txt2 = "catnap"
+txt3 = "caterpillar"
+
+print(re.search(r"cat(fish|nap|terpillar)", txt1))
+
+
+
+-----------------------------> Timing your Python code
 
 To check which Solution for a question is the fastest we use this
 
