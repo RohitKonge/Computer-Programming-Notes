@@ -1,4 +1,4 @@
-  Jupyter Notebook
+Jupyter Notebook
 
 --> Shift + Enter = Run Current Cell and Add new Cell
 
@@ -7,15 +7,17 @@
 NOTE - Defining a Lot of variables takes a lot of memory so as we get better at Python we move more and more towards One Liner Code
 NOTE - and , or are used for   Single Bool comaprisions 
        &   , |  are used for a Series Bool Comparisions
-           
-           
-           
-           
-           
----------------------------- PYTHON FOR DATA ANALYSIS - NUMPY ---------------------------
+
+
+---------------------------- PYTHON FOR DATA ANALYSIS - NUMPY - --------------------------
 
 
 Its a Linear Algebra Library
+
+np.nan == Not A Number
+
+Aggregate Function == A function that takes in a lot of values and then returns a single value
+
 
 np.nan  == Not A Number
 
@@ -34,8 +36,8 @@ arr = np.array([[1,2,3],[4,6,9]])      # ---> Here different length list are Dep
 print(arr)
 
 print(np.arange( 0, 10, 3))    # (Inclusive, Exclusive, Steps to Jump) Just like Python Range
-                               #  Returns an array
-                               
+#  Returns an array
+
 np.arange(50)                   ---> Returns a list from 0 to 49
 
 np.zeros(3)                     ---> Matrix of 3 Zero's
@@ -88,7 +90,7 @@ We can slice the Array Just Like Slicing List in Python
 arr[:3] = 100              # ---> This sets the value of arr[0] = arr[1] = arr[2] = 100 
                            ---> This is called Broadcast
 
-NOTE - To avoid Memory Issues with very large arrays Numpy makes a reference to the Original Variable which changes its data too 
+NOTE - To avoid Memory Issues with very large arrays Numpy makes a reference to the Original Variable which changes its data too
 
 slice_of_arr = arr[:]
 
@@ -97,7 +99,7 @@ slice_of_arr[:] = 12
 print(arr)              #---> Both Will Give same output
 print(slice_of_arr)
 
-So to Avoid that we make a Copy of arr and then set it to slice_of_arr after which making any change to slice_of_arr will not affect arr 
+So to Avoid that we make a Copy of arr and then set it to slice_of_arr after which making any change to slice_of_arr will not affect arr
 
 slice_of_arr = np.copy(arr) = arr.copy()
 print(slice_of_arr)
@@ -130,20 +132,20 @@ This is true only for Numpy Arrays
 
     arr +-*/ arr
 
-2. Array with Scalar 
+2. Array with Scalar
 
     arr +-*/ some_number
-    arr ** some_number 
-    
-    
+arr ** some_number
+
+
 NOTE - In Array with Array and Array with Scalar, the Length of Arrays should be same
 
 3. Universal Array Functions (ufunc)
 
 arr = np.sqrt(arr)
-    = np.exp(arr)
-    = np.max()
-    = np.min()
+= np.exp(arr)
+= np.max()
+= np.min()
     = np.sin(arr)         -----> i.e we can use trigonometric signs as well
     = np.log(arr)         -----> 
 
@@ -156,7 +158,7 @@ arr = np.sqrt(arr)
 - Pandas is Open Source and built on top of NUMPY
 
 Things to Learn :
-  
+
 1. Series & how they interact with Pandas
 2. DataFrames of Pandas
 3. Work of Missing Data
@@ -180,7 +182,7 @@ d     = {'a' : 10, 'b' : 20, 'c' : 30}
 
 print()   # ---> Here list2 is the Label
 
-# we can also use builtin functions as data 
+# we can also use builtin functions as data
 
 print(pd.Series(data= [sum, len, print], index = list2)) 
 
@@ -208,7 +210,7 @@ We can create DataFrame from Dictionary
 
 print(pd.DataFrame({"A":[np.NAN, 2, 3], "B":[4, np.NaN, 5], "C":[6, 7, np.NaN],}, [96,97,98]))
 
-      A    B    C
+A    B    C
 96  NaN  4.0  6.0
 97  2.0  NaN  7.0
 98  3.0  5.0  NaN
@@ -221,7 +223,7 @@ pd.DataFrame(Elements, Row Indices, Column Indices)
 df = pd.DataFrame(randn(3,3), ['a','b','c'], [1,2,3])
 print(df)
 
-          1         2         3
+1         2         3
 a  2.706850  0.628133  0.907969
 b  0.503826  0.651118 -0.319318
 c -0.848077  0.605965 -2.018168
@@ -239,10 +241,10 @@ c -0.848077  0.605965 -2.018168
 3. print(df[[1,2]])   ---> calling multiple Columns
 
 
-NOTE - Calling a Single Column will give a Series 
-       Calling Multiple Columns will give a DataFrame    
-       
-       
+NOTE - Calling a Single Column will give a Series
+Calling Multiple Columns will give a DataFrame
+
+
 2 Ways to retrive ROW Data
 
 1. df.loc[["a","c"], [2,3]]       ---> You can also get individual cell info
@@ -281,7 +283,7 @@ df = pd.DataFrame(randn(4,4))
 
 print(df[ df > 0])    ---> This is same as print(df > 0) but for "false" cells it will write NAN
 
-          0         1         2         3
+0         1         2         3
 0       NaN  0.948022  0.641107  0.697116
 1  0.769657       NaN  0.086328  0.282669
 2  0.191764       NaN       NaN  0.087429
@@ -296,7 +298,7 @@ NOTE - when we use df[sdfasdf]  here "df" tells that it will return the whole Da
 
 df.reset_index(inplace=True)    ----> This is also a temporary change so we use inplace
 
-   index         0         1         2         3
+index         0         1         2         3
 0      0 -0.774455 -1.598083 -1.401992 -0.650946
 1      1  1.019981  1.059463  0.022018  0.087523
 2      2 -1.478124  0.219193 -0.678391  1.314480
@@ -334,8 +336,8 @@ print(df.loc["G2"].loc[2]["A"])               #  ---> Gives out ( 2 G2 A ) as ou
 df.index.names = ["Group", "Numbers"]
 print(df)
 
-                      A         B
-Group Numbers                    
+A         B
+Group Numbers
 G1    1       -0.982985  0.048941
       2        0.443154 -0.699686
       3       -0.106319  0.364710
@@ -368,13 +370,45 @@ df.fillna(value = "New Vlue", inplace=True)
 df["A"].fillna(value=df["A"].mean())
 
 
+-------------------- -> 6. GroupBy
+
+GroupBy allows us to group together rows, based off of a column and perform an aggregate function on them(Sum, Standard Deviation, etc)
+
+import numpy as np, pandas as pd
+from numpy.random import randn
+
+heir_index = list(
+    zip(["G1", "G1", "G1", "G2", "G2", "G2", ], [1, 2, 3, 1, 2, 3],))
+
+heir_index = pd.MultiIndex.from_tuples(heir_index)
+
+df = pd.DataFrame(randn(6, 2), heir_index, ["A", "B"])
+
+df.index.names = ["Groups", "Numbers"]
+print(df)
+
+#                        A         B
+# Groups Numbers                    
+# G1     1        0.629621 -0.222161
+#        2        0.903285  1.503304
+#        3        0.044835 -1.483800
+# G2     1        0.009534  0.024455
+#        2        0.040723  1.148055
+#        3        0.937641  0.412544
 
 
+# df.groupby("Groups")   ---> This Gives a GroupBy Object
+# df.groupby("Groups").sum().loc["G2"]
 
+print(df.groupby("Groups").sum().loc["G2"])
+df.groupby("Groups").mean() and etc.
 
+NOTE - If there are strings in a Column then Pandas will ignore it automatically
 
+Also, Here .sum(), .std(), .count(), max() are Aggregate functions
 
+df.groupby().describe().transpose()["G2"]       --->
 
-
-
-
+.describe()     ---> Gives all the aggregate functions
+.transpose()    ---> Makes the DataFrame/Matrix transpose
+["G2"]          ---> Gives only the Info about G2
