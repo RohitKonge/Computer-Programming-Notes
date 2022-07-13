@@ -704,9 +704,51 @@ To check which Solution for a question is the fastest we use this
 import timeit
 
 3 ways of doing it 
+
 1. Tracking the time elapsed 
-2. Timeit Module
+
+import time 
+
+start_time  = time.time()
+result      = func(1000000)             ---> this function gets repeated 
+end_time    = time.time()
+
+elapsed_time = end_time - start_time
+
+
+2. Timeit Module                ---> The most efficient Way
+
+import timeit
+
+print(timeit.timeit(stmt = "func_one(100)", setup = "def func_one(n) : return[str(num) for num in range(n)]", number=100000))
+
+here,   stmt(Statement) = code we actually wanna test                       = Function with arguments
+        setup           = anything that need to be set beforehand           = Function definition
+        number          = Number of times the function is to be repeated
+
+stmt and setup are passed as strings
+
+
 3. %%timeit    which works only on Jupyter Notebook
+
+%%timeit
+func_one(100)
+
+
+
+-----------------------------> Unzipping and Zipping Files
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
