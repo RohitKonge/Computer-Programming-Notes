@@ -11,15 +11,13 @@ NOTE - and , or are used for   Single Bool comaprisions
 
 ---------------------------- PYTHON FOR DATA ANALYSIS - NUMPY - --------------------------
 
-
 Its a Linear Algebra Library
 
-np.nan == Not A Number
+np.NaN == Not A Number
 
-Aggregate Function == A function that takes in a lot of values and then returns a single value
+Aggregate Function == A function that takes in lots of individual values and then returns a single value
 
-
-np.nan  == Not A Number
+np.NaN  == Not A Number
 
 ---------------------    NUMPY ARRAYs     -------------------------
 
@@ -170,26 +168,21 @@ Things to Learn :
 
 ---------------> 1. Series
 
-import numpy as np
-import pandas as pd 
-
-We can create Series from Dictionary
+import numpy as np, pandas as pd 
 
 list1 = ['a', 'b', 'c']
 list2 = [10, 20, 30]
 arr   = np.array(list2)
 d     = {'a' : 10, 'b' : 20, 'c' : 30}
 
-print()   # ---> Here list2 is the Label
+print(pd.Series(d))         # We can create Series from Dictionary
 
-# we can also use builtin functions as data
+print(pd.Series(data= [sum, len, print], index = list2))        # We can also use builtin functions as data
+                                                                # Here list2 is the Label
 
-print(pd.Series(data= [sum, len, print], index = list2)) 
+x = pd.Series(data= list1, index = list2)
 
-
-a = pd.Series(data= list1, index = list2)
-
-print(a[10])        # Wil Print 'a'
+print(x[10])        # Will Print 'a'
 
 # lets say S1 and S2 are 2 Series Then (S1 + S2) will give Add the Label/Indexs and return NAN if the data is not found in both of them
 
@@ -198,37 +191,52 @@ S2 = pd.Series(data= ['a', 'd', 'c'], index = [20,30,40])
 
 print(S1+S2)
 
+10    NaN
+20     ba
+30     cd
+40    NaN
+
 ---------------> 2. DataFrames - 1
 
+NOTE -  In Series and DataFrames Integers are converted to Floats
 
 ---> Creating DataFrame
 
 import numpy as np, pandas as pd
 from numpy.random import randn
 
-We can create DataFrame from Dictionary
+# NOTE - We can create DataFrame from Dictionary & List of List
+
+print(pd.DataFrame([[1,2,3],[4,5,6]]))
+
+   0  1  2
+0  1  2  3
+1  4  5  6
 
 print(pd.DataFrame({"A":[np.NAN, 2, 3], "B":[4, np.NaN, 5], "C":[6, 7, np.NaN],}, [96,97,98]))
 
-A    B    C
+    A    B    C
 96  NaN  4.0  6.0
 97  2.0  NaN  7.0
 98  3.0  5.0  NaN
 
 
-np.random.seed(101)     ---> We set a seed to get the same random nums across different users 
+np.random.seed(101)     ---> We set a seed to get the same random nums across different users   
 
 pd.DataFrame(Elements, Row Indices, Column Indices)
+
+import numpy as np, pandas as pd
+from numpy.random import randn
 
 df = pd.DataFrame(randn(3,3), ['a','b','c'], [1,2,3])
 print(df)
 
-1         2         3
+    1         2         3
 a  2.706850  0.628133  0.907969
 b  0.503826  0.651118 -0.319318
 c -0.848077  0.605965 -2.018168
 
-print(df.head())                ----> Print n number of rows of the DataFrame
+print(df.head(2))                ----> Print n number of rows of the DataFrame
 
 ---> Getting Data From DataFrame (Here we can get and also give the data as well)
 
@@ -241,8 +249,8 @@ print(df.head())                ----> Print n number of rows of the DataFrame
 3. print(df[[1,2]])   ---> calling multiple Columns
 
 
-NOTE - Calling a Single Column will give a Series
-Calling Multiple Columns will give a DataFrame
+NOTE -  Calling a Single Column will give a Series
+        Calling Multiple Columns will give a DataFrame
 
 
 2 Ways to retrive ROW Data
@@ -272,14 +280,20 @@ df.drop(["b"], axis = 0, inplace = True)
 
 --->   Conditional Selection
 
-bool_df = df > 0      i.e this returns a DF
-
-print(df > 0)         ---> This will print the DF but with True/False at every cell 
-
 import numpy as np, pandas as pd
 from numpy.random import randn
 
 df = pd.DataFrame(randn(4,4))
+
+bool_df = df > 0      #i.e this returns a DF
+
+print(df > 0)         ---> This will print the DF but with True/False at every cell 
+
+       0      1      2      3
+0  False  False  False  False
+1  False   True   True  False
+2  False   True  False   True
+3   True  False  False   True
 
 print(df[ df > 0])    ---> This is same as print(df > 0) but for "false" cells it will write NAN
 
@@ -289,10 +303,13 @@ print(df[ df > 0])    ---> This is same as print(df > 0) but for "false" cells i
 2  0.191764       NaN       NaN  0.087429
 3  0.509276       NaN       NaN       NaN
 
-df[df[0]>0]           ---> This will return the DF but with column 0 elements > 0
+print(df[df[0]>0])          ---> This will return the DF but with column 0 elements > 0
+
+          0         1         2         3
+0  0.978765  0.634525  0.721986 -0.713260
+1  0.958134 -1.006643 -0.465808 -1.786656
 
 NOTE - when we use df[sdfasdf]  here "df" tells that it will return the whole DataFrame
-
 
 ---> To add an index of [0,1,2,3.......n] besides the rows
 
@@ -305,16 +322,24 @@ index         0         1         2         3
 3      3  0.208541  0.611723  0.377006  0.921247
 
 
-df.set_index(3,drop =  False, append = False, inplace = True)
+df.set_index(pd.Series([33,44,55,66]),drop =  False, append = False, inplace = True)
 print(df)
+
+           0         1         2         3
+33 -0.691260 -1.354530  1.075759  1.590082
+44 -0.925570 -1.502910 -0.007169  0.788534
+55  0.499383  0.204637 -0.553235 -1.241689
+66  0.783800  1.097435 -0.860960  0.111078
 
 
 ---------------------> 4. DataFrames - 3
 
+NITE -  print(list(zip(["G1","G1","G1","G2","G2","G2",], [1,2,3,1,2,3],)))        ---> Gives out a List of Tuples
+
+        [('G1', 1), ('G1', 2), ('G1', 3), ('G2', 1), ('G2', 2), ('G2', 3)]
 
 import numpy as np, pandas as pd
 from numpy.random import randn
-
 
 heir_index = list(zip(["G1","G1","G1","G2","G2","G2",], [1,2,3,1,2,3],))
 
@@ -325,13 +350,15 @@ df = pd.DataFrame(randn(6,2), heir_index, ["A", "B"])   #---> Starting a MultiIn
 print(df)
 print(df.loc["G2"].loc[2]["A"])               #  ---> Gives out ( 2 G2 A ) as output
 
-# G1 1  0.182514  0.037724
-#    2 -0.311561  0.208268
-#    3 -0.584162  0.513384
-# G2 1  1.491018  0.442598
-#    2 -0.227964  0.488629
-#    3  0.309178 -1.137197
-# -0.22796427665097835
+             A         B
+G1 1 -0.538043  2.044674
+   2 -0.283239  2.269420
+   3 -0.036328  0.051043
+G2 1  0.502767  2.788274
+   2 -1.253619 -0.063398
+   3  1.256906  0.100843
+   
+-1.2536188484529616                         ----> This is  the df.loc["G2"].loc[2]["A"] value
 
 df.index.names = ["Group", "Numbers"]
 print(df)
@@ -345,11 +372,23 @@ G2    1        0.212434 -0.745369
       2       -0.659790  1.080584
       3       -0.176113  0.177451
 
-df.xs("G1")                     ---> Returns the G1 Row
-df.xs(1, Level ="Numbers")      ---> Returns a Cross-Section of ROWS & COLUMNS
+print(df.xs("G1"))                   # ---> Returns the G1 Row
+
+                A         B
+Numbers                    
+1       -0.286456 -0.417932
+2        2.087379 -0.536791
+3        0.064356  1.126378
+
+print(df.xs(1, level ="Numbers"))   ---> Returns a Cross-Section of ROWS & COLUMNS
+
+              A         B
+Group                    
+G1    -0.286456 -0.417932
+G2     0.920734  0.569665
 
 Same as .loc but it can grab all rows with 1 as their index
-Here, we will get G1[1] & G2[2]
+Here, we will get G1[1] & G2[1]
 
 
 ---------------------> 5. Missing Data
@@ -367,18 +406,19 @@ df.dropna(thresh=2)  -----> Will Drop if no. of non-Nan values are less than 2
 
 df.fillna(value = "New Vlue", inplace=True)
 
-df["A"].fillna(value=df["A"].mean())
+df["A"].fillna(value=df["A"].mean(), inplace=True)
 
 
 -------------------- -> 6. GroupBy
 
 GroupBy allows us to group together rows, based off of a column and perform an aggregate function on them(Sum, Standard Deviation, etc)
 
+NOTE - To use groupby we need to give index.names to the MultiIndex 
+
 import numpy as np, pandas as pd
 from numpy.random import randn
 
-heir_index = list(
-    zip(["G1", "G1", "G1", "G2", "G2", "G2", ], [1, 2, 3, 1, 2, 3],))
+heir_index = list(zip(["G1", "G1", "G1", "G2", "G2", "G2", ], [1, 2, 3, 1, 2, 3],))
 
 heir_index = pd.MultiIndex.from_tuples(heir_index)
 
@@ -387,21 +427,21 @@ df = pd.DataFrame(randn(6, 2), heir_index, ["A", "B"])
 df.index.names = ["Groups", "Numbers"]
 print(df)
 
-#                        A         B
-# Groups Numbers                    
-# G1     1        0.629621 -0.222161
-#        2        0.903285  1.503304
-#        3        0.044835 -1.483800
-# G2     1        0.009534  0.024455
-#        2        0.040723  1.148055
-#        3        0.937641  0.412544
+                       A         B
+Groups Numbers                    
+G1     1        0.629621 -0.222161
+       2        0.903285  1.503304
+       3        0.044835 -1.483800
+G2     1        0.009534  0.024455
+       2        0.040723  1.148055
+       3        0.937641  0.412544
 
-
-# df.groupby("Groups")   ---> This Gives a GroupBy Object
-# df.groupby("Groups").sum().loc["G2"]
+df.groupby()                            ---> This takes all the Groups
+df.groupby("Groups")                    ---> This Gives a GroupBy Object
+df.groupby("Groups").sum().loc["G2"]
 
 print(df.groupby("Groups").sum().loc["G2"])
-df.groupby("Groups").mean() and etc.
+print(df.groupby("Groups").mean())              and etc.
 
 NOTE - If there are strings in a Column then Pandas will ignore it automatically
 
@@ -415,7 +455,7 @@ df.groupby().describe().transpose()["G2"]       --->
 
 
 
--------------------- -> 7. Merging , Joining and Concatenating DataFrames
+-------------------- -> 7. Concatenating, Merging and Joining  DataFrames
 
 
 ---------> Concatenating DataFrames
@@ -446,6 +486,8 @@ print(pd.concat([df1, df2, df3], axis = 1))
 8  NaN  NaN  NaN   NaN   NaN   NaN  22.0  23.0  24.0
 9  NaN  NaN  NaN   NaN   NaN   NaN  25.0  26.0  27.0
 
+Here the Indices do not contain an element so we get NaN
+
 
 print(pd.concat([df1, df2, df3], axis = 0))
 
@@ -460,11 +502,7 @@ print(pd.concat([df1, df2, df3], axis = 0))
 8  22  23  24
 9  25  26  27
 
-Here the Indices do not contain an element so we get NaN
-
 Note - We can concat them Vertically(axis = 0) or Horizontally(axis = 1)
-
-
 
 ---------> Merging DataFrames
 
@@ -473,7 +511,6 @@ NOTE -  We use Merge when we have a Common Column.
         
         how = "inner", "right", "left"  & default is "inner"
         on = ["key1", "key2"]       
-        
         
 import numpy as np, pandas as pd
 from numpy.random import randn
@@ -510,7 +547,8 @@ df1.join(df2)
                         
 import pandas as pd                     
 df = pd.DataFrame({'col1':[1,2,3,4],'col2':[444,555,666,444],'col3':['abc','def','ghi','xyz']})
-print(df.head())
+
+print(df.head())            ---> returns all the rows of the DataFrame
 
 df["col1"].unique()         ---> returns an array with the unique elements of "col1"
 
@@ -525,6 +563,7 @@ df["col1"].apply(func)      ---> Applys the Custom Function on the elements
 
 print(df.applymap(lambda x : x*2))
 
+
 df["col1"].apply(len)       ---> Returns the Length of each element into a Series 
 
 df.columns                  ---> Returns the name of the columns as an object
@@ -535,12 +574,15 @@ df.sort_values("col1")      ---> Sorts Values of the Column
 
 df.isnull()                 ---> Returns a DF with Bool for Cell Items whether NAN or not
 
---> Pivot Table 
+--------------> Pivot Table 
 
 Creating a MultiIndex Table out of the DataFrame
 
-df.pivot_table(value = "some_column", index=["A", "B"], columns=["D"])
+import pandas as pd                     
+df = pd.DataFrame({"col2":[444,444,666,666], "col1":[1,2,1,2], "col3":['abc','def','ghi','xyz']})
+print(df)
 
+print(df.pivot_table(values = ["col3"], index=["col2"], columns=["col1"], aggfunc = "sum"))
 
 
 -------------------- -> 9. Data Input and output

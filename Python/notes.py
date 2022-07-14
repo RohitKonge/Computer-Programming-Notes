@@ -739,7 +739,16 @@ func_one(100)
 -----------------------------> Unzipping and Zipping Files
 
 
+Ziped File is just a Bunch of Files Compressed into a .zip File
 
+f = open("file1.txt", "w+")
+f.write("qwerqwer")
+f.close
+
+f = open("file2.txt", "w+")
+f.write("qwerqasdsadfasdwer")
+f.close
+ 
 
 
 
