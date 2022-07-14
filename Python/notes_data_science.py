@@ -17,13 +17,17 @@ np.NaN == Not A Number
 
 Aggregate Function == A function that takes in lots of individual values and then returns a single value
 
-np.NaN  == Not A Number
-
 ---------------------    NUMPY ARRAYs     -------------------------
 
 import numpy as np 
 
 Numpy Arrays differ from Python List because of its ability to Broadcast
+
+Eg. 
+
+a = np.array([1,2,3,4])
+b = np.array([5])
+print(a*b)                              -----> Broadcast
 
 we can call randint as ---> from numpy.random import randint
 
@@ -70,14 +74,13 @@ arr.shape
 arr = np.random.randint(3,8,9)
 print(arr.reshape(3,3).shape)     ----> This is way to make a 1D Array to N dimensional Array
 
-print(arr.dtype)
+print(arr.dtype)                ---> Returns the data type of the elements
+
 
 ---------------------    NUMPY Indexing and Selection     -------------------------
 
 
-
 ------------> For 1D Array
-
 
 import numpy as np
 
@@ -102,8 +105,6 @@ So to Avoid that we make a Copy of arr and then set it to slice_of_arr after whi
 slice_of_arr = np.copy(arr) = arr.copy()
 print(slice_of_arr)
 
-
-
 ------------> For 2D Array, matrix
 
 import numpy as np
@@ -124,7 +125,7 @@ new_arr = arr[arr>5]      ---> This applies the condition on each element and re
 
 ---------------------     Numpy Operations     -------------------------
 
-This is true only for Numpy Arrays
+This is true only for Numpy Arrays --- This is also known as Broadcasting   
 
 1. Array with Array
 
@@ -141,15 +142,12 @@ NOTE - In Array with Array and Array with Scalar, the Length of Arrays should be
 3. Universal Array Functions (ufunc)
 
 arr = np.sqrt(arr)
-= np.exp(arr)
-= np.max()
-= np.min()
+    = np.exp(arr)
+    = np.max()
+    = np.min()
     = np.sin(arr)         -----> i.e we can use trigonometric signs as well
     = np.log(arr)         -----> 
-
-
-
-
+    
 
 ---------------------   Python for Data Analysis - PANDAS     -----------------------
 
@@ -407,7 +405,6 @@ df.dropna(thresh=2)  -----> Will Drop if no. of non-Nan values are less than 2
 df.fillna(value = "New Vlue", inplace=True)
 
 df["A"].fillna(value=df["A"].mean(), inplace=True)
-
 
 -------------------- -> 6. GroupBy
 
