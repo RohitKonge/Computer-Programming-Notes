@@ -27,8 +27,7 @@ NOTE - Always use the backward slash when typing the Path of file/folder/image .
 
 Eg. Python/roosevelt.jpg            ----> This is correct
     Python\roosevelt.jpg            ----> This is wrong
-
-
+    
 
 NOTE - If you get an error as " object is not Callable"
 
@@ -58,8 +57,9 @@ print("asdasf")             ---> This is the correct Indentation
 --> List
  
     my_list = [1,2,3,4]   
-    my_list = []          # Creates an empty list
-    my_list.append(5)  --> [1,2,3,4,5]
+    my_list = []            --> Creates an empty list
+    my_list.append([5,6])   --> [1,2,3,4,[5,6]]
+    my_list.extend([5,6])   --> [1,2,3,4,5,6]
     my_list[0]  -> 1
     
     List can also be Sliced
@@ -67,10 +67,8 @@ print("asdasf")             ---> This is the correct Indentation
       for i in my_list[1:]:
           This will iterate from index 1 to the end
 
-
     nesting --> nest = [1, 2, [3,4,'target']]
     nest[2][2][3]  -> 'g'
-    
     
     --> LIST Comprehension
        
@@ -92,10 +90,10 @@ print("asdasf")             ---> This is the correct Indentation
     
 --> Set 
 
-    s = {1,2,3}         contains ony unique elements
+    s = {1,2,3}         contains only unique elements
     
-    my_set = [1,2,3]   --> this is a list
-    my_set = set()    --> This will turn it into a set
+    our_set = [1,2,3]           --> this is a list
+    my_set = set(our_set)       --> This will turn it into a set
     
     set([1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3])
     {1,2,3}
@@ -155,7 +153,7 @@ print("asdasf")             ---> This is the correct Indentation
 
     def my_func(param1 = "Default Name"):
         print(param1)
-
+        
     my_func()           --> will print 'Default Name'
     my_func("Rohit")    --> will print "Rohit"
 
@@ -205,8 +203,8 @@ class Dessert():
     
 class IceCream(Dessert):
     
-    NOTE --> Desert.__init__(self) executes only once 
-             Dessert().__init__(self) executes twice
+    # NOTE --> Desert.__init__(self) executes only once 
+    #          Dessert().__init__(self) executes twice
     
     def __init__(self, name):
         Dessert.__init__(self)
@@ -384,7 +382,6 @@ if __name__ == "__main__":
              with func_needs_decorator() as an argument
              
              
-  
     --> function inside a function
     
     def cool(args):
@@ -393,16 +390,17 @@ if __name__ == "__main__":
             return 100
     
         return supercool
-    
-  
+      
   
     --> Passing a function as an argument
     
-    def other(some_def_func):
+def other(some_def_func):
+      
+    print("weerwer")
         
-        print("weerwer")
-        
-        return(some_def_func())
+    return(other)
+
+other(other)
     
     
     
@@ -451,21 +449,21 @@ if __name__ == "__main__":
     
     ITER FUNCTION: Allows us to iter upon ANY  OBJECT  or a DATA TYPE
     
-    s = iter('hello')
-    print(next(s))
+s = iter('hello')
+print(next(s))
         
 
--->Advanced Python Packages and Modules
+------------------------->Advanced Python Packages and Modules
 
 
---> from collections import Counter
+----------------> from collections import Counter
 
-print(Counter('sadfsdfsdfsdf'))  --> Returns a dictionary 
+print(Counter('sadfsdfsdfsdf'))  #--> Returns a dictionary 
 Counter.values()
 Counter.most_common(self)
 
 
---> from collections import defaultdict
+-----------------> from collections import defaultdict
 
 This sets a default 'value' for the new 'key's which are created
 
@@ -479,7 +477,7 @@ now DEFAULTDICT is a little different from DICT here if we search a key that is
 not present in the dict then it will return '10' as its value
 
 
---> from collections import namedtuple
+---------------------> from collections import namedtuple
 
 NAMEDTUPLE expand over TUPLE by having 'Named Indicies'
 
@@ -490,7 +488,7 @@ Dog = namedtuple('Dog1', ['name', 'age'])
 my_dog = Dog("sam", 12)
 
 
---> Opening and Reading, Files and Folders using Python OS Modules
+----------------------> Opening and Reading, Files and Folders using Python OS Modules
 
 Python OS Module and Shell Utilities Module allow us to move or delete Files
 
@@ -516,13 +514,13 @@ import shutil      --> Helps to Move the files around
 shutil.move('practice.txt', 'e:\Computer Programming\GithubCPNotes')
 
 
---> Datetime Module
+----------------------------------> Datetime Module
 
 import datetime
 
 datetime
 
--->Python Math and Random Modules
+------------------------------------>Python Math and Random Modules
 
 Random Module contains a lot of mathematical random functions and functions 
 for grabbing a random item from a python list
@@ -748,17 +746,6 @@ f.close
 f = open("file2.txt", "w+")
 f.write("qwerqasdsadfasdwer")
 f.close
- 
-
-
-
-
-
-
-
-
-
-
 
 
 ----------------------- WebScrapping with Python  --------------------------
@@ -975,8 +962,8 @@ img.save("purple.png")    ---> This saves the image and if it already exists , i
 
 - "Google Sheets Python API"
 
-     - Python interface for working with Google Spreadsheets
-     - Make changes to spreadsheets hosted online 
+    - Python interface for working with Google Spreadsheets
+    - Make changes to spreadsheets hosted online 
      
      
 
@@ -1063,8 +1050,6 @@ f.close()     ----> The Above Code is for Reading only
 
 
 
-
-
 f = open("Python/Working_Business_Proposal.pdf", "rb")
 pdf_reader = PyPDF2.PdfFileReader(f)
 
@@ -1078,8 +1063,6 @@ pdf_output = open("Python/SomePdf.pdf","wb")
 
 pdf_writer.write(pdf_output)
 f.close
-     
-     
      
      
 ---------------------- Emails with Python  --------------------------
@@ -1101,7 +1084,7 @@ import smtplib
 
 smtp = smtplib.SMTP("smtp.gmail.com", 587)
 
-smtp.ehlo()   --> This methods calls and makes the connection to the server
+smtp.ehlo()   -->   This methods calls and makes the connection to the server
               -->   NOTE- This method call should be made directly after creating the SMTP Object
 
 smtp.starttls()
@@ -1151,15 +1134,15 @@ bin(number)     --> Binary      form of a Number  -->   0b1011 = 11
 
 2**4        == 16
 pow(2,4)    == 16
-pow(x,y,z)  == (x^y) % z     <----
+pow(x,y,z)  == (x^y) % z     
 
 abs(-3)     == 3
 
-round(3.1)  == 3.0          --> Round will always a Int Number
-round(3.9)  == 4.0
+round(3.1)  == 3          --> Round will always give an Int Number
+round(3.5)  == 4
+round(3.9)  == 4
 
 Python also has a Math library
-
 
 -----> Advanced Strings
 
@@ -1173,8 +1156,8 @@ s.lower()       ---> Lowers the whole word
 s.count("o")    ---> Counts the total number of 'o'
 s.find("o")     ---> Finds the 1st index of the occurence of 'o'
 
-s.isalnum()     ---> These are usful when using
-s.isalpha()         for NLP(Natural Language Processing)
+s.isalnum()     Alphanumeric    ---> These are usful when using
+s.isalpha()     Alphabetic           for NLP(Natural Language Processing)
 
 s.islower()     ---> True if all letter are lowercase 
 s.isspace()     ---> True if all characters are whitespace 
@@ -1183,23 +1166,28 @@ s.endswith("o") ---> True if it ends with 'o'
 s[-1]           ---> Will give the last letter
 s[-2]           ---> Will give the 2nd last letter
 
-s.split()       ---> Split the String with Whitespace
-s.split("o")    ---> Returns a list with the string being separated at every 'o'
 
-s.partition("ll") ---> Returns a list with the input, the part before and after it 
-                       i.e it will have 3 elements in the list
-                       
+s = "hello world"
+
+s.split()                   ---> Split the String with Whitespace
+
+s.split("o")                ---> Returns a list with the string being separated at every 'o'
+['hell', ' w', 'rld']            Here can can also input a number to tell how many times we want it to get splitted
+
+s.partition("ll")           --->    Returns a list with the input, the part before and after it 
+                                    i.e it will have 3 elements in the list
+('he', 'll', 'o world')
+
 \t              ---> tab 
 
-NOTE - The difference between split and partition - In SPLI the input does not get returned in the List but in PARTITION we do get the input in the list.
-
-
+NOTE -  The difference between split and partition - In SPLI the input does not get returned in the List 
+        but in PARTITION we do get the input in the list.
 
 -----> Advanced Sets
 
-s = set()
-s.add(1)
-s.add(2)
+s = set([1,2,3,4])
+s.add(5)
+s.add(6)
 
 print(s)            ---> Prints the whole Set
 
@@ -1214,19 +1202,19 @@ s.difference(s_new)             ---> Returns new set by deleting all the common 
 
 s.difference_update(s_new)      ---> Removes the elements that are in both s and s_new and return s
 
-s.discard(2)                    ---> Removes 2 from s , wont show error if 2 is not present in s
+s.symmetric_difference(s_new)   ---> Deletes all the common elements and returns the union of the sets
 
 s.intersection(s_new)           ---> Returns a new set which has elements common in s and s_new
 
 s.intersection_update(s_new)    ---> Returns s as a new set which has elements common in s and s_new 
 
-s.isdisjoint(s_new)             ---> Returns True if s intersection s_new == Null
-
 s.issubset(s_new)               ---> Returns true if all elements of s are in s_new
 
 s.issuperset(s_new)             ---> Returns true if all elements of s_new are in s
- 
-s.symmetric_difference(s_new)   ---> Returns all the elements that are in exactly one of the sets
+
+s.discard(2)                    ---> Removes 2 from s , wont show error if 2 is not present in s
+
+s.isdisjoint(s_new)             ---> Returns True if s intersection s_new == Null
 
 s.union(s_new)                  ---> Returns a set that has the combination of the 2 sets
 
@@ -1243,7 +1231,6 @@ d = {"k1" : 1, "k2" : 2}
 a = {x:y for x,y in zip([1,2],[3,4])}
 
 NOTE - zip methods yields tuples and stops when the shortest input range is exhausted
-
 
 
 -- Iterating through Dictionaries

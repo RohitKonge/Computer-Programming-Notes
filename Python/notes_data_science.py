@@ -596,17 +596,52 @@ pd.rea
 
 
 
+---------------------   Python for Data Visualization - Matplotlib     -----------------------
 
+Its the most popular plotting library for Python
 
+import matplotlib.pyplot as plt, numpy as np 
 
+# %matplotlib inline
 
+# plt.show()               ---> Draws the Plot in VSCode
 
+x = np.linspace(0, 5, 110)
+y = x ** 2
 
+# 2 ways of Creating Matplotlibb Plots
 
+# 1. Functional Method              ---> This is simple way of plotting
 
+plt.plot(x,y,'r-')               #   ---> Giving some attributes to the plot
+plt.xlabel("X Label")       
+plt.ylabel("Y Label")
+plt.title("Title")
+plt.show()
 
+plt.subplot(1,2,1)                #  ---> plt.subplot(No. of Rows, No. of Columns, Plot No. we are refering to)
+plt.plot(x,y,"r")
+plt.show()
 
+plt.subplot(1,2,2)                #  ---> plt.subplot(No. of Rows, No. of Columns, Plot No. we are refering to)
+plt.plot(y,x,"b")
+plt.show()
 
+2. Object Oriented Method           (This is a Better Way of Creating a MatplotLib Plot)
+
+We make Figure Objects and call Methods off of it
+
+import matplotlib.pyplot as plt, numpy as np 
+
+fig = plt.figure()                       #   ---> Think of it as an Imaginary Canvas and we can add a Set of Axis
+x = np.linspace(0, 5, 110)
+y = x ** 2
+axes = fig.add_axes([0.1, 0.1, 0.8, 0.8] ) 
+axes.plot(x,y)
+axes.show()
+
+--->   .add_axes(Left, Bottom, Width, Height)
+                                                    0 to 1, the percent of that blank canvas we want
 
 
 
