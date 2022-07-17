@@ -602,28 +602,31 @@ Its the most popular plotting library for Python
 
 import matplotlib.pyplot as plt, numpy as np 
 
-# %matplotlib inline
+%matplotlib inline
 
-# plt.show()               ---> Draws the Plot in VSCode
+plt.show()               ---> Draws the Plot in VSCode
 
 x = np.linspace(0, 5, 110)
 y = x ** 2
+ 
+2 ways of Creating Matplotlibb Plots
 
-# 2 ways of Creating Matplotlibb Plots
+1. Functional Method              ---> This is simple way of plotting
 
-# 1. Functional Method              ---> This is simple way of plotting
-
+import matplotlib.pyplot as plt, numpy as np 
+x = np.linspace(0, 5, 110)
+y = x ** 2
 plt.plot(x,y,'r-')               #   ---> Giving some attributes to the plot
 plt.xlabel("X Label")       
 plt.ylabel("Y Label")
 plt.title("Title")
 plt.show()
 
-plt.subplot(1,2,1)                #  ---> plt.subplot(No. of Rows, No. of Columns, Plot No. we are refering to)
+plt.subplot(1,2,1)                      #  ---> plt.subplot(No. of Rows, No. of Columns, Plot No. we are refering to)
 plt.plot(x,y,"r")
 plt.show()
 
-plt.subplot(1,2,2)                #  ---> plt.subplot(No. of Rows, No. of Columns, Plot No. we are refering to)
+plt.subplot(1,2,2)                      #  ---> plt.subplot(No. of Rows, No. of Columns, Plot No. we are refering to)
 plt.plot(y,x,"b")
 plt.show()
 
