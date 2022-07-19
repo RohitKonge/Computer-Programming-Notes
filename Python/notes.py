@@ -2,7 +2,12 @@
       
     type(    )          --> give info about the data type of the object()
     pass                --> passes the function or class without doing anything and without throwing an error
+    continue            --> Used in For/While Loop to end the current iteration and get to the top of the loop
     del                 --> deletes the object from the memory
+        del name
+        del name[i]
+        del name[i:j:k]
+        del name.attribute
     map(func, iter1)    --> Just like a "for i in range(0,10)" this applies iter1 elements to the Function. Usually we use Lambda Functions.
     filter(func, iter1) --> Here we return a Boolean in the Lambda Expression & Return/Filter the Elements from the Iterable. 
     
@@ -23,6 +28,9 @@ eg. list(filter(lambda x:x**3 >= 8, [1,2,3,4]))
 
 print(list(map(lambda x:x**3, [1,2,3,4])))          --> Use of lambda Expression
 
+L = lambda((a, b=2, *c, **d): [a, b, c, d])
+print(L(1, 2, 3, 4, x=1, y=2))
+[1, 2, (3, 4), {'y': 2, 'x': 1}]
 
 -------> Assignment Statements
 
@@ -43,6 +51,7 @@ for (a, b, c) in [[1, 2, 3], [4, 5, 6]]:
 
 *X and **X syntax appear in 3 places: 
     1.Assignment statements, where a *X collects unmatched items in sequence assignments
+    
         a, *b, c = [1,2,3,4,5]
         print(a , " " , b , " " , c  )
         1   [2, 3, 4]   5
@@ -50,8 +59,14 @@ for (a, b, c) in [[1, 2, 3], [4, 5, 6]]:
         *a, b, c = [1,2,3,4,5]
         print(a , " " , b , " " , c)
         [1, 2, 3]   4   5
-    2.Function headers, where the two forms collect unmatched positional keyword arguments
-    
+        
+    2.Function headers, where the two forms collect unmatched positional, keyword arguments
+        
+        f(*pargs, **kargs)      pargs --> positional arguments, kargs ---> keyword arguments
+
+        def f(a, b, c, d): print(a, b, c, d)
+        f(*[1, 2], **dict(c=3, d=4))     
+        
     3.Function calls, where the two forms unpack iterables and dictionaries into individual items (arguments).
     
     [x, *iter] # unpack iter items: list
@@ -249,10 +264,39 @@ print("asdasf")             ---> This is the correct Indentation
     for x  in range(10):
         print(x)
 
---> Functions
+---------------------------------------> Functions
 
     Methods  - Fucntions that are defined in a Class are called Methods
+    
+    [decoration]
+    def name([arg,... arg=value,... *arg, **arg]):
+        pass
+    
+def example(arg1, arg2, /, arg3, arg4, *, arg5, arg7):
+    # print(arg1 + arg2 + arg3 + arg4 + arg5 + arg7)
+    print(arg7)
 
+example("1", "2", arg3 = "3", arg4= "4", arg5 = ["5", "55", "555"], arg7 = {"for_7":"7", "for_77" : "77"})
+    
+    
+    while making the function:
+        
+    name                                    Matched by name or position
+    name=value                              Default value if name is not passed
+    *name                                   Collects extra positional arguments as new "TUPLE" name
+    **name                                  Collects extra keyword arguments as a new "DICTIONARY" name
+    name[=value], /other                    Python 3.X positional-only arguments before /
+    name[=value], /                         Same as prior line (when no / otherwise)
+    *other, name[=value]                    Python 3.X keyword-only arguments after *
+    *, name[=value]                         Same as prior line (when no * otherwise)
+    
+    while calling the function take care of these:
+        
+    value                                   Positional argument
+    name=value                              Keyword (match by name) argument
+    *iterable                               Unpacks sequence or other iterable of positional arguments
+    **dictionary                            Unpacks dictionary of keyword arguments
+        
     def hello():
         print("asdas")
     
@@ -326,7 +370,6 @@ NOTE -  All Instance of a Child Class are also the instances of the Parent Class
 -------------------------------------------> INHERITANCE AND POLYMORPHISM AND ABSTRACT CLASSES
 
 INHERITANCE
-
 
 class Cake:
     def __init__(self, name, age):
@@ -444,6 +487,10 @@ class Dog(Animal) :
 These are called DUNDER Methods because they begin and end with double underscores
 
 Here we override the builtin functions to suit our Data Type made with the use of Class
+    
+To change the behavior of len(), you need to define the __len__() special method in your class
+
+Whenever you pass an object of your class to len(), your custom definition of __len__() will be used to obtain the result
 
 class Book:
     def __init__(self, name, page):
