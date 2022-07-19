@@ -1,16 +1,22 @@
     Python
+    
+    Everything in Python is an object
+
       
-    type(    )          --> give info about the data type of the object()
-    pass                --> passes the function or class without doing anything and without throwing an error
-    continue            --> Used in For/While Loop to end the current iteration and get to the top of the loop
-    del                 --> deletes the object from the memory
+    type(    )              --> give info about the data type of the object()
+    pass                    --> passes the function or class without doing anything and without throwing an error
+    continue                --> Used in For/While Loop to end the current iteration and get to the top of the loop
+    del                     --> deletes the object from the memory
         del name
         del name[i]
         del name[i:j:k]
         del name.attribute
-    map(func, iter1)    --> Just like a "for i in range(0,10)" this applies iter1 elements to the Function. Usually we use Lambda Functions.
-    filter(func, iter1) --> Here we return a Boolean in the Lambda Expression & Return/Filter the Elements from the Iterable. 
-    
+    map(func, iter1)        --> Just like a "for i in range(0,10)" this applies iter1 elements to the Function. Usually we use Lambda Functions.
+    filter(func, iter1)     --> Here we return a Boolean in the Lambda Expression & Return/Filter the Elements from the Iterable. 
+    id("some_object")       --> id = Identity
+        a = 22
+        print(hex(id(22)))
+            
     NOTE - List/Dictionary/Sets are Mutable , Tuples/Strings are Immutable
     
     NOTE - Defining a Lot of variables takes a lot of memory so as we get better at Python we move more and more towards One Liner Code
@@ -32,7 +38,7 @@ L = lambda((a, b=2, *c, **d): [a, b, c, d])
 print(L(1, 2, 3, 4, x=1, y=2))
 [1, 2, (3, 4), {'y': 2, 'x': 1}]
 
--------> Assignment Statements
+------------------------------------------------> Assignment Statements
 
 NOTE -  Unpacking List, Dicts, Tuples, Sets just means that the bracket will be removed and the elements will be given out
 Eg. 
@@ -119,12 +125,12 @@ print("asdasf")             ---> This is the correct Indentation
     my_list = []            --> Creates an empty list
     my_list.append([5,6])   --> [1,2,3,4,[5,6]]
     my_list.extend([5,6])   --> [1,2,3,4,5,6]
-    my_list[0]  -> 1
+    my_list[0]              --> 1
     
     List can also be Sliced
 
-      for i in my_list[1:]:
-          This will iterate from index 1 to the end
+        for i in my_list[1:]:
+            This will iterate from index 1 to the end
 
     nesting --> nest = [1, 2, [3,4,'target']]
     nest[2][2][3]  -> 'g'
@@ -173,7 +179,7 @@ print("asdasf")             ---> This is the correct Indentation
     D.get(K [, default])            --->    Similar to D[K] for key K, but returns default (or None if no default) 
                                             instead of raising an exception when K is not found
 
-    D.popitem()                     --->    Removes and returns the last item as a tuple pair.
+    D.popitem()                     --->    Removes and returns the last item as a tuple pair
 
     D.pop(K [, default])            --->    If key K in D, returns D[K] and removes K; else, returns
                                             default if given, or raises KeyError if no default.
@@ -268,11 +274,14 @@ print("asdasf")             ---> This is the correct Indentation
     for x  in range(10):
         print(x)
 
----------------------------------------> Functions
+----------------------------------------------> Functions
 
-    Methods  - Fucntions that are defined in a Class are called MethodS
+    Methods  - Fucntions that are defined in a Class are called Methods
     
-    NOTE -  WE CANNOT PUT POSIITONAL ARGUMENT AFTER KEYWORD ARGUMENT IN BOTH FUCTION PARAMETER(i.e while defining) &
+    Before / (Slash)  - Only Positional Arguments
+    After  * (Star)   - Only Keyword    Arguments  
+    
+    NOTE -  WE CANNOT PUT POSIITONAL ARGUMENT AFTER KEYWORD ARGUMENT IN BOTH, FUCTION PARAMETER(i.e while defining) &
             FUNCTION ARGUMENTS(i.e while calling)
 
             ALWAYS POSITIONAL AND THEN KEYWORD
@@ -291,7 +300,6 @@ def example(arg1, arg2, /, arg3, arg4, *, arg5, arg7 ):
     arg7["for_7"]
 
 example("1", "2", "3", arg4 = "4", arg5 = ["5", "55", 555], arg7 = {"for_7":"7", "for_77" : "77"})
-    
     
     while making the function:
         
