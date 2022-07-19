@@ -1,11 +1,12 @@
     Python
       
-      
     type(    )          --> give info about the data type of the object()
-    pass                --> passes the function or class without doing anything 
+    pass                --> passes the function or class without doing anything and without throwing an error
     del                 --> deletes the object from the memory
     map(func, iter1)    --> Just like a "for i in range(0,10)" this applies iter1 elements to the Function. Usually we use Lambda Functions.
     filter(func, iter1) --> Here we return a Boolean in the Lambda Expression & Return/Filter the Elements from the Iterable. 
+    
+    NOTE - List/Dictionary/Sets are Mutable , Tuples/Strings are Immutable
     
     NOTE - Defining a Lot of variables takes a lot of memory so as we get better at Python we move more and more towards One Liner Code
     NOTE - and , or are used for   Single Bool comaprisions 
@@ -23,7 +24,48 @@ eg. list(filter(lambda x:x**3 >= 8, [1,2,3,4]))
 print(list(map(lambda x:x**3, [1,2,3,4])))          --> Use of lambda Expression
 
 
-NOTE - Always use the backward slash when typing the Path of file/folder/image .etc 
+-------> Assignment Statements
+
+NOTE -  Unpacking List, Dicts, Tuples, Sets just means that the bracket will be removed and the elements will be given out
+Eg. 
+[1,2,3] {1 : 1, 2 : 2, 3 : 3} (1,2,3) {1,2,3}  ======= 1,2,3
+
+For Unpacking List, Tuples, Sets we use ---> *X  <---- and for Dicts we use ----> **X  <----
+
+    a, b, c, ...   = [1,2,3,4]  same-length-iterable   
+    (a, b, c, ...) = (1,2,3,4)  same-length-iterable
+    [a, b, c, ...] = [1,2,3,4]  same-length-iterable
+    a, *b, c, ...  = [1,2,3,4]  matching-length-iterable
+    
+for (a, b, c) in [[1, 2, 3], [4, 5, 6]]:
+    print(a, b, c)
+    
+
+*X and **X syntax appear in 3 places: 
+    1.Assignment statements, where a *X collects unmatched items in sequence assignments
+        a, *b, c = [1,2,3,4,5]
+        print(a , " " , b , " " , c  )
+        1   [2, 3, 4]   5
+
+        *a, b, c = [1,2,3,4,5]
+        print(a , " " , b , " " , c)
+        [1, 2, 3]   4   5
+    2.Function headers, where the two forms collect unmatched positional keyword arguments
+    
+    3.Function calls, where the two forms unpack iterables and dictionaries into individual items (arguments).
+    
+    [x, *iter] # unpack iter items: list
+    (x, *iter), {x, *iter} # same for tuple, set
+    [*iter for iter in x] # unpack iter items: comps
+
+    {'x': 1, **dict} # unpack dict items: dicts
+        
+    a = [1,2,3]
+    b = [*a] = a.copy()
+    print(b)
+
+
+-------- > NOTE - Always use the backward slash when typing the Path of file/folder/image .etc 
 
 Eg. Python/roosevelt.jpg            ----> This is correct
     Python\roosevelt.jpg            ----> This is wrong
@@ -53,6 +95,8 @@ print("asdasf")             ---> This is the correct Indentation
     s[0:] will give 'hello'
     s[:3] will give 'hell'
     s[:]  will give 'hello'
+    s[::-1]         Sequence is reverse
+    s[4:1:-1]       From 4 to 2 but not including 1
     
 --> List
  
@@ -73,32 +117,97 @@ print("asdasf")             ---> This is the correct Indentation
     --> LIST Comprehension
        
     out = [num**2 for num in my_list]   
-    
--->  Tuples are immutable
-
-    my_tuple = (1,2,3)
+    m_list_two = [x + y for x in range(3) for y in [10, 20, 30]]
 
 --> Dictionaries (Key Value Pairs)
 
     d = {'key1':'value', 'key2': 123}
+    d = {x: x * x for x in range(10)}
+    d[19] = 11111
+    print(d.pop(7))
+    print(d.pop(6))
+    print(d.popitem())
+    print(len(d))
+
     
-    d['key1'] == 'value'
+    d = dict(zip(["a" , "b"], [1, 2]))
+    d = dict(key1 = 'value', key2 = 123)
+    d = dict([['a', 1], ['b', 2], ['c', 3]])        ---> Dictionary as a List of Lists
     
+    d['key1'] == 'value'    
     
     We can put anything in place of the Value like list, Dictionaries or 
     even any variables
     
---> Set 
+    D.keys()
 
-    s = {1,2,3}         contains only unique elements
+    D.values()
+
+    D.items()
+
+    D.clear()
+
+    D.copy()
+
+    D.update(D2)                    --->    Merges all of D2’s entries into d
+
+    D.get(K [, default])            --->    Similar to D[K] for key K, but returns default (or None if no default) 
+                                            instead of raising an exception when K is not found
+
+    D.popitem()                     --->    Removes and returns the last item as a tuple pair.
+
+    D.pop(K [, default])            --->    If key K in D, returns D[K] and removes K; else, returns
+                                            default if given, or raises KeyError if no default.
+
+
+-->  Tuples & Strings are immutable
+
+    my_tuple = (1,2,3)
+    my_tuple = tuple('spam')
     
-    our_set = [1,2,3]           --> this is a list
-    my_set = set(our_set)       --> This will turn it into a set
+    my_tuple.index(2)               ---> Returns the index of '2'
+    my_tuple.count(2)               ---> Returns the number of times '2' occurs in the Tuple    
+
+--> Set 
+    Unlike C++, sets of Python are Unordered
+    
+    s = {1,2,3}                 ---> contains only unique elements
+    
+    our_set = [1,2,3]           ---> This is a list
+    my_set = set(our_set)       ---> This will turn it into a set
     
     set([1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3])
     {1,2,3}
+    
+    Set Comprehension -->
+    
+    s =  {ord(c) for c in 'spam'}
 
---> == , !=, and, or
+--> Syntax of Comprehensions
+
+    yield X                         Generator function result (returns send() value)
+    lambda args1: X                 Anonymous function maker (returns X when called)
+    
+    X if Y else Z                   Ternary selection (X is evaluated only if Y is true)
+    
+    X or Y 
+    X and Y 
+    not X 
+    X in Y, X not in Y              iterables, sets
+    X is Y, X is not Y              Object identity tests
+    
+    X < Y, X <= Y, X > Y, X >= Y    Magnitude comparisons, set subset and superset
+    
+    X | Y                           Bitwise OR, set union
+    X ^ Y                           Bitwise exclusive OR, set symmetric difference
+    X & Y                           Bitwise AND, set intersection
+    ˜X                              Bitwise NOT complement (inversion)
+    X << Y, X >> Y                  Shift X left, right by Y bits
+    
+    X + Y, X − Y                    Addition/concatenation, subtraction/set difference
+    X // Y                          floor division, returns an integer
+    
+
 
 --> if and elif
 
@@ -164,56 +273,100 @@ print("asdasf")             ---> This is the correct Indentation
         my_func(6)
 
 
---> Class (Methods, Attributes/Characteristics, Instance)
+----------------------------------------> Class (Methods, Attributes/Characteristics, Instance)
 
-class Dog():      -->Class Name is given in CamelCase
 
-    species = 'mammal'    ---> CLASS OBJECT ATTRIBUTE 
-                          ---> SAME FOR AMY INSTANCE OF THE CLASS
-                          ---> Can be called as Dog.species (this is convention) or self.species
+
+class Dog:                  ---> Class Name is given in CamelCase  Eg. DogBiteSmooth
+                            ---> If we are not inheriting then we can use ' Dog: '  or else ' Dog(some_class): '    
+                            ---> The class is the blueprint, an instance is an object built from class that contains real data.
+
+    species = 'mammal'      ---> CLASS ATTRIBUTE/PROPERTY 
+                            ---> SAME FOR ANY INSTANCE OF THE CLASS
+                            ---> Can be called as Dog.species (this is convention) or self.species
         
     def __init__(self, breed, name, age = 12):    --> Also known as the constructor in C++ and is called every time an instance is created
                                                   --> 'self' connects the instance to the Class
-        self.breed = breed                        --> 'breed' is the Attribute of the Dog Class
+
+        self.breed = breed                        --> 'breed' is the INSTANCE Attribute of the Dog Class
         self.name = name
         print(breed)
         
-    def bark(self, num):                --> Methods for the Class
+    def bark(self, num):                --> Methods/Instance Method for the Class , All Methods in a Class start with self
         print(num + self.species)       --> 'num' is not connected to the particular instance of the class 
                                             so self is not used 
 
-sample_instance = Dog('Labra', 'asdf', 26) # --> This is an object and an instance of the 'Sample' Class
-sample_instance.breed
+sample_instance = Dog('Labra', 'asdf', 26)      --> This is an object and an instance of the 'Sample' Class
+sample_instance.species                         --> Class Attribute
+sample_instance.breed                           --> Instance Attribute
 sample_instance.name
+sample_instance.bark("999")
 
-sample_instance.species
-    
---> INHERITANCE AND POLYMORPHISM AND ABSTRACT CLASSES
+NOTE -  Class/Instance Attributes can be modified dynamically
+
+sample_instance.species = "Reptile"
+sample_instance.breed   = "Dobberman"
+
+a = Dog()
+b = Dog()
+(a == b) = False    ---->   As For user defined classes, the default behavior of the == operator is to
+                            compare the memory addresses of two objects and return True if the
+                            address is the   and False otherwise
+type(a) == type(b) = True
+
+
+type(a)     ---> class __main__.Dog                         ----> Tells us the class of the object
+isintance(a, Dog)  == True                                  ----> Tells us the instance of the Class
+print(a)    ---> __main__.Dog object at 0x00aeff70
+
+NOTE -  All Instance of a Child Class are also the instances of the Parent Class Although they may not be instances of other child class
+
+
+
+-------------------------------------------> INHERITANCE AND POLYMORPHISM AND ABSTRACT CLASSES
 
 INHERITANCE
 
-class Dessert():
+
+class Cake:
+    def __init__(self, name, age):
+        print(name + " " + age)      
+
+    def howsweet(self, a) :
+        print(a)
+class Dessert:
     
-    def __init__(self):
-        print("sweet dish")
+    def __init__(self, color, oil):
+        
+        print("sweet dish" + " " + color + " " + oil)
     
     def what_kind(self,kind):
         self.kind = kind
         print(self.kind)
     
-class IceCream(Dessert):
+class IceCream(Dessert, Cake):
     
     # NOTE --> Desert.__init__(self) executes only once 
     #          Dessert().__init__(self) executes twice
     
-    def __init__(self, name):
-        Dessert.__init__(self)
-        self.name = name
+    def __init__(self, name, color, density, oil):
+        # self.name = name
+        # self.color = color
+        # self.density = density
+        # self.oil = oil
+        Dessert.__init__(self, oil = oil, color = color)
+        Dessert(oil, color)                                    # ---> These both are           for  same work
         
+        super().what_kind("qweqwe")
+        Dessert.what_kind(self , "xzczxczx")
+        
+        Cake("Asda", "90")
+        Cake.howsweet(self, a = "SuperSweet")        
+
     def give_name(self):
         print(self.name)
 
-vanilla = IceCream('chocolate vanilla')
+vanilla = IceCream('chocolate vanilla',"pink", "oily", "very dense")
 vanilla.what_kind('sweet kind of vanilla')
 vanilla.give_name()    
 
@@ -288,6 +441,8 @@ class Dog(Animal) :
 
 --> SPECIAL/MAGIC/DUNDER Methods of a CLASS
 
+These are called DUNDER Methods because they begin and end with double underscores
+
 Here we override the builtin functions to suit our Data Type made with the use of Class
 
 class Book:
@@ -299,7 +454,7 @@ class Book:
        return self.name
    
     def __len__(self):
-        do something
+        return self.page
         
     def __del__(self):
         do something
@@ -307,7 +462,6 @@ class Book:
 print(str(Book("Potter", 240)))  --> we overrided the str for our class to return string representation of the BOOK Class
 
 likewise we can also override ---> len, del 
-
 
 
 --> Pypi and pip install
@@ -451,7 +605,10 @@ other(other)
     
 s = iter('hello')
 print(next(s))
-        
+
+s = iter([1,2,3,4])
+print(next(s))
+
 
 ------------------------->Advanced Python Packages and Modules
 
@@ -1185,6 +1342,8 @@ NOTE -  The difference between split and partition - In SPLI the input does not 
 
 -----> Advanced Sets
 
+Sets are Mutable
+
 s = set([1,2,3,4])
 s.add(5)
 s.add(6)
@@ -1239,23 +1398,26 @@ for k in a.items() / a.keys() / a.values() :
     print(k)
 
 
------> Advanced Lists
+-----> Advanced Lists (Also true for all Mutable Data Structures)
 
 l = [1,2,3]
+
+l.clear()
+
+b = l.copy()
 
 l.count(3)              ---> Returns the Times number 3 is present
 
 l.append([4,5,6])       ---> Adds [4,5,6] to the list ->  [1,2,3,[4,5,6,]]
 l.extend([4,5,6])       ---> Adds  4,5,6  to the list ->  [1,2,3,4,5,6]
 
-l.index(2)              ---> Returns the index of 2
+l.index(2, 4, 88)       ---> Searches for the index of 2 between 4 and 88
 
 l.insert(3,[4,5])       ---> Inserts [4,5] before index 3
 
+l.remove(2)             ---> Removes the first occurence of the value '2' in the list
 l.pop()                 ---> By default it removes the last element of the list 
 l.pop(2)                ---> Removes the element at index 2 in the list
-
-l.remove(2)             ---> Removes the first occurence of the value '2' in the list
 
 l.reverse()             ---> Reverses the list
 
