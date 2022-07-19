@@ -137,8 +137,12 @@ print("asdasf")             ---> This is the correct Indentation
 --> Dictionaries (Key Value Pairs)
 
     d = {'key1':'value', 'key2': 123}
+    
     d = {x: x * x for x in range(10)}
     d[19] = 11111
+    
+    d = dict(arg7) / {**arg7}
+    
     print(d.pop(7))
     print(d.pop(6))
     print(d.popitem())
@@ -266,17 +270,27 @@ print("asdasf")             ---> This is the correct Indentation
 
 ---------------------------------------> Functions
 
-    Methods  - Fucntions that are defined in a Class are called Methods
+    Methods  - Fucntions that are defined in a Class are called MethodS
     
+    NOTE -  WE CANNOT PUT POSIITONAL ARGUMENT AFTER KEYWORD ARGUMENT IN BOTH FUCTION PARAMETER(i.e while defining) &
+            FUNCTION ARGUMENTS(i.e while calling)
+
+            ALWAYS POSITIONAL AND THEN KEYWORD
+            
     [decoration]
     def name([arg,... arg=value,... *arg, **arg]):
         pass
     
-def example(arg1, arg2, /, arg3, arg4, *, arg5, arg7):
-    # print(arg1 + arg2 + arg3 + arg4 + arg5 + arg7)
-    print(arg7)
+def example(arg1, arg2, /, arg3, arg4, *, arg5, arg7 ):
+    print(*arg5)
+    print(*arg7)   
 
-example("1", "2", arg3 = "3", arg4= "4", arg5 = ["5", "55", "555"], arg7 = {"for_7":"7", "for_77" : "77"})
+    a = dict(arg7) / {**arg7}
+    print(a)
+
+    arg7["for_7"]
+
+example("1", "2", "3", arg4 = "4", arg5 = ["5", "55", 555], arg7 = {"for_7":"7", "for_77" : "77"})
     
     
     while making the function:
