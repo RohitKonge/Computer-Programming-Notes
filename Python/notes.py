@@ -1,4 +1,4 @@
-    Python
+  ------------------------------------------------------------>  Python   <--------------------------------------------------------------
     
     Everything in Python is an object
 
@@ -16,15 +16,60 @@
     id("some_object")       --> id = Identity
         a = 22
         print(hex(id(22)))
-            
+        
+    list(enumerate([55,667,7]))
+    [(0, 55), (1, 667), (2, 7)]
+    
+    all(iterable)/any(iterable)  --> Returns true if all/any elements of the iterable return true
+
     NOTE - List/Dictionary/Sets are Mutable , Tuples/Strings are Immutable
     
     NOTE - Defining a Lot of variables takes a lot of memory so as we get better at Python we move more and more towards One Liner Code
     NOTE - and , or are used for   Single Bool comaprisions 
            &   , |  are used for a Series Bool Comparisions
            
+     
+        list(map(lambda arguments : expression , sequ))
+    eg. list(map(lambda x:x**3, [1,2,3,4]))
+
+        
+        list(filter(lambda arguments : expression , sequ))
+    eg. list(filter(lambda x:x**3 >= 8, [1,2,3,4]))
+
+
+    print(list(map(lambda x:x**3, [1,2,3,4])))          --> Use of lambda Expression
+
+    L = lambda((a, b=2, *c, **d): [a, b, c, d])
+    print(L(1, 2, 3, 4, x=1, y=2))
+    [1, 2, (3, 4), {'y': 2, 'x': 1}] 
+    
+    
+    NOTE - Always use the backward slash when typing the Path of file/folder/image .etc 
+
+Eg. Python/roosevelt.jpg            ----> This is correct
+    Python\roosevelt.jpg            ----> This is wrong
            
---------------------------->  Global & Local & NON-Local Statement - global name[,name]*
+           
+------------------------------------------------------> Advanced Numbers  <--------------------------------------------------------------
+
+hex(number)     --> Hexadecimal form of a Number  -->   0x200  = 512    --> (16^2)*2 + (16^1)*0 + (16^0)*0
+bin(number)     --> Binary      form of a Number  -->   0b1011 = 11
+oct(number )    --> Octal       form of a Number  -->   0o144  = 100    --> (8^2)*1 + (8^1)*4 + (8^0)*4
+
+2**4        == 16
+pow(2,4)    == 16
+pow(x,y,z)  == (x^y) % z     
+
+abs(-3)     == 3
+
+round(3.1)  == 3          --> Round will always give an Int Number
+round(3.5)  == 4
+round(3.9)  == 4
+
+Python also has a Math library
+
+
+----------------------------------->  Global & Local & NON-Local Statement - global name[,name]*  <--------------------------------------
 
     LEGB - Local, Enclosing Functions, Global, Builtin Function (The way of python defining Scope)
 
@@ -61,24 +106,12 @@ def outer():
 
 outer()
 
+
 inner: nonlocal
 outer: nonlocal
    
-    list(map(lambda arguments : expression , sequ))
-eg. list(map(lambda x:x**3, [1,2,3,4]))
 
-    
-    list(filter(lambda arguments : expression , sequ))
-eg. list(filter(lambda x:x**3 >= 8, [1,2,3,4]))
-
-
-print(list(map(lambda x:x**3, [1,2,3,4])))          --> Use of lambda Expression
-
-L = lambda((a, b=2, *c, **d): [a, b, c, d])
-print(L(1, 2, 3, 4, x=1, y=2))
-[1, 2, (3, 4), {'y': 2, 'x': 1}]
-
-------------------------------------------------> Assignment Statements
+----------------------------------------------------> Assignment Statements  <---------------------------------------------------------------
 
 NOTE -  Unpacking List, Dicts, Tuples, Sets just means that the bracket will be removed and the elements will be given out
 Eg. 
@@ -96,7 +129,8 @@ for (a, b, c) in [[1, 2, 3], [4, 5, 6]]:
     
 
 *X and **X syntax appear in 3 places: 
-    1.Assignment statements, where a *X collects unmatched items in sequence assignments
+    
+    1.Extended Assignment/Assignment statements, where a *X collects unmatched items in sequence assignments
     
         a, *b, c = [1,2,3,4,5]
         print(a , " " , b , " " , c  )
@@ -125,49 +159,74 @@ for (a, b, c) in [[1, 2, 3], [4, 5, 6]]:
     b = [*a] = a.copy()
     print(b)
 
+---------------------------------------------------------------> Strings <---------------------------------------------------------------
 
--------- > NOTE - Always use the backward slash when typing the Path of file/folder/image .etc 
+-------> Formatting a String
 
-Eg. Python/roosevelt.jpg            ----> This is correct
-    Python\roosevelt.jpg            ----> This is wrong
-    
-
-NOTE - If you get an error as " object is not Callable"
-
-Eg. img.filename()          ---> Gives an error as  -> 'str' object is not callable
-    img.filename            ---> Then remove the parentheses , this will work
-
-NOTE - If you get an error as "Unexpected Indent"
-
-    print("asdasf")         ---> This will give the error "Unexpected Indent"
-    
-print("asdasf")             ---> This is the correct Indentation
-
---> num=12
+    num  =12
     name = Rohit 
     'my number is {} and name is{}'.format(num,name)
    f'my number is {num} and name is {name}'
     
---> s = 'hello'
-    s[0] will give 'h'
-    
---> Slicing     s[includes this : doesnt not includes this]
+        
+--------> Slicing     s[includes this : doesnt not includes this]
 
+    s = 'hello'
+    s[0] will give 'h'
     s[0:] will give 'hello'
     s[:3] will give 'hell'
     s[:]  will give 'hello'
     s[::-1]         Sequence is reverse
     s[4:1:-1]       From 4 to 2 but not including 1
+
+--------> Advanced Strings
+
+s = "hello world"
+
+"h" in s        ---> Will return True 
+
+s.capitalize()  ---> Capitalizes the first letter
+s.upper()       ---> Capitalizes the whole word 
+s.lower()       ---> Lowers the whole word
+s.count("o")    ---> Counts the total number of 'o'
+s.find("o")     ---> Finds the 1st index of the occurence of 'o'
+
+s.isalnum()     Alphanumeric    ---> These are usful when using
+s.isalpha()     Alphabetic           for NLP(Natural Language Processing)
+
+s.islower()     ---> True if all letter are lowercase 
+s.isspace()     ---> True if all characters are whitespace 
+s.endswith("o") ---> True if it ends with 'o'
+
+s[-1]           ---> Will give the last letter
+s[-2]           ---> Will give the 2nd last letter
+
+
+s = "hello world"
+
+s.split()                   ---> Split the String with Whitespace
+
+s.split("o")                ---> Returns a list with the string being separated at every 'o'
+['hell', ' w', 'rld']            Here can can also input a number to tell how many times we want it to get splitted
+
+s.partition("ll")           --->    Returns a list with the input, the part before and after it 
+                                    i.e it will have 3 elements in the list
+('he', 'll', 'o world')
+
+\t              ---> tab 
+
+NOTE -  The difference between split and partition - In SPLI the input does not get returned in the List 
+        but in PARTITION we do get the input in the list.
+
     
---> List
+-----------------------------------------------------------------> Lists <---------------------------------------------------------------
  
     my_list = [1,2,3,4]   
     my_list = []            --> Creates an empty list
-    my_list.append([5,6])   --> [1,2,3,4,[5,6]]
-    my_list.extend([5,6])   --> [1,2,3,4,5,6]
+    my_list = list((1,2))
     my_list[0]              --> 1
     
-    List can also be Sliced
+--------------> Slicing
 
         for i in my_list[1:]:
             This will iterate from index 1 to the end
@@ -175,31 +234,61 @@ print("asdasf")             ---> This is the correct Indentation
     nesting --> nest = [1, 2, [3,4,'target']]
     nest[2][2][3]  -> 'g'
     
-    --> LIST Comprehension
+    my_list.append([5,6])   --> [1,2,3,4,[5,6]]
+    my_list.extend([5,6])   --> [1,2,3,4,5,6]
+    
+---------------> LIST Comprehension
        
     out = [num**2 for num in my_list]   
     m_list_two = [x + y for x in range(3) for y in [10, 20, 30]]
+    
+-----> Advanced Lists (Also true for all Mutable Data Structures)
 
---> Dictionaries (Key Value Pairs)
+l = [1,2,3]
+
+l.clear()
+
+b = l.copy()
+
+l.count(3)              ---> Returns the Times number 3 is present
+
+l.append([4,5,6])       ---> Adds [4,5,6] to the list ->  [1,2,3,[4,5,6,]]
+l.extend([4,5,6])       ---> Adds  4,5,6  to the list ->  [1,2,3,4,5,6]
+
+l.index(2, 4, 88)       ---> Searches for the index of 2 between 4 and 88
+
+l.insert(3,[4,5])       ---> Inserts [4,5] before index 3
+
+l.remove(2)             ---> Removes the first occurence of the value '2' in the list
+l.pop()                 ---> By default it removes the last element of the list 
+l.pop(2)                ---> Removes the element at index 2 in the list
+
+l.reverse()             ---> Reverses the list
+
+l.sort()                ---> Sorts the list
+
+
+-----------------------------------------------------> Dictionaries (Key Value Pairs)  <-----------------------------------------------
 
     d = {'key1':'value', 'key2': 123}
-    
+
+---> Dictionary Comprehension 
     d = {x: x * x for x in range(10)}
+    
     d[19] = 11111
     
     d = dict(arg7) / {**arg7}
+    d = dict(zip(["a" , "b"], [1, 2]))          --> NOTE - zip methods yields tuples and stops when the shortest input range is exhausted
+    d = dict(key1 = 'value', key2 = 123)
+    d = dict([['a', 1], ['b', 2], ['c', 3]])    ---> Dictionary as a List of Lists
+    
+    d['key1'] == 'value'    
     
     print(d.pop(7))
     print(d.pop(6))
     print(d.popitem())
     print(len(d))
-
-    
-    d = dict(zip(["a" , "b"], [1, 2]))
-    d = dict(key1 = 'value', key2 = 123)
-    d = dict([['a', 1], ['b', 2], ['c', 3]])        ---> Dictionary as a List of Lists
-    
-    d['key1'] == 'value'    
+   
     
     We can put anything in place of the Value like list, Dictionaries or 
     even any variables
@@ -225,7 +314,13 @@ print("asdasf")             ---> This is the correct Indentation
                                             default if given, or raises KeyError if no default.
 
 
--->  Tuples & Strings are immutable
+----> Iterating through Dictionaries
+
+for k in a.items() / a.keys() / a.values() :
+    print(k)
+
+
+--------------------------------------------------------->  Tuples    <----------------------------------------------------------------
 
     my_tuple = (1,2,3)
     my_tuple = tuple('spam')
@@ -233,8 +328,9 @@ print("asdasf")             ---> This is the correct Indentation
     my_tuple.index(2)               ---> Returns the index of '2'
     my_tuple.count(2)               ---> Returns the number of times '2' occurs in the Tuple    
 
---> Set 
-    Unlike C++, sets of Python are Unordered
+------------------------------------------------------------> Set <------------------------------------------------------------------
+
+    Sets of Python are Ordered
     
     s = {1,2,3}                 ---> contains only unique elements
     
@@ -248,7 +344,48 @@ print("asdasf")             ---> This is the correct Indentation
     
     s =  {ord(c) for c in 'spam'}
 
---> Syntax of Comprehensions
+------------------> Advanced Sets
+
+Sets are Mutable
+
+s = set([1,2,3,4])
+s.add(5)
+s.add(6)
+
+print(s)            ---> Prints the whole Set
+
+s.clear()           ---> Removes all elements of the Set
+
+s_new = s.copy()    ---> Returns a copy of s and changes to the Original Set wont affect the new Set
+
+s_new.add(3)
+s_new.add(4)
+
+s.difference(s_new)             ---> Returns new set by deleting all the common elements
+
+s.difference_update(s_new)      ---> Removes the elements that are in both s and s_new and return s
+
+s.symmetric_difference(s_new)   ---> Deletes all the common elements and returns the union of the sets
+
+s.intersection(s_new)           ---> Returns a new set which has elements common in s and s_new
+
+s.intersection_update(s_new)    ---> Returns s as a new set which has elements common in s and s_new 
+
+s.issubset(s_new)               ---> Returns true if all elements of s are in s_new
+
+s.issuperset(s_new)             ---> Returns true if all elements of s_new are in s
+
+s.discard(2)                    ---> Removes 2 from s , wont show error if 2 is not present in s
+
+s.isdisjoint(s_new)             ---> Returns True if s intersection s_new == Null
+
+s.union(s_new)                  ---> Returns a set that has the combination of the 2 sets
+
+s.update(s_new)                 ---> Returns s as a new set which have union of elements of s_new
+
+
+    
+-------------------------------------------------------> Syntax of Comprehensions  <-----------------------------------------------------
 
     yield X                         Generator function result (returns send() value)
     lambda args1: X                 Anonymous function maker (returns X when called)
@@ -272,6 +409,8 @@ print("asdasf")             ---> This is the correct Indentation
     X + Y, X − Y                    Addition/concatenation, subtraction/set difference
     X // Y                          floor division, returns an integer
     
+
+-------------------------------------------------------> Useful Statements  <-----------------------------------------------------
     
 ---------> if and elif
 
@@ -313,7 +452,7 @@ print("asdasf")             ---> This is the correct Indentation
     for x  in range(10):
         print(x)
 
-----------------------------------------------> Functions
+-------------------------------------------------------->  Functions  <-----------------------------------------------------------
 
     Methods  - Fucntions that are defined in a Class are called Methods
     
@@ -412,7 +551,7 @@ example("1", "2", "3", arg4 = "4", arg5 = ["5", "55", 555], arg7 = {"for_7":"7",
         my_func(6)
 
 
-----------------------------------------> Class (Methods, Attributes/Characteristics, Instance)
+----------------------------------------> Class (Methods, Attributes/Characteristics, Instance)  <----------------------------------------
 
 
 
@@ -450,7 +589,7 @@ a = Dog()
 b = Dog()
 (a == b) = False    ---->   As For user defined classes, the default behavior of the == operator is to
                             compare the memory addresses of two objects and return True if the
-                            address is the   and False otherwise
+                            address is the and False otherwise
 type(a) == type(b) = True
 
 
@@ -461,10 +600,9 @@ print(a)    ---> __main__.Dog object at 0x00aeff70
 NOTE -  All Instance of a Child Class are also the instances of the Parent Class Although they may not be instances of other child class
 
 
+-----------------------------------> INHERITANCE, POLYMORPHISM, ABSTRACT CLASSES, DUNDER CLASSES <---------------------------------------
 
--------------------------------------------> INHERITANCE AND POLYMORPHISM AND ABSTRACT CLASSES
-
-INHERITANCE
+----------------------------->  INHERITANCE
 
 class Cake:
     def __init__(self, name, age):
@@ -472,6 +610,12 @@ class Cake:
 
     def howsweet(self, a) :
         print(a)
+        
+    def what_kind(self,kind):
+        self.kind = kind
+        print(self.kind + "Cake")
+        # print(kind)
+        
 class Dessert:
     
     def __init__(self, color, oil):
@@ -495,7 +639,8 @@ class IceCream(Dessert, Cake):
         Dessert.__init__(self, oil = oil, color = color)
         Dessert(oil, color)                                    # ---> These both are           for  same work
         
-        super().what_kind("qweqwe")
+        # super().what_kind("qweqwe")
+        Cake.what_kind(self, "softnsweet")
         Dessert.what_kind(self , "xzczxczx")
         
         Cake("Asda", "90")
@@ -506,10 +651,10 @@ class IceCream(Dessert, Cake):
 
 vanilla = IceCream('chocolate vanilla',"pink", "oily", "very dense")
 vanilla.what_kind('sweet kind of vanilla')
-vanilla.give_name()    
+# vanilla.give_name()    
 
 
-POLYMORPHISM
+---------------------------------> POLYMORPHISM
 
     (POLYMORPHISM will be used much later in your python carreer)
     
@@ -550,7 +695,7 @@ our_food(food1)
 our_food(food2)
 
 
-ABSTRACT CLASSES
+---------------------------------->  ABSTRACT CLASSES
 
 We NEVER EXPECT to create an instance of the abstract class and it is designed to only 
 serve as a BASE CLASS
@@ -577,7 +722,7 @@ class Dog(Animal) :
 
 
 
--------------------------------> SPECIAL/MAGIC/DUNDER Methods of a CLASS
+-------------------------------> DUNDER/SPECIAL/MAGIC Methods of a CLASS
 
 These are called DUNDER Methods because they begin and end with double underscores
 
@@ -606,51 +751,7 @@ print(str(Book("Potter", 240)))  --> we overrided the str for our class to retur
 likewise we can also override ---> len, del 
 
 
---> Pypi and pip install
-
------------------------------------------> Modules and Packages
- 
-Modules are .py scripts and Packages are a collection of Modules
- 
-add __init__.py file in your folder to make it a Packages
- 
-if __name__ == "__main__":
-    #tells if the .py file is called directly or imported
-    true == directly
-    false == imported
-
--------------------------------------------> Error Handling
-
-3 Keywords:
-    1) try - block of code to be executed, may lead to Error
-    2) except - block of code to be executed, if there is error in try block
-    3) finally - block of code to be executed, regardless of error
-    4) else - with no error it will execute
-    
-    while TRUE:
-        try:
-            "ssdaf"
-        except TypeError:     // can also look for specific errors
-            "sdfas"
-            continue
-        else:
-            "sadfsdf"
-            break
-        finally:
-            "sadsdf"
-    
----------------------------------------> Pylint and Unittest (Testing tools)
-
-    Pylint - lib that looks at the code and reports possible issues
-    
-    Unittest - built-in lib , allows to test code and check desired output
-    
-    Python has a set of style convention rules known as PEP-8
-    
-    import unittest as ut
-
-
-----------------------------------------> Python DECORATORS (Advanced topic) - 
+----------------------------------------> Python DECORATORS (Advanced topic) - <-------------------------------------------------------
 
     Used when we want to add new capabilities to our function
     
@@ -736,7 +837,7 @@ def other(some_def_func):
 
 other(other)  
     
- -----------------------------------> Python GENERATORS (Advanced topic) (YIELD, NEXT, ITER)
+ -----------------------------------> Python GENERATORS (Advanced topic) (YIELD, NEXT, ITER)  <----------------------------------------
  
     Generator functions send back a single value and then pick up where
     it left 
@@ -788,7 +889,8 @@ s = iter([1,2,3,4])
 print(next(s))
 
 
--------------------------------------->    Advanced Python Packages and Modules
+    
+-------------------------------------->    Advanced Python Packages and Modules   <--------------------------------------------------------
 
 
 ----------------> from collections import Counter
@@ -1083,7 +1185,64 @@ f.write("qwerqasdsadfasdwer")
 f.close
 
 
------------------------ WebScrapping with Python  --------------------------
+-------------------------------------------> Error Handling & Types of Error  <---------------------------------------------------------
+
+3 Keywords:
+    1) try - block of code to be executed, may lead to Error
+    2) except - block of code to be executed, if there is error in try block
+    3) finally - block of code to be executed, regardless of error
+    4) else - with no error it will execute
+    
+    while TRUE:
+        try:
+            "ssdaf"
+        except TypeError:     # can also look for specific errors
+            "sdfas"
+            continue
+        else:
+            "sadfsdf"
+            break
+        finally:
+            "sadsdf"
+
+    NOTE - If you get an error as " object is not Callable"
+
+Eg. img.filename()          ---> Gives an error as  -> 'str' object is not callable
+    img.filename            ---> Then remove the parentheses , this will work
+
+    NOTE - If you get an error as "Unexpected Indent"
+
+    print("asdasf")         ---> This will give the error "Unexpected Indent"
+    
+print("asdasf")             ---> This is the correct Indentation
+
+
+
+--------------------------------------------> Pypi and pip install   <--------------------------------------------------------------------
+
+----------------------------------------------> Modules and Packages   <----------------------------------------------------------------
+ 
+Modules are .py scripts and Packages are a collection of Modules
+ 
+add __init__.py file in your folder to make it a Packages
+ 
+if __name__ == "__main__":
+    #tells if the .py file is called directly or imported
+    true == directly
+    false == imported
+  
+---------------------------------------> Pylint and Unittest (Testing tools)  <------------------------------------------------------
+
+    Pylint - lib that looks at the code and reports possible issues
+    
+    Unittest - built-in lib , allows to test code and check desired output
+    
+    Python has a set of style convention rules known as PEP-8
+    
+    import unittest as ut
+    
+    
+-----------------------------------------------> WebScrapping with Python  <----------------------------------------------------------
 
 
 --> Intro to Web Scraping
@@ -1225,7 +1384,7 @@ Note -  i.select("asd").text     will print the string
 
 
 
------------------------ Working with Images with Python  --------------------------
+----------------------------------------------> Working with Images with Python  <--------------------------------------------------------
 
 
 We will use PILLOW to work with images
@@ -1282,7 +1441,7 @@ img.save("purple.png")    ---> This saves the image and if it already exists , i
 
 
 
------------------------ Working with PDFs and CSV files in Python  --------------------------
+-------------------------------------------------> Working with PDFs and CSV files in Python  <-------------------------------------------
 
 
 ----> Working with CSV Files
@@ -1400,7 +1559,7 @@ pdf_writer.write(pdf_output)
 f.close
      
      
----------------------- Emails with Python  --------------------------
+------------------------------------------------------------> Emails with Python  <------------------------------------------------------
     
 
 -----> Steps to send Emails with Python
@@ -1458,149 +1617,6 @@ password = getpass.getpass("Password : ")
 imap.login(email, password)
 
 imap.login("rohitkonge08@gmail.com", "thepasswordisincorrect")
-
-
----------------------- Advanced Python Objects and Data Structures --------------------------
-
------> Advanced Numbers
-
-hex(number)     --> Hexadecimal form of a Number  -->   0x200  = 512
-bin(number)     --> Binary      form of a Number  -->   0b1011 = 11
-
-2**4        == 16
-pow(2,4)    == 16
-pow(x,y,z)  == (x^y) % z     
-
-abs(-3)     == 3
-
-round(3.1)  == 3          --> Round will always give an Int Number
-round(3.5)  == 4
-round(3.9)  == 4
-
-Python also has a Math library
-
------> Advanced Strings
-
-s = "hello world"
-
-"h" in s        ---> Will return True 
-
-s.capitalize()  ---> Capitalizes the first letter
-s.upper()       ---> Capitalizes the whole word 
-s.lower()       ---> Lowers the whole word
-s.count("o")    ---> Counts the total number of 'o'
-s.find("o")     ---> Finds the 1st index of the occurence of 'o'
-
-s.isalnum()     Alphanumeric    ---> These are usful when using
-s.isalpha()     Alphabetic           for NLP(Natural Language Processing)
-
-s.islower()     ---> True if all letter are lowercase 
-s.isspace()     ---> True if all characters are whitespace 
-s.endswith("o") ---> True if it ends with 'o'
-
-s[-1]           ---> Will give the last letter
-s[-2]           ---> Will give the 2nd last letter
-
-
-s = "hello world"
-
-s.split()                   ---> Split the String with Whitespace
-
-s.split("o")                ---> Returns a list with the string being separated at every 'o'
-['hell', ' w', 'rld']            Here can can also input a number to tell how many times we want it to get splitted
-
-s.partition("ll")           --->    Returns a list with the input, the part before and after it 
-                                    i.e it will have 3 elements in the list
-('he', 'll', 'o world')
-
-\t              ---> tab 
-
-NOTE -  The difference between split and partition - In SPLI the input does not get returned in the List 
-        but in PARTITION we do get the input in the list.
-
------> Advanced Sets
-
-Sets are Mutable
-
-s = set([1,2,3,4])
-s.add(5)
-s.add(6)
-
-print(s)            ---> Prints the whole Set
-
-s.clear()           ---> Removes all elements of the Set
-
-s_new = s.copy()    ---> Returns a copy of s and changes to the Original Set wont affect the new Set
-
-s_new.add(3)
-s_new.add(4)
-
-s.difference(s_new)             ---> Returns new set by deleting all the common elements
-
-s.difference_update(s_new)      ---> Removes the elements that are in both s and s_new and return s
-
-s.symmetric_difference(s_new)   ---> Deletes all the common elements and returns the union of the sets
-
-s.intersection(s_new)           ---> Returns a new set which has elements common in s and s_new
-
-s.intersection_update(s_new)    ---> Returns s as a new set which has elements common in s and s_new 
-
-s.issubset(s_new)               ---> Returns true if all elements of s are in s_new
-
-s.issuperset(s_new)             ---> Returns true if all elements of s_new are in s
-
-s.discard(2)                    ---> Removes 2 from s , wont show error if 2 is not present in s
-
-s.isdisjoint(s_new)             ---> Returns True if s intersection s_new == Null
-
-s.union(s_new)                  ---> Returns a set that has the combination of the 2 sets
-
-s.update(s_new)                 ---> Returns s as a new set which have union of elements of s_new
-
-
-
------> Advanced Dictionaries
-
-d = {"k1" : 1, "k2" : 2}
-
--- Dictionary Comprehension  
-
-a = {x:y for x,y in zip([1,2],[3,4])}
-
-NOTE - zip methods yields tuples and stops when the shortest input range is exhausted
-
-
--- Iterating through Dictionaries
-
-for k in a.items() / a.keys() / a.values() :
-    print(k)
-
-
------> Advanced Lists (Also true for all Mutable Data Structures)
-
-l = [1,2,3]
-
-l.clear()
-
-b = l.copy()
-
-l.count(3)              ---> Returns the Times number 3 is present
-
-l.append([4,5,6])       ---> Adds [4,5,6] to the list ->  [1,2,3,[4,5,6,]]
-l.extend([4,5,6])       ---> Adds  4,5,6  to the list ->  [1,2,3,4,5,6]
-
-l.index(2, 4, 88)       ---> Searches for the index of 2 between 4 and 88
-
-l.insert(3,[4,5])       ---> Inserts [4,5] before index 3
-
-l.remove(2)             ---> Removes the first occurence of the value '2' in the list
-l.pop()                 ---> By default it removes the last element of the list 
-l.pop(2)                ---> Removes the element at index 2 in the list
-
-l.reverse()             ---> Reverses the list
-
-l.sort()                ---> Sorts the list
-
 
 ---------------------- Introduction to GUI (Graphical User Interface) --------------------------
 
