@@ -232,9 +232,8 @@ print("asdasf")             ---> This is the correct Indentation
     X + Y, X − Y                    Addition/concatenation, subtraction/set difference
     X // Y                          floor division, returns an integer
     
-
-
---> if and elif
+    
+---------> if and elif
 
     if 1<2:
         print("hello")
@@ -244,7 +243,7 @@ print("asdasf")             ---> This is the correct Indentation
         print("jump")
     
     
---> for loop
+--------> for loop
 
     seq = [1,2,3,4,5]
 
@@ -258,7 +257,7 @@ print("asdasf")             ---> This is the correct Indentation
     for a,b in x:
         print(a,b)
     
---> while loop 
+---------> while loop 
 
     i = 1
     
@@ -266,7 +265,7 @@ print("asdasf")             ---> This is the correct Indentation
         print('i is {}'.format(i))
         i = i + 1;
         
---> range()
+----------> range()
 
     range(2,8)
     --> 2,3,4,5,6,7
@@ -278,6 +277,13 @@ print("asdasf")             ---> This is the correct Indentation
 
     Methods  - Fucntions that are defined in a Class are called Methods
     
+    5 Types of Arguments :
+        1.  Default      Argument           func(a = 1)
+        2.  Positional   Argument           func(a, /)
+        3.  Keyword      Argument           func(*, a)
+        4.  Arbitary Positional Argument    func(*a)
+        5.  Arbitary Keyword    Argument    func(**a)
+    
     Before / (Slash)  - Only Positional Arguments
     After  * (Star)   - Only Keyword    Arguments  
     
@@ -286,15 +292,42 @@ print("asdasf")             ---> This is the correct Indentation
 
             ALWAYS POSITIONAL AND THEN KEYWORD
             
+            ALWAYS NON-DEFAULT ARGUMENTS AND THEN DEFAULT ARGUMENTS
+            
+            
+-----------------> Function Annotations
+    
+    Used to collect information about the type of the parameters and 
+    the return type of the function to keep track of the type change occurring in the function
+    
+def func(a : "int", b : int = "qwew") -> "float":
+    pass
+    
+print(func.__annotations__)
+{'a': 'int', 'b': <class 'int'>, 'return': 'float'}
+
+
+
     [decoration]
     def name([arg,... arg=value,... *arg, **arg]):
         pass
+    
+def first_example(*arg1, arg2, **arg3):
+    print(arg1)
+    print(arg2)
+    print(arg3)
+    
+first_example(1,2,3,4,5, arg2 = 6, arg3 = dict(a=1,b=2,c=3))
+
+(1, 2, 3, 4, 5)
+6
+{'a': 1, 'b': 2, 'c': 3}
     
 def example(arg1, arg2, /, arg3, arg4, *, arg5, arg7 ):
     print(*arg5)
     print(*arg7)   
 
-    a = dict(arg7) / {**arg7}
+    a = dict(arg7) #/ {**arg7}
     print(a)
 
     arg7["for_7"]
@@ -504,7 +537,7 @@ class Dog(Animal) :
 
 
 
---> SPECIAL/MAGIC/DUNDER Methods of a CLASS
+-------------------------------> SPECIAL/MAGIC/DUNDER Methods of a CLASS
 
 These are called DUNDER Methods because they begin and end with double underscores
 
@@ -535,7 +568,7 @@ likewise we can also override ---> len, del
 
 --> Pypi and pip install
 
---> Modules and Packages
+-----------------------------------------> Modules and Packages
  
 Modules are .py scripts and Packages are a collection of Modules
  
@@ -546,7 +579,7 @@ if __name__ == "__main__":
     true == directly
     false == imported
 
---> Error Handling
+-------------------------------------------> Error Handling
 
 3 Keywords:
     1) try - block of code to be executed, may lead to Error
@@ -566,7 +599,7 @@ if __name__ == "__main__":
         finally:
             "sadsdf"
     
--> Pylint and Unittest (Testing tools)
+---------------------------------------> Pylint and Unittest (Testing tools)
 
     Pylint - lib that looks at the code and reports possible issues
     
@@ -577,35 +610,73 @@ if __name__ == "__main__":
     import unittest as ut
 
 
---> Python DECORATORS (Advanced topic) - 
+----------------------------------------> Python DECORATORS (Advanced topic) - 
 
     Used when we want to add new capabilities to our function
     
     
-    --> DECORATOR and RETURN A FUNCTION
+    ----------------------> DECORATOR and RETURN A FUNCTION
     
-    def new_decorator(og_func):
-        
-        def wrap_func():
-            
-            print("dssdv")
-            
-            og_func()
-            
-            print("weqwwq")
-            
-        return wrap_func    // this will execute the wrap_func() function
+     Decorators may be applied to any function definition, including methods inside a class
     
-    @new_decorator  // this will input func_needs_decorator in new_decorator()
-    def func_needs_decorator():
-       
-        print("sdfsdf")
+    class C:
         
-    NOTE --> We can call func_needs_decorator() and it will execute new_decorator
+    @decorator
+    def M(): # Same as M = decorator(M)
+
+def new_decorator2(og_func2):
+    
+    def wrap_func():
+        
+        print("dssdv2")
+        
+        og_func2()
+        
+        print("weqwwq2")
+        
+    return wrap_func    # this will execute the wrap_func() function        
+        
+        
+def new_decorator(og_func):
+    
+    def wrap_func():
+        
+        print("dssdv")
+        
+        og_func()
+        
+        print("weqwwq")
+        
+    return wrap_func    # this will execute the wrap_func() function
+
+@new_decorator2
+@new_decorator  # this will input func_needs_decorator in new_decorator()
+def func_needs_decorator():
+    
+    print("sdfsdf")
+
+func_needs_decorator()
+
+dssdv2
+dssdv
+sdfsdf
+weqwwq
+weqwwq2
+
+    Here - new_decorator2(new_decorator(func_needs_decorator))
+    
+            It First copy-pastes the code and then executes it
+        
+    NOTE -->1. We can call func_needs_decorator() and it will execute new_decorator
              with func_needs_decorator() as an argument
              
+            2. It will execute wrap_func with og_func == func_needs_decorator
              
-    --> function inside a function
+            3. Here, new_decorator is called as Factory Function
+            
+            4. We can also have nested Decorators
+             
+    ----------------------> function inside a function
     
     def cool(args):
         
@@ -615,7 +686,7 @@ if __name__ == "__main__":
         return supercool
       
   
-    --> Passing a function as an argument
+    ---------------------> Passing a function as an argument
     
 def other(some_def_func):
       
@@ -627,7 +698,7 @@ other(other)
     
     
     
- --> Python GENERATORS (Advanced topic) (YIELD, NEXT, ITER)
+ -----------------------------------> Python GENERATORS (Advanced topic) (YIELD, NEXT, ITER)
  
     Generator functions send back a single value and then pick up where
     it left 
@@ -679,7 +750,7 @@ s = iter([1,2,3,4])
 print(next(s))
 
 
-------------------------->Advanced Python Packages and Modules
+-------------------------------------->    Advanced Python Packages and Modules
 
 
 ----------------> from collections import Counter
@@ -773,7 +844,7 @@ random.shuffle(my_list)
 random.uniform(a, b)
 
 
- --> Python Debugger
+ -----------------------------------> Python Debugger
  
 import pdb
  
