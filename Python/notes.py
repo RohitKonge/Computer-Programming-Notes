@@ -22,8 +22,48 @@
     NOTE - Defining a Lot of variables takes a lot of memory so as we get better at Python we move more and more towards One Liner Code
     NOTE - and , or are used for   Single Bool comaprisions 
            &   , |  are used for a Series Bool Comparisions
+           
+           
+--------------------------->  Global & Local & NON-Local Statement - global name[,name]*
+
+    LEGB - Local, Enclosing Functions, Global, Builtin Function (The way of python defining Scope)
+
+    1. Global       - Any variable declared OUTSIDE of class/function and it is global by default
+       Local        - Any variable declared INSIDE  of class/function
+       Non-Local    - Any variable declared inside a NESTED FUNCTION whose local scope is not defined. i.e it is neither LOCAL or GLOBAL
+    
+    2. We use global keyword INSIDE a class/function to declare it as a  GLOBAL variable
     
     
+x = "global"
+
+def foo():
+    # x = x * 2         # NOTE -  We cannot change a global variable directly we have to first declare it as 'global' in the function
+    global x 
+    x = x * 2
+    print(x)
+
+foo()
+
+-----------------
+
+def outer():
+    x = "local"
+
+    def inner():
+        nonlocal x
+        x = "nonlocal"
+        print("inner:", x)
+
+    inner()
+    print("outer:", x)
+
+
+outer()
+
+inner: nonlocal
+outer: nonlocal
+   
     list(map(lambda arguments : expression , sequ))
 eg. list(map(lambda x:x**3, [1,2,3,4]))
 
@@ -694,9 +734,7 @@ def other(some_def_func):
         
     return(other)
 
-other(other)
-    
-    
+other(other)  
     
  -----------------------------------> Python GENERATORS (Advanced topic) (YIELD, NEXT, ITER)
  
