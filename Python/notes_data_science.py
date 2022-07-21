@@ -596,55 +596,93 @@ pd.rea
 
 
 
----------------------   Python for Data Visualization - Matplotlib     -----------------------
+------------------------->  Python for Data Visualization - Matplotlib <----------------------------------------
+
+
+
+---------------------> Matplotlib Part - 1 <----------------------------
+
+
 
 Its the most popular plotting library for Python
 
 import matplotlib.pyplot as plt, numpy as np 
 
-%matplotlib inline
+%matplotlib inline              ---> Allows us to see the plot inside the Jupyter Notebook
 
-plt.show()               ---> Draws the Plot in VSCode
+plt.show()                      ---> Draws the Plot in VSCode
 
 x = np.linspace(0, 5, 110)
 y = x ** 2
  
-2 ways of Creating Matplotlibb Plots
+-------------------> 2 ways of Creating Matplotlibb Plots
 
 1. Functional Method              ---> This is simple way of plotting
 
+%matplotlib inline                ---> Allows us to see the plot in the jupyter notebook
+
+#%%
 import matplotlib.pyplot as plt, numpy as np 
 x = np.linspace(0, 5, 110)
 y = x ** 2
-plt.plot(x,y,'r-')               #   ---> Giving some attributes to the plot
+
+
 plt.xlabel("X Label")       
 plt.ylabel("Y Label")
 plt.title("Title")
-plt.show()
+plt.plot(x,y,'r-')                      #   ---> Giving some attributes to the plot
+plt.show()                              #  ---> Use this in .py file to view the plot
 
 plt.subplot(1,2,1)                      #  ---> plt.subplot(No. of Rows, No. of Columns, Plot No. we are refering to)
 plt.plot(x,y,"r")
-plt.show()
+
 
 plt.subplot(1,2,2)                      #  ---> plt.subplot(No. of Rows, No. of Columns, Plot No. we are refering to)
 plt.plot(y,x,"b")
-plt.show()
 
+
+#%%
 2. Object Oriented Method           (This is a Better Way of Creating a MatplotLib Plot)
 
 We make Figure Objects and call Methods off of it
 
-import matplotlib.pyplot as plt, numpy as np 
+#%%
 
 fig = plt.figure()                       #   ---> Think of it as an Imaginary Canvas and we can add a Set of Axis
+
 x = np.linspace(0, 5, 110)
 y = x ** 2
-axes = fig.add_axes([0.1, 0.1, 0.8, 0.8] ) 
-axes.plot(x,y)
-axes.show()
+plot2 = fig.add_axes( [2, 2, 2, 2] )     # .add_axes(Left, Bottom, Width, Height), 0 to 1, The percent of that blank canvas we want, 
+                                         # Here we are actually placing the Bottom-Left Corner of the Plot
+plot2.set_xlabel("THE X LABLE")
+plot2.set_ylabel("THE Y LABLE")
+plot2.set_title("THE TITLE")
 
---->   .add_axes(Left, Bottom, Width, Height)
-                                                    0 to 1, the percent of that blank canvas we want
+plot2.plot(x,y)
+
+#%%
+fig = plt.figure()
+axes1 = fig.add_axes([0,0.1,2,2])
+axes2 = fig.add_axes([0.3,0.4,1,1])
+
+axes1.plot(x, x**9)
+axes2.plot(x,x**2)
+
+NOTE -  1. Here, We added a Figure
+        2. Added Axes to the Figures
+        3. Then plotted our Data on it i.e ( x,y )
+
+#%%
+
+
+
+
+#%%
+---------------------------> Matplotlib Part - 2 <----------------------------
+
+
+
+
 
 
 
