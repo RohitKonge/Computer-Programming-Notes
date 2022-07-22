@@ -675,8 +675,6 @@ NOTE -  1. Here, We added a Figure
 #%%
 
 
-
-
 #%%
 ---------------------------> Matplotlib Part - 2 <----------------------------
 
@@ -684,9 +682,14 @@ NOTE -  1. Here, We added a Figure
 
 
 
+#%%
+import matplotlib.pyplot as plt, numpy as np
+fig, axes = plt.subplots(3,3)       # Here plt.sublplots() automatically calls fig_addaxes( ) for us
+plt.tight_layout()                  # Corrects the Layout as more spaced out
+x = np.linspace(0, 10, 100)
+axes.plot(x,x**2)
+axes.plot(x,x**2)
 
 
 
-
-
-
+#%%

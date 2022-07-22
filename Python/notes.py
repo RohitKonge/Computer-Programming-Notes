@@ -1029,10 +1029,12 @@ pattern = "asd"
 
 NOTE - This returns a "match" Objects where we can use the following Methods
 
+<re.Match object; span=(1062, 1074), match='719-266-2837'>          ---> Sample Match Object
+
 - match.span()
 - match.start()
 - match.end()
-
+- match.group()                 ----> Prints the String which has been found .i.e "719-266-2837" for this sample 
 
  -- re.findall(pattern, txt)    --> Returns a List with the number of findings in the txt
  

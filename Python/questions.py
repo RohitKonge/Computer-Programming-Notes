@@ -62,3 +62,28 @@ a = ecom["Purchase Price"].apply(lambda x: func(x))
 # print(len(ecom[(ecom["CC Provider"] == "American Express") & (ecom["Purchase Price"].apply(lambda x: func(x)) > 95) ]))
 # print(len(ecom[ecom["CC Exp Date"].apply(lambda x : x[3:5]) == "25"]))
 # print(ecom["Email"].apply(lambda x: x.split("@")[1]).value_counts().head(5))
+
+
+
+
+import os, re
+files = os.listdir("Computer-Programming-Notes/Python/Utilities/extracted_content")
+print(files)
+for i in files:
+    if i.find("txt") < 0:
+        txt_files = (os.listdir(f"Computer-Programming-Notes/Python/Utilities/extracted_content/{i}"))
+        for j in txt_files:
+            f = open(f"Computer-Programming-Notes/Python/Utilities/extracted_content/{i}/{j}","r")
+            searched = re.search(r"\d{3}-\d{3}-\d{4}", list(f)[0])
+            if searched != None :
+                print(searched)
+                break
+        
+
+import re
+f = open("Computer-Programming-Notes/Python/Utilities/extracted_content/One/HDOHZHFSTTK.txt","r")
+
+# print(len(list(f)[0]))
+
+
+print(re.search(r"\d{3}-\d{3}-\d{4}", list(f)[0]))
