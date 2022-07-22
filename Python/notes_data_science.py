@@ -4,12 +4,19 @@ Jupyter Notebook
 
 --> Alt + Enter = Add New Cell
 
-NOTE - Defining a Lot of variables takes a lot of memory so as we get better at Python we move more and more towards One Liner Code
-NOTE - and , or are used for   Single Bool comaprisions 
-       &   , |  are used for a Series Bool Comparisions
+--------------------------------------------------------> Index <------------------------------------------------------------------
 
 
----------------------------- PYTHON FOR DATA ANALYSIS - NUMPY - --------------------------
+
+
+
+
+
+
+
+---------------------------------------------> PYTHON FOR DATA ANALYSIS - NUMPY <--------------------------------------------------
+
+
 
 Its a Linear Algebra Library
 
@@ -17,7 +24,11 @@ np.NaN == Not A Number
 
 Aggregate Function == A function that takes in lots of individual values and then returns a single value
 
----------------------    NUMPY ARRAYs     -------------------------
+
+
+--------------------->     NUMPY ARRAYs     <-------------------------
+
+
 
 import numpy as np 
 
@@ -77,10 +88,13 @@ print(arr.reshape(3,3).shape)     ----> This is way to make a 1D Array to N dime
 print(arr.dtype)                ---> Returns the data type of the elements
 
 
----------------------    NUMPY Indexing and Selection     -------------------------
+
+------------------------->   NUMPY Indexing and Selection     <-------------------------
 
 
-------------> For 1D Array
+
+----------------------------------> For 1D Array  <------------------------
+
 
 import numpy as np
 
@@ -105,7 +119,11 @@ So to Avoid that we make a Copy of arr and then set it to slice_of_arr after whi
 slice_of_arr = np.copy(arr) = arr.copy()
 print(slice_of_arr)
 
-------------> For 2D Array, matrix
+
+
+---------------------------------> For 2D Array, matrix  <------------------------
+
+
 
 import numpy as np
 
@@ -123,7 +141,9 @@ new_arr = arr[arr>5]      ---> This applies the condition on each element and re
 
 
 
----------------------     Numpy Operations     -------------------------
+---------------------------->  Numpy Operations  <----------------------
+
+
 
 This is true only for Numpy Arrays --- This is also known as Broadcasting   
 
@@ -148,8 +168,11 @@ arr = np.sqrt(arr)
     = np.sin(arr)         -----> i.e we can use trigonometric signs as well
     = np.log(arr)         -----> 
     
+    
 
----------------------   Python for Data Analysis - PANDAS     -----------------------
+-------------------------------------------->   Python for Data Analysis - PANDAS     <--------------------------------------------------
+
+
 
 - Pandas is Open Source and built on top of NUMPY
 
@@ -164,7 +187,10 @@ Things to Learn :
 7. Data In and Out of Pandas, Such as CSV, Excel, SQL Files
 
 
----------------> 1. Series
+
+-------------------------->  1. Series  <-------------------------
+
+
 
 import numpy as np, pandas as pd 
 
@@ -194,11 +220,19 @@ print(S1+S2)
 30     cd
 40    NaN
 
----------------> 2. DataFrames - 1
+
+
+------------------------> 2. DataFrames - 1  <--------------------------
+
+
 
 NOTE -  In Series and DataFrames Integers are converted to Floats
 
----> Creating DataFrame
+
+
+-----------> Creating DataFrame
+
+
 
 import numpy as np, pandas as pd
 from numpy.random import randn
@@ -236,7 +270,11 @@ c -0.848077  0.605965 -2.018168
 
 print(df.head(2))                ----> Print n number of rows of the DataFrame
 
----> Getting Data From DataFrame (Here we can get and also give the data as well)
+
+
+---------------> Getting Data From DataFrame (Here we can get and also give the data as well)
+
+
 
 3 Ways to retrive COLUMN Data
 
@@ -258,12 +296,17 @@ NOTE -  Calling a Single Column will give a Series
 
 
 
----> Making Extra Columns in DataFrame
+------------------> Making Extra Columns in DataFrame
+
+
 
 df[4] = df[1] + df[2] | randn(3,1)    ---> This will add 1 more column 
 
 
----> Deleting Rows and Columns
+
+------------------> Deleting Rows and Columns
+
+
 
 NOTE - df.shape == (3,3) which is a tuple so (axis = 0 == Rows) and (axis = 1 == Columns)
 
@@ -273,10 +316,13 @@ df.drop(["b"], axis = 0, inplace = True)
 
 
 
----------------------> 3. DataFrames - 2
+----------------------------> 3. DataFrames - 2  <------------------------------
 
 
---->   Conditional Selection
+
+----------->   Conditional Selection
+
+
 
 import numpy as np, pandas as pd
 from numpy.random import randn
@@ -309,7 +355,11 @@ print(df[df[0]>0])          ---> This will return the DF but with column 0 eleme
 
 NOTE - when we use df[sdfasdf]  here "df" tells that it will return the whole DataFrame
 
----> To add an index of [0,1,2,3.......n] besides the rows
+
+
+------------> To add an index of [0,1,2,3.......n] besides the rows
+
+
 
 df.reset_index(inplace=True)    ----> This is also a temporary change so we use inplace
 
@@ -330,7 +380,10 @@ print(df)
 66  0.783800  1.097435 -0.860960  0.111078
 
 
----------------------> 4. DataFrames - 3
+
+-------------------------------> 4. DataFrames - 3  <---------------------
+
+
 
 NITE -  print(list(zip(["G1","G1","G1","G2","G2","G2",], [1,2,3,1,2,3],)))        ---> Gives out a List of Tuples
 
@@ -389,10 +442,14 @@ Same as .loc but it can grab all rows with 1 as their index
 Here, we will get G1[1] & G2[1]
 
 
----------------------> 5. Missing Data
+
+-------------------------------> 5. Missing Data
 
 
------> To Drop Nan Value in Rows/Columns
+
+----------------> To Drop Nan Value in Rows/Columns
+
+
 
 Pandas fills in the missing data as NULL or ANY Value
 
@@ -400,13 +457,20 @@ df.dropna(axis=1)    -----> Will Drop Column with at least 1 NAN
 df.dropna(thresh=2)  -----> Will Drop if no. of non-Nan values are less than 2
 
 
------> To Fill in Values of Nan in Rows/Columns
+
+---------------> To Fill in Values of Nan in Rows/Columns
+
+
 
 df.fillna(value = "New Vlue", inplace=True)
 
 df["A"].fillna(value=df["A"].mean(), inplace=True)
 
--------------------- -> 6. GroupBy
+
+
+------------------> 6. GroupBy
+
+
 
 GroupBy allows us to group together rows, based off of a column and perform an aggregate function on them(Sum, Standard Deviation, etc)
 
@@ -455,7 +519,10 @@ df.groupby().describe().transpose()["G2"]       --->
 -------------------- -> 7. Concatenating, Merging and Joining  DataFrames
 
 
----------> Concatenating DataFrames
+
+----------------> Concatenating DataFrames
+
+
 
 NOTE - Both of the DataFrames should have the same dimensions
 
@@ -501,7 +568,11 @@ print(pd.concat([df1, df2, df3], axis = 0))
 
 Note - We can concat them Vertically(axis = 0) or Horizontally(axis = 1)
 
----------> Merging DataFrames
+
+
+---------------------> Merging DataFrames
+
+
 
 NOTE -  We use Merge when we have a Common Column. 
         We can have multiple Common Columns
@@ -530,7 +601,10 @@ print(pd.merge(df1, df2, how="inner", on=["key1", key2]))
 Use this if we have mutiple key columns
 
 
----------> Joining DataFrames
+
+--------------------> Joining DataFrames
+           
+           
                         
 Its a method for combining the columns of 2 "Different Indexed" DataFrames into 1 DataFrame                     
                         
@@ -539,8 +613,11 @@ Same as Merge but we use Index Columns instead of Keys Columns
                         
 df1.join(df2)                       
                         
+           
                         
 -------------------- -> 8. Operations                       
+           
+           
                         
 import pandas as pd                     
 df = pd.DataFrame({'col1':[1,2,3,4],'col2':[444,555,666,444],'col3':['abc','def','ghi','xyz']})
@@ -571,7 +648,11 @@ df.sort_values("col1")      ---> Sorts Values of the Column
 
 df.isnull()                 ---> Returns a DF with Bool for Cell Items whether NAN or not
 
---------------> Pivot Table 
+
+
+---------------------> Pivot Table 
+
+
 
 Creating a MultiIndex Table out of the DataFrame
 
@@ -582,7 +663,10 @@ print(df)
 print(df.pivot_table(values = ["col3"], index=["col2"], columns=["col1"], aggfunc = "sum"))
 
 
+
 -------------------- -> 9. Data Input and output
+
+
 
 CSV 
 EXCEL
@@ -595,8 +679,7 @@ pd.rea
 
 
 
-
-------------------------->  Python for Data Visualization - Matplotlib <----------------------------------------
+------------------------------------>  Python for Data Visualization - Matplotlib <----------------------------------------
 
 
 
@@ -614,8 +697,12 @@ plt.show()                      ---> Draws the Plot in VSCode
 
 x = np.linspace(0, 5, 110)
 y = x ** 2
+
+
  
--------------------> 2 ways of Creating Matplotlibb Plots
+----------------> 2 ways of Creating Matplotlibb Plots
+
+
 
 1. Functional Method              ---> This is simple way of plotting
 
@@ -693,3 +780,58 @@ axes.plot(x,x**2)
 
 
 #%%
+
+
+
+------------------------------------>  Python for Data Visualization - Seaborn <----------------------------------------
+
+
+
+------------------------------------>  Python for Data Visualization - Pandas Builtin Data Visualization <----------------------------------------
+
+
+
+------------------------------------>  Python for Data Visualization - Plotly & Cufflinks <----------------------------------------
+
+
+
+------------------------------------>  Python for Data Visualization - Geographical Plotting <----------------------------------------
+
+
+
+------------------------------------>  Introduction to Machine Learning <----------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
