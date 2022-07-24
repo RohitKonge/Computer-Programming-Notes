@@ -125,15 +125,7 @@
 
 25. Introduction to GUI (Graphical User Interface)
 
-
-  
-  
-  
-  
-  
-  
-  
-  
+    
 
   ------------------------------------------------------->  Python  <--------------------------------------------------------------
     
@@ -1454,7 +1446,7 @@ f.close
         finally:
             "sadsdf"
 
-    NOTE - If you get an error as " object is not Callable"
+    NOTE - If you get an error as " object is not Callable" remove the parentheses
 
 Eg. img.filename()          ---> Gives an error as  -> 'str' object is not callable
     img.filename            ---> Then remove the parentheses , this will work
@@ -1464,6 +1456,54 @@ Eg. img.filename()          ---> Gives an error as  -> 'str' object is not calla
     print("asdasf")         ---> This will give the error "Unexpected Indent"
     
 print("asdasf")             ---> This is the correct Indentation
+
+
+
+Types of Error (NASTIIIIKAM)
+
+
+
+1. NameError
+    1. Misspelt variable, function, method name
+    2. Did not define variable, function and still calling it
+    3. Calling variable outside its scop3
+    4. Forgot to put quotes in print statement
+
+2. Attribute Error
+    Calling a method on the wrong type of object
+
+3. Syntax Error
+    1. Forgot quotes around a string
+    2. Forgot a colon(:) at the end of def, if, for
+    3. Maybe different number of open and close bracket in a statement
+    Syntax is wrong somewhere
+
+4. TypeError
+    1. Using an operator on the wrong type of object
+    2. Expecting an object to have a value but is acutally None
+    3. Used Non-integer Number in a list slice
+    4. Called a function/method with wrong number of arguments
+
+5. Indentation Error
+    1. Did wrong indentation 
+
+6. IOError
+    1. Trying to open a file that doesnt exist
+    
+7. Index Error
+    1.When the wrong index of a list is retrieved.
+    
+8. ImportError	
+    1. It occurs when an imported module is not found.
+
+9. KeyError
+    1. Trying for a 'key' that doesnt exist
+
+10. AssertionError	
+    1. It occurs when the assert statement fails
+
+11. MemoryError	
+    1. It occurs when a program runs out of memory.
 
 
 
