@@ -3,12 +3,145 @@
   
   
   
+1.  Python
+
+2.  Advanced Numbers
+    
+3.  Global & Local & NON-Local Statement - global name[,name]*
+
+4.  Assignment Statements (*X and **X) 
+
+        3 Places to use *X and **X
+        
+5.  Strings
+        Formatting a String
+        Slicing
+        Advanced Strings
+        
+6.  Lists
+        Slicing
+        LIST Comprehension
+        Advanced Lists (Also true for all Mutable Data Structures)
+
+7.  Dictionaries (Key Value Pairs)
+        Dictionary Comprehension 
+        Iterating through Dictionaries
+
+8.  Tuples
+
+9.  Set
+        Set Comprehension 
+        Advanced Sets
+
+10. Syntax of Comprehensions 
+
+11. Useful Statements
+        if and elif
+        for loop
+        while loop 
+        range()
+
+12. Functions
+        5 Types of Arguments
+        Function Annotations
+        Execute/Call a function
+
+13. Class (Methods, Attributes/Characteristics, Instance)
+        how to make a class
+        'Self' argument
+        Class/Intance Attribute
+        type/isintance
+
+14. INHERITANCE, POLYMORPHISM, ABSTRACT CLASSES, DUNDER CLASSES
+        class IceCream(Dessert, Cake) :
+        super() keyword
+
+        Polymorphism means the condition of occuring in several different forms
+
+        We NEVER EXPECT to create an instance of the abstract class and it is designed to only 
+        serve as a BASE CLASS
+
+        begin and end with double underscores
+        override the builtin functions
+
+15. Python DECORATORS (Advanced topic) -
+        to add new capabilities to our function
+
+        Multiple Decorators
+
+16. Python GENERATORS (Advanced topic) (YIELD, NEXT, ITER)
+        'yield' statement 
+
+        NEXT FUNCTION
+
+        ITER FUNCTION
+
+17. Advanced Python Packages and Modules
+        Collections Package
+        Modules:
+        Counter
+        defaultdict
+        namedtuple
+
+        Opening, Reading, Files&Folder via OS Module
+
+        Math & Random Module
+
+        Python Regular Expressions 1,2,3
+
+        Timing Your Python Code
+
+        Unzipping & Zipping Files
+
+18. Error Handling & Types of Error
+
+19. Modules and Packages
+
+20. Pylint and Unittest (Testing tools) 
+
+21. WebScrapping with Python
+        Intro to Web Scraping
+        Setting up web Scraping
+        Grabbing the Title
+        Grabbing All Elements of a Class
+        Grabbing an Image 
+        Working with Multiple Pages and Items 
+
+22. Working with Images with Python 
+        Use Pillow
+        Cropping Images
+        Color tranparency
+
+23. Working withWorking with CSV Files
+        Step for a typical CSV files
+        Writing to a CSV File
+        PDFs and CSV files in Python
+
+24. Emails with Python
+
+        Steps to send Emails with Python
+        Set up app password on Google 
+        Steps for Recieved Email with Python
+
+25. Introduction to GUI (Graphical User Interface)
+
+
+  
+  
+  
+  
+  
+  
+  
   
 
   ------------------------------------------------------->  Python  <--------------------------------------------------------------
     
+    
+    
     Everything in Python is an object
 
+    
       
     type(    )              --> give info about the data type of the object()
     pass                    --> passes the function or class without doing anything and without throwing an error
@@ -36,28 +169,39 @@
            &   , |  are used for a Series Bool Comparisions
            
      
+     
         list(map(lambda arguments : expression , sequ))
     eg. list(map(lambda x:x**3, [1,2,3,4]))
 
+     
         
         list(filter(lambda arguments : expression , sequ))
     eg. list(filter(lambda x:x**3 >= 8, [1,2,3,4]))
 
 
+
     print(list(map(lambda x:x**3, [1,2,3,4])))          --> Use of lambda Expression
+
+
 
     L = lambda((a, b=2, *c, **d): [a, b, c, d])
     print(L(1, 2, 3, 4, x=1, y=2))
     [1, 2, (3, 4), {'y': 2, 'x': 1}] 
     
+
     
     NOTE - Always use the backward slash when typing the Path of file/folder/image .etc 
+
+
 
 Eg. Python/roosevelt.jpg            ----> This is correct
     Python\roosevelt.jpg            ----> This is wrong
            
            
+           
 ------------------------------------------------------> Advanced Numbers  <--------------------------------------------------------------
+
+
 
 hex(number)     --> Hexadecimal form of a Number  -->   0x200  = 512    --> (16^2)*2 + (16^1)*0 + (16^0)*0
 bin(number)     --> Binary      form of a Number  -->   0b1011 = 11
@@ -76,9 +220,14 @@ round(3.9)  == 4
 Python also has a Math library
 
 
+
 ----------------------------------->  Global & Local & NON-Local Statement - global name[,name]*  <--------------------------------------
 
+
+
     LEGB - Local, Enclosing Functions, Global, Builtin Function (The way of python defining Scope)
+
+
 
     1. Global       - Any variable declared OUTSIDE of class/function and it is global by default
        Local        - Any variable declared INSIDE  of class/function
@@ -86,6 +235,7 @@ Python also has a Math library
     
     2. We use global keyword INSIDE a class/function to declare it as a  GLOBAL variable
     
+
     
 x = "global"
 
@@ -97,7 +247,11 @@ def foo():
 
 foo()
 
+
+
 ----------------
+
+
 
 def outer():
     x = "local"
@@ -117,8 +271,11 @@ outer()
 inner: nonlocal
 outer: nonlocal
    
+   
 
-----------------------------------------------------> Assignment Statements  <---------------------------------------------------------------
+----------------------------------------------------> Assignment Statements (*X and **X)  <---------------------------------------------------------------
+
+
 
 NOTE -  Unpacking List, Dicts, Tuples, Sets just means that the bracket will be removed and the elements will be given out
 Eg. 
@@ -135,6 +292,7 @@ for (a, b, c) in [[1, 2, 3], [4, 5, 6]]:
     print(a, b, c)
     
 
+
 *X and **X syntax appear in 3 places: 
     
     1.Extended Assignment/Assignment statements, where a *X collects unmatched items in sequence assignments
@@ -149,7 +307,7 @@ for (a, b, c) in [[1, 2, 3], [4, 5, 6]]:
         
     2.Function headers, where the two forms collect unmatched positional, keyword arguments
         
-        f(*pargs, **kargs)      pargs --> positional arguments, kargs ---> keyword arguments
+        f(*pargs, **kwargs)      pargs --> positional arguments, kwargs ---> keyword arguments
 
         def f(a, b, c, d): print(a, b, c, d)
         f(*[1, 2], **dict(c=3, d=4))     
@@ -166,17 +324,26 @@ for (a, b, c) in [[1, 2, 3], [4, 5, 6]]:
     b = [*a] = a.copy()
     print(b)
 
+
+
 ---------------------------------------------------------------> Strings <---------------------------------------------------------------
 
+
+
 -------> Formatting a String
+
+
 
     num  =12
     name = Rohit 
     'my number is {} and name is{}'.format(num,name)
    f'my number is {num} and name is {name}'
+
     
         
 --------> Slicing     s[includes this : doesnt not includes this]
+
+
 
     s = 'hello'
     s[0] will give 'h'
@@ -186,7 +353,11 @@ for (a, b, c) in [[1, 2, 3], [4, 5, 6]]:
     s[::-1]         Sequence is reverse
     s[4:1:-1]       From 4 to 2 but not including 1
 
+
+
 --------> Advanced Strings
+
+
 
 s = "hello world"
 
@@ -226,14 +397,21 @@ NOTE -  The difference between split and partition - In SPLI the input does not 
         but in PARTITION we do get the input in the list.
 
     
+    
 -----------------------------------------------------------------> Lists <---------------------------------------------------------------
+ 
+ 
  
     my_list = [1,2,3,4]   
     my_list = []            --> Creates an empty list
     my_list = list((1,2))
     my_list[0]              --> 1
     
---------------> Slicing
+    
+    
+----------------> Slicing
+
+
 
         for i in my_list[1:]:
             This will iterate from index 1 to the end
@@ -244,12 +422,20 @@ NOTE -  The difference between split and partition - In SPLI the input does not 
     my_list.append([5,6])   --> [1,2,3,4,[5,6]]
     my_list.extend([5,6])   --> [1,2,3,4,5,6]
     
+    
+    
 ---------------> LIST Comprehension
+    
+    
        
     out = [num**2 for num in my_list]   
     m_list_two = [x + y for x in range(3) for y in [10, 20, 30]]
     
------> Advanced Lists (Also true for all Mutable Data Structures)
+    
+    
+---------------> Advanced Lists (Also true for all Mutable Data Structures)
+
+
 
 l = [1,2,3]
 
@@ -277,9 +463,16 @@ l.sort()                ---> Sorts the list
 
 -----------------------------------------------------> Dictionaries (Key Value Pairs)  <-----------------------------------------------
 
+
+
     d = {'key1':'value', 'key2': 123}
 
----> Dictionary Comprehension 
+
+
+----------------------> Dictionary Comprehension 
+
+
+
     d = {x: x * x for x in range(10)}
     
     d[19] = 11111
@@ -321,13 +514,19 @@ l.sort()                ---> Sorts the list
                                             default if given, or raises KeyError if no default.
 
 
-----> Iterating through Dictionaries
+
+-----------------------> Iterating through Dictionaries
+
+
 
 for k in a.items() / a.keys() / a.values() :
     print(k)
 
 
+
 --------------------------------------------------------->  Tuples    <----------------------------------------------------------------
+
+
 
     my_tuple = (1,2,3)
     my_tuple = tuple('spam')
@@ -335,7 +534,11 @@ for k in a.items() / a.keys() / a.values() :
     my_tuple.index(2)               ---> Returns the index of '2'
     my_tuple.count(2)               ---> Returns the number of times '2' occurs in the Tuple    
 
+
+
 ------------------------------------------------------------> Set <------------------------------------------------------------------
+
+
 
     Sets of Python are Ordered
     
@@ -347,11 +550,17 @@ for k in a.items() / a.keys() / a.values() :
     set([1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,3,3,3])
     {1,2,3}
     
-    Set Comprehension -->
+--------------------> Set Comprehension 
+
+
     
     s =  {ord(c) for c in 'spam'}
 
-------------------> Advanced Sets
+
+
+--------------------> Advanced Sets
+
+
 
 Sets are Mutable
 
@@ -394,6 +603,8 @@ s.update(s_new)                 ---> Returns s as a new set which have union of 
     
 -------------------------------------------------------> Syntax of Comprehensions  <-----------------------------------------------------
 
+
+
     yield X                         Generator function result (returns send() value)
     lambda args1: X                 Anonymous function maker (returns X when called)
     
@@ -417,9 +628,12 @@ s.update(s_new)                 ---> Returns s as a new set which have union of 
     X // Y                          floor division, returns an integer
     
 
+
 -------------------------------------------------------> Useful Statements  <-----------------------------------------------------
+
+
     
----------> if and elif
+----------------------> if and elif
 
     if 1<2:
         print("hello")
@@ -429,7 +643,7 @@ s.update(s_new)                 ---> Returns s as a new set which have union of 
         print("jump")
     
     
---------> for loop
+---------------------> for loop
 
     seq = [1,2,3,4,5]
 
@@ -443,7 +657,7 @@ s.update(s_new)                 ---> Returns s as a new set which have union of 
     for a,b in x:
         print(a,b)
     
----------> while loop 
+---------------------> while loop 
 
     i = 1
     
@@ -451,15 +665,19 @@ s.update(s_new)                 ---> Returns s as a new set which have union of 
         print('i is {}'.format(i))
         i = i + 1;
         
-----------> range()
+--------------------> range()
 
     range(2,8)
     --> 2,3,4,5,6,7
     
     for x  in range(10):
         print(x)
+        
+        
 
 -------------------------------------------------------->  Functions  <-----------------------------------------------------------
+
+
 
     Methods  - Fucntions that are defined in a Class are called Methods
     
@@ -481,7 +699,10 @@ s.update(s_new)                 ---> Returns s as a new set which have union of 
             ALWAYS NON-DEFAULT ARGUMENTS AND THEN DEFAULT ARGUMENTS
             
             
+            
 -----------------> Function Annotations
+    
+    
     
     Used to collect information about the type of the parameters and 
     the return type of the function to keep track of the type change occurring in the function
@@ -556,6 +777,7 @@ example("1", "2", "3", arg4 = "4", arg5 = ["5", "55", 555], arg7 = {"for_7":"7",
             return(sum**2)
 
         my_func(6)
+
 
 
 ----------------------------------------> Class (Methods, Attributes/Characteristics, Instance)  <----------------------------------------
@@ -900,6 +1122,7 @@ print(next(s))
 -------------------------------------->    Advanced Python Packages and Modules   <--------------------------------------------------------
 
 
+
 ----------------> from collections import Counter
 
 print(Counter('sadfsdfsdfsdf'))  #--> Returns a dictionary 
@@ -927,10 +1150,15 @@ NAMEDTUPLE expand over TUPLE by having 'Named Indicies'
 
 namedtuple has a numeric connection as well as Named index connection
 
+from collections import namedtuple
+
 Dog = namedtuple('Dog1', ['name', 'age'])
 
 my_dog = Dog("sam", 12)
 
+print(my_dog)
+
+Dog1(name='sam', age=12)
 
 ----------------------> Opening and Reading, Files and Folders using Python OS Modules
 
@@ -1143,11 +1371,17 @@ print(re.search(r"cat(fish|nap|terpillar)", txt1))
 
 -----------------------------------------------> Timing your Python code
 
+
+
 To check which Solution for a question is the fastest we use this
 
 import timeit
 
+
+
 3 ways of doing it 
+
+
 
 1. Tracking the time elapsed 
 
@@ -1158,6 +1392,7 @@ result      = func(1000000)             ---> this function gets repeated
 end_time    = time.time()
 
 elapsed_time = end_time - start_time
+
 
 
 2. Timeit Module                ---> The most efficient Way
@@ -1173,6 +1408,7 @@ here,   stmt(Statement) = code we actually wanna test                       = Fu
 stmt and setup are passed as strings
 
 
+
 3. %%timeit    which works only on Jupyter Notebook
 
 %%timeit
@@ -1181,6 +1417,7 @@ func_one(100)
 
 
 -----------------------------> Unzipping and Zipping Files
+
 
 
 Ziped File is just a Bunch of Files Compressed into a .zip File
@@ -1194,7 +1431,10 @@ f.write("qwerqasdsadfasdwer")
 f.close
 
 
+
 -------------------------------------------> Error Handling & Types of Error  <---------------------------------------------------------
+
+
 
 3 Keywords:
     1) try - block of code to be executed, may lead to Error
@@ -1229,7 +1469,11 @@ print("asdasf")             ---> This is the correct Indentation
 
 --------------------------------------------> Pypi and pip install   <--------------------------------------------------------------------
 
+
+
 ----------------------------------------------> Modules and Packages   <----------------------------------------------------------------
+
+
  
 Modules are .py scripts and Packages are a collection of Modules
  
@@ -1239,8 +1483,12 @@ if __name__ == "__main__":
     #tells if the .py file is called directly or imported
     true == directly
     false == imported
+
+
   
 ---------------------------------------> Pylint and Unittest (Testing tools)  <------------------------------------------------------
+
+
 
     Pylint - lib that looks at the code and reports possible issues
     
@@ -1250,31 +1498,45 @@ if __name__ == "__main__":
     
     import unittest as ut
     
+
     
 -----------------------------------------------> WebScrapping with Python  <----------------------------------------------------------
 
 
---> Intro to Web Scraping
+
+------------------------> Intro to Web Scraping
+
+
 
 Automating the gathering of data from a website is called WEB SCRAPING 
 
 DATA includes images or information 
 
+
+
 3 important Things to keep in Mind:
+
+
 
 1. Rules of web Scraping
     - Always get permission 
     - Too many scraping requests will block your IP Address
     - Sometimes sites automatically block scraping software
 
+
+
 2. Limitation of Web Scraping
     - Every Website is unique so we Need unique Web Scraping Scripts for everyone 
     - Slight Change/Update to a website will break your Web Scraping Code
 
+
+
 3. Basic HTML & CSS 
 
 
---> Setting up web Scraping
+------------------------> Setting up web Scraping
+
+
 
 pip install requests  ---  Allows us to make a request to a website and then grab the info off of it. 
 
@@ -1283,7 +1545,10 @@ pip install lxml      --- Used by BeautifulSoup to decipher whats inside the req
 pip install bs4       --- BeautifulSoup
 
 
---> Grabbing the Title
+
+------------------------> Grabbing the Title
+
+
 
 import requests
 
@@ -1305,7 +1570,9 @@ for item in a:
     print(item.getText())
 
 
---> Grabbing All Elements of a Class
+
+--------------------------> Grabbing All Elements of a Class
+
 
 
 A big part of web scraping is knowing what string syntax to pass in to the soup.select(" ") method
@@ -1327,7 +1594,9 @@ A big part of web scraping is knowing what string syntax to pass in to the soup.
 
 
 
---> Grabbing an Image 
+--------------------------> Grabbing an Image 
+
+
 
 Images have their own Link ending with .jpg or .png
 
@@ -1356,7 +1625,9 @@ f.write(imglink.content)
 f.close()
 
 
---> Working with Multiple Pages and Items 
+
+----------------------------> Working with Multiple Pages and Items 
+
 
 
 We want to grab multiple elements, most likely across multiple pages.
@@ -1392,8 +1663,8 @@ Note -  i.select("asd").text     will print the string
 
 
 
-
 ----------------------------------------------> Working with Images with Python  <--------------------------------------------------------
+
 
 
 We will use PILLOW to work with images
@@ -1423,7 +1694,11 @@ img.size()
 img.format_description()
 img.filename
 
---> Cropping Images
+
+
+----------------------------> Cropping Images
+
+
 
 Here the co-ordinates start from the Top-Left corner and they are all co-ordinates from the origin(i.e (0,0)) and not lengths 
 
@@ -1440,7 +1715,9 @@ img.resize((300,400))       --> Changes the Size of the Image
 im.rotate(90)               ---> Rotates the Image by 90 degree
 
 
---> Color tranparency
+--------------------------> Color tranparency
+
+
 
 img.putalpha(Value)    ---> Changes the Transpanrency, 0 <= Value <= 255
 
@@ -1448,12 +1725,13 @@ img.save("purple.png")    ---> This saves the image and if it already exists , i
 
 
 
-
-
 -------------------------------------------------> Working with PDFs and CSV files in Python  <-------------------------------------------
 
 
-----> Working with CSV Files
+
+--------------------------> Working with CSV Files
+
+
 
 - top sentence contains the names of the columns
 
@@ -1471,6 +1749,8 @@ img.save("purple.png")    ---> This saves the image and if it already exists , i
      
 
 Step for a typical CSV files
+
+
 
 1. Open the file
 2. CSV. Reader
@@ -1510,7 +1790,9 @@ for i in data_line[1:3]:
 
 
 
---> Writing to a CSV File
+----------------------------> Writing to a CSV File
+
+
 
 import csv
 
@@ -1528,7 +1810,8 @@ file_to_output.close()
      
      
      
---> Working with PDF Files in Python
+----------------------------> Working with PDF Files in Python
+
 
 
 - We will use PYPDF2 library
@@ -1567,11 +1850,15 @@ pdf_output = open("Python/SomePdf.pdf","wb")
 pdf_writer.write(pdf_output)
 f.close
      
+
      
 ------------------------------------------------------------> Emails with Python  <------------------------------------------------------
     
 
------> Steps to send Emails with Python
+
+--------------------------> Steps to send Emails with Python
+
+
 
 1. Connecting to an Email Server
 2. Confirming Connection
@@ -1598,7 +1885,11 @@ email    = getpass.getpass("Enter Email : ")
 password = getpass.getpass("Enter Password : ")
 smtp.login(email, password)
 
---> Set up app password on Google 
+
+
+----------------------------> Set up app password on Google 
+
+
 
 from_addr = email
 to_addrs = email
@@ -1613,7 +1904,9 @@ smtp.quit()    ----  this will close the connection
      
      
      
------> Steps for Recieved Email with Python
+----------------------------> Steps for Recieved Email with Python
+
+
 
 import imaplib
 
@@ -1626,6 +1919,8 @@ password = getpass.getpass("Password : ")
 imap.login(email, password)
 
 imap.login("rohitkonge08@gmail.com", "thepasswordisincorrect")
+
+
 
 ---------------------- Introduction to GUI (Graphical User Interface) --------------------------
 

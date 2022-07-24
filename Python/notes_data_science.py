@@ -803,24 +803,58 @@ axes.plot(x,x**2)
 
 
 
+---------------------> Supervised Learning Algorithms
 
 
 
+Trained Labeled examples, i.e An Input where the desired OutPut is known
+
+Eg. 
+
+1. Spam vs Legitimate Emails       ------>  Someone went through the emails and we know the spams and the legitimate one
+                                            so the program looks at the previous data and predicts the new one as spam/legitimate
+                                            
+2. Positive vs Negative Movie Reviews
+
+The Algo get Inputs and Outputs, learns from it and then compare its outputs to the 'real outputs' to find error.
+It then modifies the model.
+
+
+Machine Learning Process :
+    
+                                            --->        Test Data
+                                           | 
+    Data Acquisition    ---> DataCleaning  ---> Model Training and Building ---> Model Testing ---> Model Deployment
+
+
+                                                        Adjust Model Parameters                                             
+
+
+To make the model more accurate we split the data into 3 sets
+
+1. Training Data    ---> Used to Train Model Parameters.
+
+2. Validation Data  ---> Used to Know which Parameters to Adjust.
+
+3. Test Data        ---> Used to get final Parameter Metric, this is the data the model has never seen before.
+                         This is how the model will work in the real world and we are not allowed to make anymore changes.
+                         It will the true performance of the model on UNSEEN DATA.
 
 
 
+---------------------> Evaluating performance
 
+Classication Metric to Judge out Model (ARPF):
+    
+1. Accuracy
+2. Recall
+3. Precision
+4. F1-Score
 
+Binary Classification - eg. Predict if the Image is a Dog/Cat
 
-
-
-
-
-
-
-
-
-
+For Supervised Learning we FIT/TRAIN the model on TRAINING DATA and then TEST the model on TESTING Data. 
+And then we compare the models prediction to the actual values
 
 
 
