@@ -838,27 +838,133 @@ To make the model more accurate we split the data into 3 sets
 
 3. Test Data        ---> Used to get final Parameter Metric, this is the data the model has never seen before.
                          This is how the model will work in the real world and we are not allowed to make anymore changes.
-                         It will the true performance of the model on UNSEEN DATA.
+                         It will be the true performance of the model on UNSEEN DATA.
 
 
 
 ---------------------> Evaluating performance
 
-Classication Metric to Judge out Model (ARPF):
-    
-1. Accuracy
-2. Recall
-3. Precision
-4. F1-Score
+
 
 Binary Classification - eg. Predict if the Image is a Dog/Cat
 
 For Supervised Learning we FIT/TRAIN the model on TRAINING DATA and then TEST the model on TESTING Data. 
 And then we compare the models prediction to the actual values
 
+We organize the PREDICTED VALUES vs REAL VALUES in a CONFUSION MATRIX
 
 
 
+Classication Metric to Judge our Model (ARPF):
+    
+    
+    
+1. Accuracy :
+    
+    
+    
+    Total Number of Correct Predictions/ Total Number of Predictions
+
+    Well Balanced Target Classes --->   Number of Images of Dog  ~= Number of Images of Cats
+                                        51 Dog Images ~= 49 Cat images
+                                        
+    Un - Balanced Target Classes --->   Number of Images of Dog  >>> Number of Images of Cats
+                                        99 Dog Images >>> 1 Cat images
+                                        
+    In the UnBalanced Target Class we will get 99% Accuracy which wont work in the actual world
+
+
+
+2. Recall (Identification of 'Malignant Tumor') (Here we give only the 'Malignant Tumor' Images)
+
+    
+
+    What Proportion of Actual Positive(Ground Truth) was identified correctly?
+    
+    Recall =                   True Positive                   =                     Correct Identification
+                --------------------------------------------         -------------------------------------------------------
+                       True Positive + False Negative                     Correct Identification + Wrong Identification
+                       
+                       
+            Correct Identification = True Positive
+            Wrong Identification   = False Negative
+
+
+    Is it really able to recall what the 'Malignant Tumor' looks like?
+    
+    Eg. For a 'Malignant Tumor' identification if Recall = 0.11 then we can say that 
+        the Model Correctly identifies 11% of all 'Malignant Tumor' 
+        
+        NOTE -  We give all the 'Malignant Tumor' images and then the model identifies if it is a 'Malignant Tumor'
+                So, either it will say it is 'Malignant Tumor' and in reality it is 'Malignant Tumor', so it is TRUE POSITIVE
+                or it will say it is not 'Malignant Tumor' and in reality it is 'Malignant Tumor', so it is FALSE NEGATIVE
+                
+                
+                
+3. Precision (Picking out 'Malignant Tumor' out of all the Tumors) (Here we give the Images of all Tumors)
+
+
+
+    What proportion of positive identifications was actually correct?
+
+    Precision =            True Positive                   =               Correct Answer
+                ---------------------------------------         --------------------------------------
+                    True Positive + False Positive                   Correct Answer + Wrong Answer
+                       
+                       
+            Correct Answer = True Positive
+            Wrong Answer   = False Positive
+
+
+    Is it able to pick 'Malignant Tumor' out of all the 'Tumor' Images
+    
+    Eg. If the Precision for picking 'Malignant Tumor' = 0.4 then we can say that the model correctly picks 'Malignant Tumor' 40% of the Time
+
+    NOTE -  We give the images of all 'Tumors' and the model picks 'Malignant Tumor' out of them so either it will be 'Malignant Tumor' or NOT
+            So, either it will be say it is 'Malignant Tumor' and in reality it is 'Malignant Tumor', so it is TRUE POSITIVE
+            or it will say its is 'Malignant Tumor' and in realtiy is not 'Malignant Tumor', then it is FALSE POSITIVE
+
+
+
+------------------------------------------------------------------------
+
+
+
+NOTE -  There is a Tug of War between RECALL and PRECISION i.e
+        If we increase Precision , then Recall Decreases
+        & If we increase Recall, then Precision Decreases
+
+
+
+------------------------------------------------------------------------
+
+
+
+4. F1-Score
+
+
+
+    F1 Score is the Harmonic Mean of Recall and Precision
+
+
+    
+    Harmonic Mean =      2 * A * B                 
+                    --------------------      
+                           A + B
+
+
+
+    F1 =      2 * Recall * Precision                
+         --------------------------------       
+                Recall + Precision
+
+
+                
+    We use Harmonic Mean cause it helps us deal with extreme values
+    
+    Eg. for Precision  = 1.0 and Recall =  0.0
+    
+    we have Harmonic Mean == 0 and Average  == 0.5
 
 
 

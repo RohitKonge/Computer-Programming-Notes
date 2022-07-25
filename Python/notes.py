@@ -94,6 +94,15 @@
         Unzipping & Zipping Files
 
 18. Error Handling & Types of Error
+        4 Keywords:
+            1. try
+            2. except
+            3. finally
+            4. else      
+            
+            
+        (NASTIIIIKAM)
+        
 
 19. Modules and Packages
 
@@ -112,7 +121,7 @@
         Cropping Images
         Color tranparency
 
-23. Working withWorking with CSV Files
+23. Working with CSV Files
         Step for a typical CSV files
         Writing to a CSV File
         PDFs and CSV files in Python
@@ -149,9 +158,12 @@
         a = 22
         print(hex(id(22)))
         
+    floor division          --> 15//4 = (3.75) which will be floored down to (3)
+                            --> 14//4 = (3.50) which will be floored down to (3)
+    
     list(enumerate([55,667,7]))
     [(0, 55), (1, 667), (2, 7)]
-    
+    print(14//4)
     all(iterable)/any(iterable)  --> Returns true if all/any elements of the iterable return true
 
     NOTE - List/Dictionary/Sets are Mutable , Tuples/Strings are Immutable
@@ -360,6 +372,7 @@ s.upper()       ---> Capitalizes the whole word
 s.lower()       ---> Lowers the whole word
 s.count("o")    ---> Counts the total number of 'o'
 s.find("o")     ---> Finds the 1st index of the occurence of 'o'
+s.replace(A, B) ---> A = Value which we want to replace , B = Value which we will replace with
 
 s.isalnum()     Alphanumeric    ---> These are usful when using
 s.isalpha()     Alphabetic           for NLP(Natural Language Processing)
@@ -382,6 +395,11 @@ s.split("o")                ---> Returns a list with the string being separated 
 s.partition("ll")           --->    Returns a list with the input, the part before and after it 
                                     i.e it will have 3 elements in the list
 ('he', 'll', 'o world')
+
+s.strip()
+s.trim()
+
+
 
 \t              ---> tab 
 
@@ -1432,7 +1450,7 @@ f.close
     1) try - block of code to be executed, may lead to Error
     2) except - block of code to be executed, if there is error in try block
     3) finally - block of code to be executed, regardless of error
-    4) else - with no error it will execute
+    4) else   -->   with no error it will execute
     
     while TRUE:
         try:
