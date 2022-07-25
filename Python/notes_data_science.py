@@ -803,6 +803,10 @@ axes.plot(x,x**2)
 
 
 
+Domain Knowledge Plays a Very Important Role in Machine Learning
+
+
+
 ---------------------> Supervised Learning Algorithms
 
 
@@ -842,7 +846,7 @@ To make the model more accurate we split the data into 3 sets
 
 
 
----------------------> Evaluating performance
+---------------------> Evaluating performance - Classification Error Metrics
 
 
 
@@ -855,15 +859,19 @@ We organize the PREDICTED VALUES vs REAL VALUES in a CONFUSION MATRIX
 
 
 
-Classication Metric to Judge our Model (ARPF):
+------------> Classication Metric to Judge our Model (ARPF):
     
     
     
-1. Accuracy :
+1. Accuracy :   <--------------------------------------------
     
     
     
-    Total Number of Correct Predictions/ Total Number of Predictions
+    Accuracy ==         Total Number of Correct Predictions
+                    --------------------------------------------
+                            Total Number of Predictions
+                            
+                            
 
     Well Balanced Target Classes --->   Number of Images of Dog  ~= Number of Images of Cats
                                         51 Dog Images ~= 49 Cat images
@@ -875,7 +883,7 @@ Classication Metric to Judge our Model (ARPF):
 
 
 
-2. Recall (Identification of 'Malignant Tumor') (Here we give only the 'Malignant Tumor' Images)
+2. Recall (Identification of 'Malignant Tumor') (Here we give only the 'Malignant Tumor' Images)  <-------------------------------------
 
     
 
@@ -901,7 +909,7 @@ Classication Metric to Judge our Model (ARPF):
                 
                 
                 
-3. Precision (Picking out 'Malignant Tumor' out of all the Tumors) (Here we give the Images of all Tumors)
+3. Precision (Picking out 'Malignant Tumor' out of all the Tumors) (Here we give the Images of all Tumors)  <-------------------------------------------
 
 
 
@@ -940,7 +948,7 @@ NOTE -  There is a Tug of War between RECALL and PRECISION i.e
 
 
 
-4. F1-Score
+4. F1-Score   <------------------------------------------
 
 
 
@@ -967,6 +975,89 @@ NOTE -  There is a Tug of War between RECALL and PRECISION i.e
     we have Harmonic Mean == 0 and Average  == 0.5
 
 
+--------------> Confusion matrix
+
+                            Prediction Positive         Prediction Negative
+
+Condition Positive          True  Positive              False Negative
+
+Condition Negative          False Positive              True  Negative
+
+
+
+---------------------> Evaluating performance - Regression Error Metrics
+ 
+
+
+Regression is a Task when a Model trys to predict continuous Values
+(Classification is prediction of Categorical Values) 
+
+Eg. Predict the price of a house given its features is a 'Regression Task'
+
+
+
+--------------------->  Evaluation Metric for Regression (MMR) :
+    
+    
+    
+1. Mean Absolute Error
+
+
+
+Summation (i = 1, n)  |y(i) - y^(i)|
+                    ------------------
+                            n
+
+
+y(i)            --->    Actual Value
+y^(i) [y cap]   --->    Predicted Value by the model
+n               --->    No. of Elements in the data
+
+
+Mean Absolute Error does not punish large error
+
+NOTE - Here Large Errors can create trouble so we have to use 'MEAN SQUARED ERROR'
+
+
+
+2. Mean Squared Error
+
+
+
+It is the 'Mean' of the 'Squared Error'
+
+
+
+Summation (i = 1, n)  ( |y(i) - y^(i)| )**2
+                    -----------------------
+                               n
+
+
+Here Large Error are more noted than MAE
+
+NOTE : That Squaring of the Errors cause the squaring of the Actual Values as well
+
+        Eg. Squaring of the Dollars in the House Price prediction which is difficult to interpret
+
+
+
+3. Root Mean Square Error
+    
+    
+        (    Summation (i = 1, n)  ( |y(i) - y^(i)| )**2      )
+   SQRT (                        --------------------------   )
+        (                                    n                )
+
+
+y(i)            --->    Actual Value
+y^(i) [y cap]   --->    Predicted Value by the model
+n               --->    No. of Elements in the data
+
+
+
+NOTE :  It Punishes the Large Error Values and has the same values as y
+
+        To Get an Intuition of the Model Performance, Compare your 'ERROR METRIC' to the 'AVERAGE VALUE' in your data
 
 
 
