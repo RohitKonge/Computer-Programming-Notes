@@ -826,12 +826,19 @@ It then modifies the model.
 
 Machine Learning Process :
     
-                                            --->        Test Data
-                                           | 
+                                            -----------> Test Data ------------>-----
+                                           |                                         |
     Data Acquisition    ---> DataCleaning  ---> Model Training and Building ---> Model Testing ---> Model Deployment
+                                                    |                                |
+                                                    -<-- Adjust Model Parameters <---|                                            
 
 
-                                                        Adjust Model Parameters                                             
+
+1. We Acquire the data
+2. Clean that Data and format it so that the machine learning model can accept it
+3. Split the Data into Training Set, Validation Set, Test Set
+4. Iterate and Tune the Parameters of the Model until its ready to deploy
+
 
 
 To make the model more accurate we split the data into 3 sets
@@ -996,7 +1003,7 @@ Eg. Predict the price of a house given its features is a 'Regression Task'
 
 
 
---------------------->  Evaluation Metric for Regression (MMR) :
+----------------->  Evaluation Metric for Regression (MMR) :
     
     
     
@@ -1061,8 +1068,83 @@ NOTE :  It Punishes the Large Error Values and has the same values as y
 
 
 
+---------------------> Machine Learning with Python
 
 
 
+----------> Scikit learn
 
 
+
+Every model in ScikitLEarn is used via an 'Estimator'
+
+General Form of importing a Model :
+    
+    from sklearn.'family' import 'Model'
+    
+Eg. from sklearn.linear_model import LinearRegression
+
+    Here, 'linear_model'     is a family of models  
+          'LinearRegression' is an Estimator Object (i.e it has parameters which can be set when instantiated)
+           Estimator Object  is the Model itself
+
+
+Estimator Parameters : Params can be set when instantiated and have defult Values
+
+After creating the model with our parameters, we then fit it on a training model
+
+NOTE -  Remember to split the data in 'TRAINING SET' & 'TEST SET' 
+
+#%%
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+
+X,y = np.arange(10).reshape(5,2), range(5)
+
+print(X) 
+print(list(y))
+
+X_train, X_test, y_train, y_test = train_test_split(X,y,test_size= 0.3, shuffle=True)
+print(y_test)
+print(y_train)
+print(X_test)
+print(X_train)
+
+#%%
+
+
+
+NOTE - 'sklearn.cross_validation' has been deprecated and the new code is 'sklearn.model_selection'
+
+1. We fit/train our model on a training data by 'model.fit(X_train, y_train   )' method
+2. We predict values                         by 'model.predict(X_test)'          method
+3. We then compare the values with the "TEST DATA", here the evaluation method depends on the ALGORITHM used
+   eg. Regression, Classification, Clustering, etc
+
+
+
+For All Estimators :
+    model.fit()         : Fit training data
+    model.fit(X, y)     : For Supervised Learning
+    model.fit(X)        : For Un-Supervised Learning, since they are unlabeled data
+
+    
+
+For Supervised Estimators :
+    model.predict(X_new)    : For a trained model, it predicts the label for each object in the array
+    model.predict_proba()   : For Classification Problems some estimators provide this method.
+                              It return the Probability for each LABEL, label with highest probability is returned by model.predict()
+    model.score()           : Return value b/w 0-1, For Classication & Regression, larger value mean greater fit              
+
+
+
+For Un-Supervised Learning :
+    model.predict()         : Predicts Label For Clustering Algorithms
+    model.transform()       : Transform new data into new basis
+    model.fit_tranform()    : Efficiently performs fit and transform on the same input data
+
+
+
+------------------------------------>  Linear Regression <----------------------------------------
+    
