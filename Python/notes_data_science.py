@@ -192,6 +192,10 @@ Things to Learn :
 
 
 
+---------------------> Creating a Series
+
+
+
 import numpy as np, pandas as pd 
 
 list1 = ['a', 'b', 'c']
@@ -223,11 +227,18 @@ print(x[10])        # Will Print 'a'
 
 
 
+---------------------> (Adding Elements to a Series)   &   (Adding Series)
+
+
+
 # lets say S1 and S2 are 2 Series Then (S1 + S2) will Add the Label/Indexs and return NAN if the data is not found in anyone 
 # of them
 
 S1 = pd.Series(data= list1, index = list2)
 S2 = pd.Series(data= ['a', 'd', 'c'], index = [20,30,40])
+
+S1['40'] = 'qwer'                   # These will add the respective elements
+S2['50'] = 'asdf' 
 
 print(S1+S2)
 
@@ -235,6 +246,30 @@ print(S1+S2)
 20     ba
 30     cd
 40    NaN
+
+
+
+---------------------> Selecting Elements of a Series
+
+import pandas as pd
+S3 = pd.Series(data= ['a', 'd', 'c'], index = ['20','30','40'])
+
+print(S3)
+
+20    a
+30    d
+40    c
+
+print(S3['30':'40'])
+
+30    d
+40    c
+
+print(S3[0:])                       # Slicing can be done ONLY when all the indices are STRINGS
+
+20    a
+30    d
+40    c
 
 
 
@@ -259,7 +294,15 @@ NOTE -  In Series and DataFrames Integers are converted to Floats
 
 
 
------------> Creating DataFrame
+DataFrame acts in many ways 
+
+1.Like a two-dimensional or structured array,
+
+2.Like a dictionary of Series structures sharing the same index
+
+
+
+----------------------> Creating DataFrame
 
 
 
@@ -279,9 +322,12 @@ np.random.seed(101)     ---> We set a seed to get the same random nums across di
 
 To get INDEX & COLUMNS list:
     
-    df1.index                   ---> Returns a List
+    df1.index                   ---> Returns a List 
     df1.columns                 ---> Returns a List
-    
+
+WE can do anything just like the List
+
+
 
 ----------------------> Ways of Creating a DataFrame
 
@@ -321,7 +367,7 @@ To get INDEX & COLUMNS list:
     
 
 
-2. Using a Dictionary
+2. Using a Dictionary & and a Dictionary of Series
 
 
 
@@ -331,6 +377,24 @@ print(pd.DataFrame({"A":[np.NAN, 2, 3], "B":[4, np.NaN, 5], "C":[6, 7, np.NaN],}
 96  NaN  4.0  6.0
 97  2.0  NaN  7.0
 98  3.0  5.0  NaN
+
+
+
+area = pd.Series({'California': 423967, 'Texas': 695662, 'New York': 141297, 'Florida': 170312, 'Illinois': 149995})
+
+pop = pd.Series({'California': 38332521, 'Texas': 26448193, 'New York': 19651127, 'Florida': 19552860, 'Illinois': 12882135})
+
+data = pd.DataFrame({'area':area, 'pop':pop})
+
+
+
+print(data['area'])
+
+California  423967
+Florida     170312
+Illinois    149995
+New York    141297
+Texas       695662
 
 
 
@@ -363,7 +427,7 @@ B = pd.DataFrame(np.random.rand(3, 2), columns=['foo', 'bar'], index=['a', 'b', 
  c  0.047110    0.905718
 
 
-    
+
 ---------------> Getting Data From DataFrame (Here we can get and also give the data as well)
 
 
@@ -381,18 +445,49 @@ NOTE -  Calling a Single Column will give a Series
         Calling Multiple Columns will give a DataFrame
 
 
-2 Ways to retrive ROW Data
 
-1. df.loc[["a","c"], [2,3]]       ---> You can also get individual cell info
-2. df.iloc[[1,2],[2,3]]           ---> Here we are using the Indicse of the Rows and Columns
+3 Ways to retrive ROW Data
+
+1. df.loc[["a","c"], [2,3]]         ---> You can also get individual cell info
+2. df.iloc[[1,2],[2,3]]             ---> Here we are using the Indices of the Rows and Columns
+3. df.ix                            ---> This is a hybrid of 'loc' & 'iloc'
 
 
 
-------------------> Making Extra Columns in DataFrame
+df.loc['ROW NAME', 'COLUMN NAME']
+df.iloc['ROW INDEX', 'COLUMN INDEX']
+df.ix[ 'ROW NAME' / 'ROW INDEX' , 'COLUMN NAME' / 'COLUMN INDEX' ]
+
+
+Eg. Here 601,609 are row indices & job_title and remote_ratio are column names
+
+1. df2.loc[601 , ['job_title','remote_ratio']]              
+
+2. df2.loc[601:609 , 'job_title':'remote_ratio']
+
+NOTE - CONTRARY TO USUAL PYTHON SLICES, BOTH THE START AND THE STOP ARE INCLUDED
+
+
+
+------------------> Making Extra Columns & Rows in a DataFrame
+
+
+
+-----> Adding Columns
 
 
 
 df[4] = df[1] + df[2] | randn(3,1)    ---> This will add 1 more column 
+
+
+
+-----> Adding Rows
+
+
+
+1. df1.loc[len(df1.index)]  = [ 'Amy', 'King', 'Asdf']
+
+2. df1.append({'Column1' : 'Amy' , 'Column2' : 'King', 'Column3' : 'Asdf'})
 
 
 
@@ -405,6 +500,21 @@ NOTE - df.shape == (3,3) which is a tuple so (axis = 0 == Rows) and (axis = 1 ==
 df.drop([1], axis = 1, inplace = True)  --> here inplace confirms that we want to delete the column permanently if inplace == False then it wont delete it permanently
 
 df.drop(["b"], axis = 0, inplace = True)
+
+
+
+------------------> Operations on DataFrames, Columns
+
+df1 = df1 / df2
+
+df1['column4'] = df1['column2'] / df2['column3']         ----> Can also do +, -, *, **
+
+np.exp(df1)                     ----> Applies np.exp( ) on every element of the data frame and then returns a DataFrame
+
+np.sin(df1 * (np.pi/4))         ----> Applies np.sin( ) on every element of the data frame and then returns a DataFrame
+
+
+ NOTE - Pandas will align indices in the process of performing the operation.
 
 
 

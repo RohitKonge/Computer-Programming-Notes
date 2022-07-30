@@ -141,7 +141,13 @@
     
     
     Everything in Python is an object
+    
+    
 
+    RULE - Explicit Indexing >>>>> Implicit Indexing
+    
+    i.e a['some_random_index'] >>>>   a['some_integer']     eg. a['example'] >>> a[0]
+    
     
       
     type(    )              --> give info about the data type of the object()
@@ -171,7 +177,7 @@
     NOTE - Defining a Lot of variables takes a lot of memory so as we get better at Python we move more and more towards One Liner Code
     NOTE - and , or are used for   Single Bool comaprisions 
            &   , |  are used for a Series Bool Comparisions
-           
+
      
      
         list(map(lambda arguments : expression , sequ))
