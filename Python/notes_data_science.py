@@ -294,6 +294,8 @@ NOTE -  In Series and DataFrames Integers are converted to Floats
         
         We can perform Set Operation on df1.index and df2.index
 
+        We can change the values of a DataFrame by using ----> df1.loc['index_number', 'column_name'] = 'new_value'
+
 
 
 DataFrame acts in many ways 
@@ -724,22 +726,54 @@ Here, we will get G1[1] & G2[1]
 
 Refer to missing data in general as null, NaN, or NA values
 
-Any Arithmatic Opertion on Nan will return NaN ..... Eg. 1 + NaN = NaN, 0 * NaN = NaN
+Any Arithmatic Opertion on Nan will return NaN --------->   Eg. 1 + NaN = NaN, 0 * NaN = NaN
+
+Pandas Treats --->  NaN = None
 
 
 
-----------------> To Drop NaN Values in Rows/Columns
+--------------->Functions used for Missing Data:
+    
+    
+    
+1. isnull()
+
+    df2[df2['remote_ratio'].isnull()]       ---> Applies the condition on every element and returns the dataframe with, values in that 
+                                                 column that are 'Null'
+                                                 
+    df2['remote_ratio'].isnull()            ---> Just Returns a Series with Values as True/False
+    
+    
+2. notnull()
+
+    df2[df2['remote_ratio'].notnull()]       ---> Applies the condition on every element and returns the dataframe with, values in that 
+                                                 column that are 'Not Null'
+                                                
+    df2['remote_ratio'].notnull()            ---> Just Returns a Series with Values as True/False
+    
+                                                    
+3. dropna()
+
+4. fillna()
+
+
+
+--------------> To Drop NaN Values in Rows/Columns
 
 
 
 Pandas fills in the missing data as NULL or ANY Value
 
-df.dropna(axis=1)    -----> Will Drop Column with at least 1 NAN
-df.dropna(thresh=2)  -----> Will Drop if no. of non-Nan values are less than 2
+df.dropna( axis = 1 )                   ----->  Will Drop Column with at No.of NAN > 0               ---> axis = 0 by default
+
+df.dropna( thresh=3 )                   ----->  Min. No. of Non-Null Values for the row to be kept
+                                                i.e We need at least 3 Values for the row to kept
+
+df.dropna(  how = 'any' / 'all')        ----->  Will Drop Row if 'Any Cell has a NaN Value' / 'All Cells have a NaN Value' 
 
 
 
----------------> To Fill in Values of Nan in Rows/Columns
+------------> To Fill in Values of Nan in Rows/Columns
 
 
 
@@ -810,42 +844,92 @@ NOTE - Both of the DataFrames should have the same dimensions
 import numpy as np, pandas as pd
 from numpy.random import randn
 
-df1 = pd.DataFrame(np.arange(1,10).reshape(3,3), index=np.arange(1, 4))
-df2 = pd.DataFrame(np.arange(10,19).reshape(3,3), index=np.arange(4, 7))
-df3 = pd.DataFrame(np.arange(19,28).reshape(3,3), index=np.arange(7, 10))
+df1 = pd.DataFrame(np.arange(1,10).reshape(3,3), index=np.arange(1, 4), columns = np.arange(1,4))
+df2 = pd.DataFrame(np.arange(10,19).reshape(3,3), index=np.arange(1, 4), columns = np.arange(4,7))
+df3 = pd.DataFrame(np.arange(19,28).reshape(3,3), index=np.arange(7, 10), columns = np.arange(7,10))
 
-# print(df1)
-# print(df2)
-# print(df3)
 
-print(pd.concat([df1, df2, df3], axis = 1))
 
-     0    1    2     0     1     2     0     1     2
-1  1.0  2.0  3.0   NaN   NaN   NaN   NaN   NaN   NaN
-2  4.0  5.0  6.0   NaN   NaN   NaN   NaN   NaN   NaN
-3  7.0  8.0  9.0   NaN   NaN   NaN   NaN   NaN   NaN
-4  NaN  NaN  NaN  10.0  11.0  12.0   NaN   NaN   NaN
-5  NaN  NaN  NaN  13.0  14.0  15.0   NaN   NaN   NaN
-6  NaN  NaN  NaN  16.0  17.0  18.0   NaN   NaN   NaN
-7  NaN  NaN  NaN   NaN   NaN   NaN  19.0  20.0  21.0
-8  NaN  NaN  NaN   NaN   NaN   NaN  22.0  23.0  24.0
-9  NaN  NaN  NaN   NaN   NaN   NaN  25.0  26.0  27.0
+print(df1)
 
-Here the Indices do not contain an element so we get NaN
+   1  2  3
+1  1  2  3
+2  4  5  6
+3  7  8  9
+
+
+print(df2)
+
+    4   5   6
+1  10  11  12
+2  13  14  15
+3  16  17  18
+
+
+print(df3)
+
+    7   8   9
+7  19  20  21
+8  22  23  24
+9  25  26  27
+
+
+-------------------------------------------------
+
 
 
 print(pd.concat([df1, df2, df3], axis = 0))
 
-    0   1   2
-1   1   2   3
-2   4   5   6
-3   7   8   9
-4  10  11  12
-5  13  14  15
-6  16  17  18
-7  19  20  21
-8  22  23  24
-9  25  26  27
+
+
+     1    2    3     4     5     6     7     8     9
+1  1.0  2.0  3.0   NaN   NaN   NaN   NaN   NaN   NaN
+2  4.0  5.0  6.0   NaN   NaN   NaN   NaN   NaN   NaN
+3  7.0  8.0  9.0   NaN   NaN   NaN   NaN   NaN   NaN
+1  NaN  NaN  NaN  10.0  11.0  12.0   NaN   NaN   NaN
+2  NaN  NaN  NaN  13.0  14.0  15.0   NaN   NaN   NaN
+3  NaN  NaN  NaN  16.0  17.0  18.0   NaN   NaN   NaN
+7  NaN  NaN  NaN   NaN   NaN   NaN  19.0  20.0  21.0
+8  NaN  NaN  NaN   NaN   NaN   NaN  22.0  23.0  24.0
+9  NaN  NaN  NaN   NaN   NaN   NaN  25.0  26.0  27.0
+
+
+
+Note - While Concatenating along the rows it sees whether that column indices match up or not, if not then it creates the NaN matrix
+       On sides accordingly
+
+Eg. for df1 it doesnt have columns, 4,5,6,7,8,9 so it creates those columns with NaN values and then concatenates accordinly
+
+
+
+------------------------------------------------
+
+
+
+print(pd.concat([df1, df2, df3], axis = 1))
+
+
+
+     1    2    3     4     5     6     7     8     9
+1  1.0  2.0  3.0  10.0  11.0  12.0   NaN   NaN   NaN
+2  4.0  5.0  6.0  13.0  14.0  15.0   NaN   NaN   NaN
+3  7.0  8.0  9.0  16.0  17.0  18.0   NaN   NaN   NaN
+7  NaN  NaN  NaN   NaN   NaN   NaN  19.0  20.0  21.0
+8  NaN  NaN  NaN   NaN   NaN   NaN  22.0  23.0  24.0
+9  NaN  NaN  NaN   NaN   NaN   NaN  25.0  26.0  27.0
+
+
+
+Note - While Concatenating along the coumns it sees whether that row indices match up or not, if not then it creates the NaN matrix
+       On top bottom sides accordingly
+
+Eg. for df1 it doesnt have rows ,7,8,9 so it creates those columns with NaN values and then concatenates accordinly
+
+
+
+-------------------------------------------------
+
+
 
 Note - We can concat them Vertically(axis = 0) or Horizontally(axis = 1)
 
