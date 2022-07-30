@@ -199,16 +199,32 @@ list2 = [10, 20, 30]
 arr   = np.array(list2)
 d     = {'a' : 10, 'b' : 20, 'c' : 30}
 
+
+
+#Series can be made by 'LAD' - List, Arrays, Dictionary
+
 print(pd.Series(d))         # We can create Series from Dictionary
 
-print(pd.Series(data= [sum, len, print], index = list2))        # We can also use builtin functions as data
-                                                                # Here list2 is the Label
+print(pd.Series(d)['b':'c'])    NOTE -  We can used slicing on the Series made by Dicitionary and here we have
+                                        [inclusive : inclusive]
 
-x = pd.Series(data= list1, index = list2)
+Note - For Dicitionary the key are automatically sorted as per integers or alphabets
+
+
+
+print(pd.Series(data = [sum, len, print], index = list2))           # We can also use builtin functions as data
+                                                                    # Here list2 is the Label
+
+
+
+x = pd.Series(data = list1, index = list2)      # Index can be a list of anything
 
 print(x[10])        # Will Print 'a'
 
-# lets say S1 and S2 are 2 Series Then (S1 + S2) will give Add the Label/Indexs and return NAN if the data is not found in both of them
+
+
+# lets say S1 and S2 are 2 Series Then (S1 + S2) will Add the Label/Indexs and return NAN if the data is not found in anyone 
+# of them
 
 S1 = pd.Series(data= list1, index = list2)
 S2 = pd.Series(data= ['a', 'd', 'c'], index = [20,30,40])
@@ -219,6 +235,19 @@ print(S1+S2)
 20     ba
 30     cd
 40    NaN
+
+
+
+Builtin-Functions :
+    
+    1. x.values
+        array([ 0.25, 0.5 , 0.75, 1. ])
+    
+    2. x.index
+        RangeIndex(start=0, stop=4, step=1)             ---> Example
+        
+    3. x[1]   x[4:8]
+        Here, Data can be accesssed by the associated index
 
 
 
@@ -237,13 +266,64 @@ NOTE -  In Series and DataFrames Integers are converted to Floats
 import numpy as np, pandas as pd
 from numpy.random import randn
 
+
+
 # NOTE - We can create DataFrame from Dictionary & List of List
 
-print(pd.DataFrame([[1,2,3],[4,5,6]]))
+
+
+pd.DataFrame(Elements, Row Indices, Column Indices)
+
+np.random.seed(101)     ---> We set a seed to get the same random nums across different users   
+
+
+To get INDEX & COLUMNS list:
+    
+    df1.index                   ---> Returns a List
+    df1.columns                 ---> Returns a List
+    
+
+----------------------> Ways of Creating a DataFrame
+
+
+
+1. From a Single Series Object
+
+A DataFrame is a collection of Series objects, and a single column DataFrame can be constructed from a single Series.
+
+import pandas as pd
+A = pd.DataFrame(data = pd.Series({'a' : 1, 'b' : 2, 'c' : 3}), columns = ['Letters'])
+print(A)
+
+   Letters
+a        1
+b        2
+c        3
+
+
+
+1. From a List of List
+
+
+
+df1 = pd.DataFrame([[1,2,3],[4,5,6]])
+
+print(df1)
 
    0  1  2
 0  1  2  3
 1  4  5  6
+
+To get INDEX & COLUMNS list:
+    
+    df1.index                   ---> Returns a List
+    df1.columns                 ---> Returns a List
+    
+
+
+2. Using a Dictionary
+
+
 
 print(pd.DataFrame({"A":[np.NAN, 2, 3], "B":[4, np.NaN, 5], "C":[6, 7, np.NaN],}, [96,97,98]))
 
@@ -253,14 +333,15 @@ print(pd.DataFrame({"A":[np.NAN, 2, 3], "B":[4, np.NaN, 5], "C":[6, 7, np.NaN],}
 98  3.0  5.0  NaN
 
 
-np.random.seed(101)     ---> We set a seed to get the same random nums across different users   
 
-pd.DataFrame(Elements, Row Indices, Column Indices)
+3. Using the Keywords , Elements, Row Indices, Column Indices
+
+
 
 import numpy as np, pandas as pd
 from numpy.random import randn
 
-df = pd.DataFrame(randn(3,3), ['a','b','c'], [1,2,3])
+df = pd.DataFrame(randn(3,3), ['a','b','c'], [1,2,3])             # pd.DataFrame(Elements, Row Indices, Column Indices)
 print(df)
 
     1         2         3
@@ -272,6 +353,17 @@ print(df.head(2))                ----> Print n number of rows of the DataFrame
 
 
 
+4. From a 2D Numpy array
+
+B = pd.DataFrame(np.random.rand(3, 2), columns=['foo', 'bar'], index=['a', 'b', 'c'])
+
+        foo         bar
+ a  0.865257    0.213169
+ b  0.442759    0.108267
+ c  0.047110    0.905718
+
+
+    
 ---------------> Getting Data From DataFrame (Here we can get and also give the data as well)
 
 
@@ -676,6 +768,81 @@ SQL
 import pandas as pd
 
 pd.rea
+
+
+
+
+
+------------------------------------> Matplotlib by Derek Banas <----------------------------------------
+
+
+
+---------------------------> Functional Plots
+
+
+
+--------> Simple Plot
+
+
+
+#%%
+
+import matplotlib.pyplot as plt, numpy as np, pandas as pd
+
+%matplotlib inline                      
+# ---> Allows us to see the plot inside the Jupyter Notebook
+
+x = np.linspace(0, 20, 100)
+
+plt.xlabel("THE X LABEL")
+plt.ylabel("The Y Label")
+plt.title("The Title")
+plt.plot(x,x**2)
+
+#%%
+
+
+--------> Multiple Plot
+
+#%%
+
+plt.subplot(1,2,1)
+plt.plot(x,x**3,'r')
+
+plt.subplot(1,2,2)
+plt.plot(x,x**3,'b')
+
+
+#%%
+
+
+
+---------------------------> Object Oriented Plots
+
+
+
+---------> Using Figure Objects
+
+
+# Figure is an object that contains all the plot elements and it can contain many axes
+
+#%%
+fig1 = plt.figure(1,(4,2),100,'b','r')
+axes1 = fig1.add_axes([0.1,0.1,0.9,0.9])
+axes1.set_xlabel("XLABEL")
+axes1.set_ylabel("YLABEL")
+axes1.set_title("TITLE")
+axes1.plot(x,x**2,label = "x - x^4")
+
+
+
+
+
+#%%
+
+
+
+
 
 
 
@@ -1148,3 +1315,11 @@ For Un-Supervised Learning :
 
 ------------------------------------>  Linear Regression <----------------------------------------
     
+
+
+
+
+
+
+
+
