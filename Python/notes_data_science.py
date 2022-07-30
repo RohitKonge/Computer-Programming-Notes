@@ -291,6 +291,8 @@ Builtin-Functions :
 
 
 NOTE -  In Series and DataFrames Integers are converted to Floats
+        
+        We can perform Set Operation on df1.index and df2.index
 
 
 
@@ -302,6 +304,26 @@ DataFrame acts in many ways
 
 
 
+
+Important Functions for DataFrame:
+    1. read_csv()
+    2. head()
+    3. describe()
+    4. memory_usage()
+    5. astype()
+    6. loc[:]
+    7. to_datetime()
+    8. value_counts()
+    9. drop_duplicates(inplace = True, ignore_index = True)
+    10. groupby()
+    11. merge()
+    12. sort_values(by='Name', inplace=True)
+    13. fillna(by = 38.5, inplace=True)
+    14. reset_index( inplace = True)
+    15. set_index(pd.Series([33,44,55,66]), inplace = True)
+    16. nunique()
+    
+    
 ----------------------> Creating DataFrame
 
 
@@ -348,7 +370,7 @@ c        3
 
 
 
-1. From a List of List
+2. From a List of List
 
 
 
@@ -367,7 +389,7 @@ To get INDEX & COLUMNS list:
     
 
 
-2. Using a Dictionary & and a Dictionary of Series
+3. Using a Dictionary & and a Dictionary of Series
 
 
 
@@ -405,6 +427,8 @@ Texas       695662
 import numpy as np, pandas as pd
 from numpy.random import randn
 
+Using ---> randn
+
 df = pd.DataFrame(randn(3,3), ['a','b','c'], [1,2,3])             # pd.DataFrame(Elements, Row Indices, Column Indices)
 print(df)
 
@@ -414,6 +438,8 @@ b  0.503826  0.651118 -0.319318
 c -0.848077  0.605965 -2.018168
 
 print(df.head(2))                ----> Print n number of rows of the DataFrame
+
+Using ---> randint
 
 
 
@@ -426,46 +452,6 @@ B = pd.DataFrame(np.random.rand(3, 2), columns=['foo', 'bar'], index=['a', 'b', 
  b  0.442759    0.108267
  c  0.047110    0.905718
 
-
-
----------------> Getting Data From DataFrame (Here we can get and also give the data as well)
-
-
-
-3 Ways to retrive COLUMN Data
-
-1. print(df[1])       ---> This is recommended --> Will print out a Series of Column 1
-
-2. print(df.1)        ---> Will also print out a Series of Column 1
-
-3. print(df[[1,2]])   ---> calling multiple Columns
-
-
-NOTE -  Calling a Single Column will give a Series
-        Calling Multiple Columns will give a DataFrame
-
-
-
-3 Ways to retrive ROW Data
-
-1. df.loc[["a","c"], [2,3]]         ---> You can also get individual cell info
-2. df.iloc[[1,2],[2,3]]             ---> Here we are using the Indices of the Rows and Columns
-3. df.ix                            ---> This is a hybrid of 'loc' & 'iloc'
-
-
-
-df.loc['ROW NAME', 'COLUMN NAME']
-df.iloc['ROW INDEX', 'COLUMN INDEX']
-df.ix[ 'ROW NAME' / 'ROW INDEX' , 'COLUMN NAME' / 'COLUMN INDEX' ]
-
-
-Eg. Here 601,609 are row indices & job_title and remote_ratio are column names
-
-1. df2.loc[601 , ['job_title','remote_ratio']]              
-
-2. df2.loc[601:609 , 'job_title':'remote_ratio']
-
-NOTE - CONTRARY TO USUAL PYTHON SLICES, BOTH THE START AND THE STOP ARE INCLUDED
 
 
 
@@ -505,6 +491,8 @@ df.drop(["b"], axis = 0, inplace = True)
 
 ------------------> Operations on DataFrames, Columns
 
+
+
 df1 = df1 / df2
 
 df1['column4'] = df1['column2'] / df2['column3']         ----> Can also do +, -, *, **
@@ -514,7 +502,23 @@ np.exp(df1)                     ----> Applies np.exp( ) on every element of the 
 np.sin(df1 * (np.pi/4))         ----> Applies np.sin( ) on every element of the data frame and then returns a DataFrame
 
 
- NOTE - Pandas will align indices in the process of performing the operation.
+
+NOTE - Pandas will align indices in the process of performing the operation.
+
+Eg . 
+
+df1 =                   df2 = 
+0   11                  2   14
+1   22                  0   9
+2   33                  1   28
+                        3   84
+
+df3 = df1 + df2
+
+0   21
+1   50
+2   47   
+3   NaN
 
 
 
@@ -522,7 +526,58 @@ np.sin(df1 * (np.pi/4))         ----> Applies np.sin( ) on every element of the 
 
 
 
------------>   Conditional Selection
+-----------> Selections / Conditinal Selections
+
+
+
+(Here we can get and also give the data as well)
+
+
+
+----> 3 Ways to retrive COLUMN Data : 
+
+
+
+1. print(df[1])       ---> This is recommended --> Will print out a Series of Column 1
+
+2. print(df.1)        ---> Will also print out a Series of Column 1
+
+3. print(df[[1,2]])   ---> calling multiple Columns
+
+
+NOTE -  Calling a Single Column will give a Series
+        Calling Multiple Columns will give a DataFrame
+
+
+
+----------> 3 Ways to retrive ROW Data :
+
+
+
+1. df.loc[["a","c"], [2,3]]         ---> You can also get individual cell info
+
+2. df.iloc[[1,2],[2,3]]             ---> Here we are using the Indices of the Rows and Columns
+
+3. df.ix                            ---> This is a hybrid of 'loc' & 'iloc'
+
+
+
+df.loc['ROW NAME', 'COLUMN NAME']
+df.iloc['ROW INDEX', 'COLUMN INDEX']
+df.ix[ 'ROW NAME' / 'ROW INDEX' , 'COLUMN NAME' / 'COLUMN INDEX' ]
+
+
+Eg. Here 601,609 are row indices & job_title and remote_ratio are column names
+
+1. df2.loc[601 , ['job_title','remote_ratio']]              
+
+2. df2.loc[601:609 , 'job_title':'remote_ratio']
+
+NOTE - CONTRARY TO USUAL PYTHON SLICES, BOTH THE START AND THE STOP ARE INCLUDED
+
+
+
+---------> Applying a condition on every element of a DataFrame And  Getting True/False
 
 
 
@@ -541,6 +596,13 @@ print(df > 0)         ---> This will print the DF but with True/False at every c
 2  False   True  False   True
 3   True  False  False   True
 
+
+
+
+---------> Applying a condition on every element of a DataFrame And  Returning a DataFrame
+
+
+
 print(df[ df > 0])    ---> This is same as print(df > 0) but for "false" cells it will write NAN
 
 0         1         2         3
@@ -548,6 +610,12 @@ print(df[ df > 0])    ---> This is same as print(df > 0) but for "false" cells i
 1  0.769657       NaN  0.086328  0.282669
 2  0.191764       NaN       NaN  0.087429
 3  0.509276       NaN       NaN       NaN
+
+
+
+---------> Applying a condition on a Column of a DataFrame
+
+
 
 print(df[df[0]>0])          ---> This will return the DF but with column 0 elements > 0
 
@@ -559,11 +627,11 @@ NOTE - when we use df[sdfasdf]  here "df" tells that it will return the whole Da
 
 
 
-------------> To add an index of [0,1,2,3.......n] besides the rows
+------------> To add an index of [0,1,2,3.......n] besides the Original Index Column
 
 
 
-df.reset_index(inplace=True)    ----> This is also a temporary change so we use inplace
+----> df.reset_index(inplace=True)    ----> This is also a temporary change so we use inplace
 
 index         0         1         2         3
 0      0 -0.774455 -1.598083 -1.401992 -0.650946
@@ -572,7 +640,12 @@ index         0         1         2         3
 3      3  0.208541  0.611723  0.377006  0.921247
 
 
-df.set_index(pd.Series([33,44,55,66]),drop =  False, append = False, inplace = True)
+
+------------> To add a Custom index besides the Original Index Column
+
+
+
+----> df.set_index(pd.Series([33,44,55,66]),drop =  False, append = False, inplace = True)
 print(df)
 
            0         1         2         3
@@ -649,7 +722,13 @@ Here, we will get G1[1] & G2[1]
 
 
 
-----------------> To Drop Nan Value in Rows/Columns
+Refer to missing data in general as null, NaN, or NA values
+
+Any Arithmatic Opertion on Nan will return NaN ..... Eg. 1 + NaN = NaN, 0 * NaN = NaN
+
+
+
+----------------> To Drop NaN Values in Rows/Columns
 
 
 
