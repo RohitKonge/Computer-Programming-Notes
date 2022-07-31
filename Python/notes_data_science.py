@@ -168,7 +168,11 @@ arr = np.sqrt(arr)
     = np.sin(arr)         -----> i.e we can use trigonometric signs as well
     = np.log(arr)         -----> 
     
-    
+    np.where('array_name' == np.NaN)
+    np.delete('array_name', "index_of_element_to_be_deleted")
+    np.sum('array_name')
+
+
 
 -------------------------------------------->   Python for Data Analysis - PANDAS     <--------------------------------------------------
 
@@ -295,7 +299,8 @@ NOTE -  In Series and DataFrames Integers are converted to Floats
         We can perform Set Operation on df1.index and df2.index
 
         We can change the values of a DataFrame by using ----> df1.loc['index_number', 'column_name'] = 'new_value'
-
+        
+        Eg. df1.loc[df1['some_columns_name'] == 'some_value', 'another_columns_name'] = 'some_new_value'
 
 
 DataFrame acts in many ways 
@@ -319,12 +324,12 @@ Important Functions for DataFrame:
     9. drop_duplicates(inplace = True, ignore_index = True)
     10. groupby()
     11. merge()
-    12. sort_values(by='Name', inplace=True)
+    12. sort_values(by='Name', inplace=True, ascending  = False)
     13. fillna(by = 38.5, inplace=True)
     14. reset_index( inplace = True)
     15. set_index(pd.Series([33,44,55,66]), inplace = True)
     16. nunique()
-    
+    17. index.names = ["Name1", "Name2"]
     
 ----------------------> Creating DataFrame
 
@@ -467,7 +472,7 @@ B = pd.DataFrame(np.random.rand(3, 2), columns=['foo', 'bar'], index=['a', 'b', 
 
 df[4] = df[1] + df[2] | randn(3,1)    ---> This will add 1 more column 
 
-
+df1['key'] = pd.Series([1,2,3])
 
 -----> Adding Rows
 
@@ -485,7 +490,7 @@ df[4] = df[1] + df[2] | randn(3,1)    ---> This will add 1 more column
 
 NOTE - df.shape == (3,3) which is a tuple so (axis = 0 == Rows) and (axis = 1 == Columns)
 
-df.drop([1], axis = 1, inplace = True)  --> here inplace confirms that we want to delete the column permanently if inplace == False then it wont delete it permanently
+df.drop(['salary_in_usd'], axis = 1, inplace = True)  --> here inplace confirms that we want to delete the column permanently if inplace == False then it wont delete it permanently
 
 df.drop(["b"], axis = 0, inplace = True)
 
@@ -656,6 +661,10 @@ print(df)
 55  0.499383  0.204637 -0.553235 -1.241689
 66  0.783800  1.097435 -0.860960  0.111078
 
+Here, we can Set a New Index or  an Existing column as the Index column
+
+df.set_index("salary_usd")
+
 
 
 -------------------------------> 4. DataFrames - 3  <---------------------
@@ -783,13 +792,44 @@ df["A"].fillna(value=df["A"].mean(), inplace=True)
 
 
 
-------------------> 6. GroupBy
+------------------> 6. Aggregation and GroupBy: Split, Apply, Combine
 
+
+Aggregate functions :       NOTE : we can use, ----> axis = 'rows'/ 'columns'
+    
+    1.sum()
+    
+    2.mean(), median()
+    
+    3.min(), max()
+    
+    4.std(), var()              ----> Standard Deviation & Variance
+    
+    5.firt(), last()            ----> First & Last Item
+    
+    6.mad()                     ----> Mean Absolute Deviation
+    
+    7.prod()                    ----> Product of all items
+    
+    8.count()                   ----> Total Number of Items
+
+    9.describe() :
+        
+        count 
+        mean 
+        std 
+        min 
+        25%             --->    25% of the Data
+        50%             --->    50% of the Data
+        75%             --->    75% of the Data
+        max
 
 
 GroupBy allows us to group together rows, based off of a column and perform an aggregate function on them(Sum, Standard Deviation, etc)
 
-NOTE - To use groupby we need to give index.names to the MultiIndex 
+NOTE - To use groupby we need to give index.names to the MultiIndex
+
+ 
 
 import numpy as np, pandas as pd
 from numpy.random import randn
@@ -821,7 +861,7 @@ print(df.groupby("Groups").mean())              and etc.
 
 NOTE - If there are strings in a Column then Pandas will ignore it automatically
 
-Also, Here .sum(), .std(), .count(), max() are Aggregate functions
+
 
 df.groupby().describe().transpose()["G2"]       --->
 
@@ -942,28 +982,28 @@ Note - We can concat them Vertically(axis = 0) or Horizontally(axis = 1)
 NOTE -  We use Merge when we have a Common Column. 
         We can have multiple Common Columns
         
-        how = "inner", "right", "left"  & default is "inner"
+        how = "inner", "right", "left", "outer"  & default is "inner"
         on = ["key1", "key2"]       
         
 import numpy as np, pandas as pd
 from numpy.random import randn
 
 df1 = pd.DataFrame(np.arange(1,10).reshape(3,3), index=np.arange(1, 4))
-df1["key"] = np.arange(1, 4).reshape(3,1)
+df1["key1"] = np.arange(1, 4).reshape(3,1)
+df1.index.names = ['qwer']
+
 df2 = pd.DataFrame(np.arange(10,19).reshape(3,3), index=np.arange(4, 7))
 df2["key"] = np.arange(1, 4).reshape(3,1)
 
 # When you are merging we are gonna merge it on a key column
-
-print(pd.merge(df1, df2, how="inner", on="key"))
+print(df1)
+print(df2)
+print(pd.merge(df1, df2, how="outer", on=[0,1]))
 
    0_x  1_x  2_x  key  0_y  1_y  2_y
 0    1    2    3    1   10   11   12
 1    4    5    6    2   13   14   15
 2    7    8    9    3   16   17   18
-
-print(pd.merge(df1, df2, how="inner", on=["key1", key2]))
-Use this if we have mutiple key columns
 
 
 

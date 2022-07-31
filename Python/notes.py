@@ -939,7 +939,8 @@ def our_food(food3):
 our_food(food1)
 our_food(food2)
 
-
+a = 'aba'
+print(a[len(a):0])
 ---------------------------------->  ABSTRACT CLASSES
 
 We NEVER EXPECT to create an instance of the abstract class and it is designed to only 
