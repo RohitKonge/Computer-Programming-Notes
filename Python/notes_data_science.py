@@ -304,12 +304,12 @@ NOTE -  In Series and DataFrames Integers are converted to Floats
         Eg. df1.loc[df1['some_columns_name'] == 'some_value', 'another_columns_name'] = 'some_new_value'
 
 
+
 DataFrame acts in many ways 
 
 1.Like a two-dimensional or structured array,
 
 2.Like a dictionary of Series structures sharing the same index
-
 
 
 
@@ -480,6 +480,8 @@ B = pd.DataFrame(np.random.rand(3, 2), columns=['foo', 'bar'], index=['a', 'b', 
 df[4] = df[1] + df[2] | randn(3,1)    ---> This will add 1 more column 
 
 df1['key'] = pd.Series([1,2,3])
+
+
 
 -----> Adding Rows
 
@@ -799,7 +801,8 @@ df["A"].fillna(value=df["A"].mean(), inplace=True)
 
 
 
-------------------> 6. Aggregation and GroupBy: Split, Apply, Combine
+-----------------------------> 6. Aggregation and GroupBy: Split, Apply, Combine
+
 
 
 Aggregate functions :       NOTE : we can use, ----> axis = 'rows'/ 'columns'
@@ -1090,11 +1093,11 @@ df.groupby('key').filter(filter_func)
 
 
 
--------------------- -> 7. Concatenating, Merging and Joining  DataFrames
+-----------------------------------> 7. Concatenating, Merging and Joining  DataFrames
 
 
 
-----------------> Concatenating DataFrames
+---------------------------> 1. Concatenating DataFrames    (pd.concat(......))
 
 
 
@@ -1186,7 +1189,7 @@ Eg. for df1 it doesnt have rows ,7,8,9 so it creates those columns with NaN valu
 
 
 
--------------------------------------------------
+-------------------------------------------
 
 
 
@@ -1194,15 +1197,15 @@ Note - We can concat them Vertically(axis = 0) or Horizontally(axis = 1)
 
 
 
----------------------> Merging DataFrames
+-----------------------------> 2. Merging DataFrames    (pd.merge (....))
 
 
 
 NOTE -  We use Merge when we have a Common Column. 
         We can have multiple Common Columns
         
-        how = "inner", "right", "left", "outer"  & default is "inner"
-        on = ["key1", "key2"]       
+        how = "inner", "right", "left", "outer"  & default is "inner"           ----> These are the different types of Joins
+        on = ["key1", "key2"]                                                   ----> Name of the Columns to merge
         
 import numpy as np, pandas as pd
 from numpy.random import randn
@@ -1226,7 +1229,112 @@ print(pd.merge(df1, df2, how="outer", on=[0,1]))
 
 
 
---------------------> Joining DataFrames
+--------------------> Categories of Joins     
+
+
+
+NOTE - These Concepts are used when both the Merging Columns have the 'Same number of Data' & 'Same Data'
+
+
+
+1. One-to-one joins :
+
+        df1 df2
+
+        employee        group                   employee    hire_date
+        0 Bob           Accounting          0   Lisa        2004
+        1 Jake          Engineering         1   Bob         2008
+        2 Lisa          Engineering         2   Jake        2012
+        3 Sue           HR                  3   Sue         2014
+
+        
+        pd.merge(df1, df2)
+
+
+                employee    group           hire_date
+        0       Bob         Accounting      2008
+        1       Jake        Engineering     2012
+        2       Lisa        Engineering     2004
+        3       Sue         HR              2014
+
+
+
+
+2. Many-to-one joins :
+
+
+
+
+3. Many-to-many joins :
+
+
+
+
+--------------------> Some KeyWord Arguments of pd.merge()
+
+
+
+NOTE - These Concepts are used when both the Merging Columns have the 'Same number of Data' & 'Same Data'
+
+
+
+1. on = 'column_name'
+
+    Tells the name of the columns on which the dataframes will be merged
+
+
+
+2. left_on = 'left_column_name' , right_on = 'right_column_name' 
+
+    Tells the name of the left column and the right column , and then the dataframes will be merged on these columns
+
+
+
+3. left_index = 'left_index_name', right_index = 'right_index_name'
+
+    Tells the name of the left index and the right index , and then the dataframes will be merged on these indexs
+
+
+
+4. WE can combine '2.' and '3.' to form ---->   left_on = 'left_column_name' ,  right_index = 'right_index_name'
+
+
+
+--------------------> SQL like joins in pd.merge()
+
+
+
+This Concept is used when both the columns have some same data and all some different data
+
+    how = "inner", "right", "left", "outer"  & default is "inner"           ----> These are the different types of Joins
+
+1. inner
+
+    Intersection of the two columns
+    
+4. outer
+
+    Union of the two columns
+    
+2. right
+
+    Concentrates on the right columns elements and discards the left column elements
+
+3. left
+
+    Concentrates on the left columns elements and discards the right column elements
+
+
+
+-------------------> 'suffixes = ['_L', '_R']' Keyword
+
+
+
+when some column names are common in both the dataFrames then the common column names are given a suffix 
+
+
+
+---------------------------------> 3. Joining DataFrames        (df1.join(.....))
            
            
                         
@@ -1239,7 +1347,7 @@ df1.join(df2)
                         
            
                         
--------------------- -> 8. Operations                       
+----------------------> 8. Operations                       
            
            
                         
@@ -1263,7 +1371,7 @@ df.groupby('col1').apply(func, axis = 0)          ---> Applys the Custom Functio
 
 
 print(df.applymap(lambda x : x*2, na_action = False))      ---> Applys the Custom Function on the Every Single Element of the DataFrames
-
+                                                                na_action --> To Ignore NaN or not
 
 
 df["col1"].apply(len)       ---> Returns the Length of each element into a Series 
@@ -1575,9 +1683,6 @@ For Conditional Selection we can use the 'df1.query()' method :
 We can also use Local Variables :
 
     df1.query('A < @some_int and B > @another_int')
-
-
-
 
 
 
