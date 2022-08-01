@@ -365,6 +365,10 @@ WE can do anything just like the List
 
 
 
+Note - df1, df2, df3, df4 = (pd.DataFrame(rng.rand(nrows, ncols)) for i in range(4))   # Also a way of creating Multiple DataFrames
+
+
+
 1. From a Single Series Object
 
 A DataFrame is a collection of Series objects, and a single column DataFrame can be constructed from a single Series.
@@ -1378,15 +1382,199 @@ NOTE -  The ability to concisely apply regular expressions across Series or Data
 
     
     
+---------------------> Working with Time Series
+
+
+
+3 Types of Date and Time Data:  (SIPD)
+
+
+    
+    1. Time Stamps
+    
+        Particular moment in time (e.g., July 4th, 2015, at 7:00 a.m.).
+
+
+    
+    2. Time Interval & Period
+    
+        Time Interval   -   Length of time between a particular beginning and end point (eg.  the year 2015 )
+        
+        Period          -   Special case of 'Time Intervals' in which each interval is of uniform length and does not overlap 
+                            (e.g., 24 hour-long periods constituting days).   
+                            
+
+                            
+    3. Time Delta / Duration
+
+        An exact length of time (e.g., a duration of 22.56 seconds).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------> High-Performance Pandas: eval() and query()
+
+
+
+For More Efficiency, Less Memory Use, For Less Computational time and Better Syntax we will use eval() and query()
+
+
+1.  For example, consider the following expression :
+    
+    mask = (x > 0.5) & (y < 0.5)
+
+    Because NumPy evaluates each subexpression, this is roughly equivalent to the following:
+        
+        tmp1 = (x > 0.5)
+        tmp2 = (y < 0.5)
+        mask = tmp1 & tmp2
+        
+
+
+2.  Consider the following expression :
+
+    x = df[(df.A < 0.5) & (df.B < 0.5)]
+    
+    This is roughly equivalent to this :
+        
+        
+    tmp1 = df.A < 0.5
+    tmp2 = df.B < 0.5
+    tmp3 = tmp1 & tmp2
+    x = df[tmp3]
+
+
+
+Explanation ---->   Every intermediate step is explicitly allocated in memory. 
+                    If the x and y arrays are very large, this can lead to significant memory and computational overhead
+                    
+                    The ability to compute this type of compound expression element by element, 
+                    without the need to allocate full intermediate arrays is very EFFECIENT
+                    
+                    Same Concept applies to DataFrames
+                    
+
+
+-------------------> pandas.eval() for Efficient Operations             (eval = Evaluate)
+
+
+df1, df2, df3, df4 = (pd.DataFrame(numpy.random.rand(nrows, ncols)) for i in range(4))
+
+
+
+2 ways to do it the 'SUM' of all the DF's :
+
+
+    1. df5 = df1 + df2 + df3 + df4
+    
+    This is in-effecient way to do it   
+    
+
+    2.  We can compute the same result via 'pd.eval' by constructing the expression as a 'STRING'
+
+    df5 = pd.eval('df1 + df2 + df3 + df4')
+
+        This expression is about 50% faster (and uses much less memory)
+        
+
+
+--------->  Operations supported by pd.eval()
+
+
+
+1.  Arithmetic operators
+
+    pd.eval('-df1 * df2 / (df3 + df4) - df5')
+
+2.  Comparison operators
+
+    pd.eval('(df1 < df2) & (df2 <= df3) & (df3 != df4)')
+
+3.  Bitwise operators
+
+    pd.eval('(df1 < 0.5) & (df2 < 0.5) | (df3 < df4)')
+
+4.  Object attributes and indices
+
+    pd.eval('df2.T[0] + df3.iloc[1]')
     
 
 
+---------> Column-Wise Operations for DataFrames
 
 
 
+1. Benefit of the eval() method is that columns can be referred by 'Name'
+
+
+df1.eval('(A + B) / (C - 1)')                   ---->   Here A, B, C are column names
 
 
 
+2. Assignment in DataFrame.eval()
+
+df1.eval('D = (A + B) / C', inplace=True)       ---->   Here, D is the new columm which is being Added
+
+        
+
+3. Local Variables in DataFrame.eval()
+
+df.eval('A + @column_mean')                     ---->   Here, we use the '@' operator to add the 'column_mean' int 
+                                                        to all the elements of column 'A'
+
+
+
+----------------------------> DataFrame.query() Method
+
+pd.eval('df[(df.A < 0.5) & (df.B < 0.5)]')      ---->   This cannot be expressed using the 'df1.eval()' syntax,
+
+
+
+For Conditional Selection we can use the 'df1.query()' method :
+
+    df1.query('A < 0.5 and B < 0.5')
+
+
+We can also use Local Variables :
+
+    df1.query('A < @some_int and B > @another_int')
 
 
 
