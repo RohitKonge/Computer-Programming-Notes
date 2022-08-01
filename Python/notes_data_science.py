@@ -1288,6 +1288,114 @@ print(df.pivot_table(values = ["col3"], index=["col2"], columns=["col1"], aggfun
 
 
 
+---------------------> Vectorized String Operations
+
+
+
+Handling and manipulating string data. This is a Very Important Concept for Real World DataSets.
+
+Only Pandas has Vectorized String Operations And Numpy does not have it
+
+For Array of 'Real Number', Numpy provides Vectorization of Operations But Not for 'Strings'
+
+
+
+NOTE :  df1['method'].apply(len).max()
+        df1['method'].str.len().max()
+
+        These, both give out the same output
+
+
+
+-------------> List of Pandas str methods that mirror Python string methods :
+
+
+
+len()       lower()         translate()     islower()
+ljust()     upper()         startswith()    isupper()
+rjust()     find()          endswith()      isnumeric()
+center()    rfind()         isalnum()       isdecimal()
+zfill()     index()         isalpha()       split()
+strip()     rindex()        isdigit()       rsplit()
+rstrip()    capitalize()    isspace()       partition()
+lstrip()    swapcase()      istitle()       rpartition()
+
+
+
+NOTE -  df1['toys_name'].str.contains('string_name', re.IGNORECASE)         -----> Returns True if the string contains it
+        df1['car_name'].str.cat('str1', 'str2')                          -----> Adds the two strings
+        
+        
+
+How to  use these methods for Vectorized String Operations :
+    
+    Eg. 
+    
+    df1.str.len()       
+    
+    Applies this method to every element of the Series/DataFrame and returns that particular element for that particular cell
+    
+    This and every other method will return a Series/DataFrame depending on whether it is applied to a Series or a DataFrame
+    
+
+
+-------------> List of Methods Using Regular Expressions:
+    
+    
+    
+match()         Call re.match() on each element, returning a Boolean.
+extract()       Call re.match() on each element, returning matched groups as strings.
+findall()       Call re.findall() on each element.
+replace()       Replace occurrences of pattern with some other string.
+contains()      Call re.search() on each element, returning a Boolean.
+count()         Count occurrences of pattern.
+split()         Equivalent to str.split(), but accepts regexps.
+rsplit()        Equivalent to str.rsplit(), but accepts regexps.
+
+
+    Eg. 
+    
+    df1.str.match(r".................")
+    
+       
+
+NOTE -  The ability to concisely apply regular expressions across Series or DataFrame entries
+        opens up many possibilities for analysis and cleaning of data.
+
+
+
+----->  Examples of Slicing and Split  
+
+
+
+    Eg.
+    
+    df1.str[0:5]        -----> Slicing
+    
+    df1.str.split()     
+    
+    df1.str.split().str.get(-1)           -----> Applies split() & then get() to get the last element
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -------------------- -> 9. Data Input and output
 
 
