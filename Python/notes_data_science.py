@@ -176,6 +176,7 @@ arr = np.sqrt(arr)
 
 -------------------------------------------->   Python for Data Analysis - PANDAS     <--------------------------------------------------
 
+Important Functions :
 
 
 - Pandas is Open Source and built on top of NUMPY
@@ -330,6 +331,8 @@ Important Functions for DataFrame:
     15. set_index(pd.Series([33,44,55,66]), inplace = True)
     16. nunique()
     17. index.names = ["Name1", "Name2"]
+    
+    
     
 ----------------------> Creating DataFrame
 
@@ -825,11 +828,59 @@ Aggregate functions :       NOTE : we can use, ----> axis = 'rows'/ 'columns'
         max
 
 
+
+Some Information on Statistics terms:
+    
+    1. Mode : The value that appears most often in a set of data values
+    
+        Eg. 
+        
+        You know that a college is offering 10 different courses for students. Now, out of these,
+        the course that has the highest number of registrations from the students will be counted 
+        as the mode of our given data (number of students taking each course)
+
+
+
+    2. Mean : Average Value of the Data
+
+
+    
+    3. Median : In statistics and probability theory, the median is the value separating the higher half from the lower half of a data sample, 
+                a population, or a probability distribution. For a data set, it may be thought of as "the middle" value
+
+
+
+    4. Variance
+
+    5. Standard Deviation
+
+    6. Normal Deviation
+    
+    
+    
 GroupBy allows us to group together rows, based off of a column and perform an aggregate function on them(Sum, Standard Deviation, etc)
 
-NOTE - To use groupby we need to give index.names to the MultiIndex
+NOTE - To use groupby we need to give ---> index.names <----- to the MultiIndex
 
- 
+
+
+It Works on the Principle of    (SAC)      -----> SPLIT, APPLY, COMBINE
+
+
+(Here, we are adding the numbers)
+
+                        SPLIT   -------->   APPLY    -------->  COMBINE
+
+A   43                  A   43              A   110             A   110
+C   12                  A   67                                  B   129
+B   36                                                          C   63
+C   51                  B   36              B   129         
+C   51                  B   93
+A   67
+B   93                  C   12              C   63
+                        C   51
+
+
 
 import numpy as np, pandas as pd
 from numpy.random import randn
@@ -852,6 +903,12 @@ G2     1        0.009534  0.024455
        2        0.040723  1.148055
        3        0.937641  0.412544
 
+
+
+-------------> Functions of Groupby
+
+
+
 df.groupby()                            ---> This takes all the Groups
 df.groupby("Groups")                    ---> This Gives a GroupBy Object
 df.groupby("Groups").sum().loc["G2"]
@@ -868,6 +925,164 @@ df.groupby().describe().transpose()["G2"]       --->
 .describe()     ---> Gives all the aggregate functions
 .transpose()    ---> Makes the DataFrame/Matrix transpose
 ["G2"]          ---> Gives only the Info about G2
+
+
+
+NOTE : The Groupby Function returns a 'DataFrameGroupBy' Object
+
+We cannot print the content of the 'DataFrameGroupBy' Object, Instead we can only apply the Agg. Functions
+
+With the GroupBy object, no computation is done until we call some 'AGGREGATE' on the object
+
+
+
+-------------> Basic Groupby Operations
+
+
+
+    1. df1.groupby['key1'].max()
+     
+            Here, this will 'groupby' the column 'key1' and then return the max() of all the columns in a 'DataFrame'
+            
+            The Groups will be the Row Names
+       
+    
+    
+    2. df1.groupby['key1']['data1'].max()
+    
+            Here, this will 'groupby' the column 'key1' and then return the max() of the column 'data1' in a 'Series'
+            
+            The Groups will be the Row Names
+    
+       
+
+1. Column indexing 
+
+    The GroupBy object supports column indexing in the same way as
+    the DataFrame, and returns a modified GroupBy object.
+    
+    Eg.
+    
+    planets.groupby('method')['orbital_period'].median()
+    
+    Here,   'method'            == Column which is used to 'GroupBy'
+            'orbital_period'    == Column/SeriesGroup along which we take the Median of the Data
+            
+
+
+2. Dispatch Methods
+
+    Any method not explicitly implemented by the GroupBy object will be passed through and called on the groups,
+    whether they are DataFrame or Series objects.
+
+    Eg.
+    
+    planets.groupby('method')['year'].describe().unstack()
+    
+    Here, 
+    
+    describe() method is applied to each individual group, and the results are then combined within GroupBy and returned.
+    
+    Any valid DataFrame/Series method can be used on the corresponding GroupBy object,
+
+
+
+-------------> Intermediate Groupby Operations          (TAAF)      (Transform, Aggregate, Apply, Filter )
+
+
+
+df = pd.DataFrame({'key': ['A', 'B', 'C', 'A', 'B', 'C'],  'data1': range(6),  'data2': np.random.randint(0, 10, 6)})
+
+key	data1	data2
+0	A	0	7
+1	B	1	5
+2	C	2	8
+3	A	3	7
+4	B	4	5
+5	C	5	4
+
+
+
+1.  Transform
+
+
+
+
+
+
+
+2.  Aggregate
+
+    It can take a 'string', a 'function', or a 'list', and compute all the aggregates (i.e apply it on all the columns) at once
+    
+    1. Eg.
+    
+            df.groupby('key').aggregate(['min', np.median, max])
+            
+                data1	             data2
+                min	median	max	     min  median	max
+            key						
+            A	0	1.5	    3	     3	    6.0	    9
+            B	1	2.5	    4	     1	    2.5	    4
+            C	2	3.5	    5	     5	    5.5	    6    
+
+
+
+    NOTE - We can pass a dictionary mapping 'column names' to 'operations' to be applied on that column
+        
+    2. Eg.
+    
+    df.groupby('key').aggregate({'data1': 'min', 'data2': 'max'})
+    
+
+                        data1 data2
+            key
+            A           0       5
+            B           1       7
+            C           2       9
+
+    Here, 'min' on 'data1' column & 'max' on 'data2' column
+
+
+3. Apply
+
+
+
+NOTE - 'x' is a DataFrame of group values
+
+
+apply() method applies a function to the group elements. 
+
+The function takes a DataFrame, and returns Pandas object (e.g., DataFrame, Series) or a Scalar
+
+
+def norm_by_data2(x):                  # x is a DataFrame of group values
+
+    x['data1'] /= x['data2'].sum()
+
+    return x
+
+df.groupby('key').apply(norm_by_data2)
+
+
+
+4. Filter
+
+
+
+NOTE - 'x' is a DataFrame of group values
+
+
+Filter allows you to drop data based on the group properties. 
+
+Eg. We  want to keep all groups in which the standard deviation is
+larger than some critical value
+
+def filter_func(x):                 # x is a DataFrame of group values
+ return x['data2'].std() > 4
+
+
+df.groupby('key').filter(filter_func)
 
 
 
@@ -1036,11 +1251,15 @@ df["col1"].nunique()        ---> returns the number of unique elements
 df["col1"].value_counts()   ---> returns a table, how may times a value got repeated in the column   
 
 
+
 NOTE - Apply Method is th Most Powerful Method in Pandas 
 
-df["col1"].apply(func)      ---> Applys the Custom Function on the elements
+df["col1"].apply(func, axis = 0)                  ---> Applys the Custom Function along the axis
+df.groupby('col1').apply(func, axis = 0)          ---> Applys the Custom Function on the groupby DataFrames
 
-print(df.applymap(lambda x : x*2))
+
+print(df.applymap(lambda x : x*2, na_action = False))      ---> Applys the Custom Function on the Every Single Element of the DataFrames
+
 
 
 df["col1"].apply(len)       ---> Returns the Length of each element into a Series 
