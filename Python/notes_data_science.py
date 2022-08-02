@@ -25,6 +25,14 @@ np.NaN == Not A Number
 Aggregate Function == A function that takes in lots of individual values and then returns a single value
 
 
+For 'axis = None' , We iterate over all the elements of the numpy array/ multidimensional array
+                    Indexing goes from 0 to the last element of the numpy array/ multidimensional array
+                    
+                    
+    'axis = 0 / 1', We iterate over all the elements of the row/ column of the numpy array/ multidimensional array
+                    Indexing  == arr[3[4]]
+
+
 
 ------------------------------->     NUMPY ARRAYs     <-----------------------------------------
 
@@ -89,7 +97,7 @@ np.random.rand(5,6)             ---> Returns a [5,6] Matrix of value b/w 0 and 1
 np.random.randn(3,4)            ---> Returns a [3,4] Matrix of value of a Normal Distribution Curve
 
 np.random.randint(2,100,10)     ---> (Inclusive, Exclusive, Size of Array) , Returns Random int(value, base)
-np.random.andint(3,10,(4,5))    ---> Returns a [4,5] Matrix and the value of the elements is between (3,10)
+np.random.randint(3,10,(4,5))    ---> Returns a [4,5] Matrix and the value of the elements is between (3,10)
 
 
 
@@ -299,6 +307,221 @@ For MultiDimensinal Array:
 
 
 
+------------------------------> Computation on NumPy Arrays: Universal Functions     <-----------------------------
+
+
+
+Vectorization through ufuncs are more efficient than Python loops, especially as the arrays grow in size. 
+For every loop in a Python script, you should consider whether it can be replaced with a vectorized expression.
+
+
+
+NOTE - These UFuncs are Really Fast for Large Arrays
+
+
+
+--------------------->  1. NumPys UFuncs
+
+
+
+Ufuncs allow a NumPy user to remove the need to explicitly write slow Python loops
+
+
+
+1.  Array arithmetic :
+
+    Eg. 
+
+    x = np.arange(4)
+
+    x + 5
+
+    x - 5
+
+    x * 5
+
+    x / 5                           -----> Divides every element of 'x' by 5, Similary every other operators works
+
+    x // 5
+
+    -x
+
+    x ** 4
+
+    x % 2
+
+    -(0.5*x + 1) ** 2               -----> A combination of the above operators
+
+
+
+2.  Absolute value :
+
+    np.abs(x)                       ----> Returns absolute value of every element in 'x', works even for Complex Numbers
+    
+       
+
+3.  Trigonometric functions:
+    
+    np.pi
+    
+    np.sin(x)                       ----> Returns the sin of every value in 'x' 
+    np.cos(x)
+    np.tan(x)
+    
+    np.arcsin(x)
+    np.arccos(x)
+    np.arctan(x)
+
+
+
+4.  Exponents and logarithms
+
+
+    np.exp(x)                       -----> Returns e^x for every element in 'x'
+    
+    np.sqrt(x)
+    
+    np.log(x)                       -----> log to the base 'e'
+    np.log2()
+    np.log10(x)
+
+
+
+5.  Summing the Values in an Array
+
+    np.sum(x)                       -----> Also Works for Multi-Dimensional Arrays
+    
+    
+
+6.  Minimum and Maximum
+
+    np.min(x)
+    np.max(x)
+
+
+
+7.  Multidimensional aggregates
+
+import numpy as np
+
+a = np.random.randint(3,10,(3,3))
+print(a)
+print(np.sum(a, axis = 0))
+
+[[6 6 8]
+ [3 8 5]
+ [4 6 8]]
+
+54
+
+
+    np.sum(a, axis = 1)         ----->  Sames as every Ufunc but we can specify the axis as well
+
+
+
+8. Other aggregation functions
+
+Function Name     NaN-safe Version        Description
+
+np.sum()          np.nansum()               Compute sum of elements
+np.prod()         np.nanprod()              Compute product of elements
+
+
+np.mean()         np.nanmean()              Compute median of elements
+np.std()          np.nanstd()               Compute standard deviation
+np.var()          np.nanvar()               Compute variance
+np.median()       np.nanmedian()            Compute median of elements
+
+
+np.min()          np.nanmin()               Find minimum value
+np.max()          np.nanmax()               Find maximum value
+np.argmin()       np.nanargmin()            Find index of minimum value
+np.argmax()       np.nanargmax()            Find index of maximum value
+
+np.percentile()   np.nanpercentile()        Compute rank-based statistics of elements
+
+np.any(arr == 8, axis = 0/1)     N/A        Evaluate whether any elements are true
+np.all(arr < 9,  axis = 0/1)     N/A        Evaluate whether all elements are true
+
+
+
+9.  Comparison Operators as ufuncs
+
+
+
+arr = np.array([1, 2, 3, 4, 5])
+
+arr > 2         ----> Returns -->        array([False, False, True, True, True], dtype = bool)
+                    Similarily for every other function
+
+arr < 3
+
+arr >= 1
+
+arr <= 4
+
+arr == 5
+
+arr != 6 
+
+
+----> Element by Element Comparison of 2 arrays
+
+
+(2 * arr1) == (arr2 **2)
+
+
+
+NOTE - All These functions work the same for MultiDimensional Arrays
+
+
+
+------------------------------>   Conditioanl Selection in Numpy Arrays   <-----------------------------
+
+
+
+import numpy as np
+arr = np.arange(9).reshape(3,3)
+
+
+print(arr)
+
+[[0 1 2]
+ [3 4 5]
+ [6 7 8]]
+
+
+
+NOTE - These are also called as 'Boolean Mask'
+
+
+
+1. arr > 5
+
+    print( arr > 5)
+
+    [[False False False]
+    [False False False]
+    [ True  True  True]]
+
+
+
+2. arr[arr > 5]
+
+    print(arr[arr > 5])
+    
+    [6 7 8]
+
+NOTE -  We can combine All Operator in Conditional Selection
+
+
+
+
+
+
+
+
+
 
 
 ------------------------->   NUMPY Indexing and Selection     <-------------------------
@@ -394,6 +617,10 @@ arr = np.sqrt(arr)
 
 
 
+arr = np.array(df1['column_name']) and then compute the data
+
+
+
 Important Functions :
 
 
@@ -412,6 +639,10 @@ Things to Learn :
 
 
 -------------------------->  1. Series  <-------------------------
+
+
+
+arr = np.array(df1['column_name']) and then compute the data
 
 
 
@@ -520,6 +751,8 @@ NOTE -  In Series and DataFrames Integers are converted to Floats
         We can change the values of a DataFrame by using ----> df1.loc['index_number', 'column_name'] = 'new_value'
         
         Eg. df1.loc[df1['some_columns_name'] == 'some_value', 'another_columns_name'] = 'some_new_value'
+
+        We can make,        arr = np.array(df1['column_name']) and then compute the data
 
 
 
