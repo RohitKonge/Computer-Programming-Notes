@@ -26,7 +26,7 @@ Aggregate Function == A function that takes in lots of individual values and the
 
 
 
---------------------->     NUMPY ARRAYs     <-------------------------
+------------------------------->     NUMPY ARRAYs     <-----------------------------------------
 
 
 
@@ -38,12 +38,16 @@ Eg.
 
 a = np.array([1,2,3,4])
 b = np.array([5])
-print(a*b)                              -----> Broadcast
+print(a*b)                                      -----> Broadcast
 
 we can call randint as ---> from numpy.random import randint
 
-NOTE - All elements in the array will be FLOAT64
+NOTE -  1. All elements in the array will be FLOAT64
 
+        2. When we use np.''''''(arr)           -----> We have to use the name of the array
+        
+        
+        
 arr = np.array([[1,2,3],[4,6,9]])      # ---> Here different length list are Deprecated
 
 print(arr)
@@ -53,11 +57,19 @@ print(np.arange( 0, 10, 3))    # (Inclusive, Exclusive, Steps to Jump) Just like
 
 np.arange(50)                   ---> Returns a list from 0 to 49
 
+
+
+----------------> Making Matrixes
+
+
+
 np.zeros(3)                     ---> Matrix of 3 Zero's
 np.zeros(3,4)                   ---> Matrix of 3 rows and 4 columns
 
 np.ones(4)                      ---> Matrix of 4 One's
 np.ones(5,6)                    ---> Matrix of 5 rows and 6 columns
+
+np.full((3,4), 11)              ---> Matrix of 3 rows and 4 columns and all the elements == 11
 
 np.linspace(12, 23, 14)         ---> Returns a 1D Array of 14 Evenly space elements between 12 and 23
                                  Here (Inclusive, Inclusive)
@@ -66,11 +78,23 @@ np.eye(4)                       ---> Returns a 4x4 , Identity Matrix i.e 1 is in
 
 print(type(np.eye(4)[0][0]))    ---> FLOAT64
 
+
+
+----------------> Generating Random Numbers
+
+np.random.state(101)            ---> Ensure that the same random numbers are generated every time we run the code
+
 np.random.rand(5,6)             ---> Returns a [5,6] Matrix of value b/w 0 and 1
 
 np.random.randn(3,4)            ---> Returns a [3,4] Matrix of value of a Normal Distribution Curve
 
 np.random.randint(2,100,10)     ---> (Inclusive, Exclusive, Size of Array) , Returns Random int(value, base)
+np.random.andint(3,10,(4,5))    ---> Returns a [4,5] Matrix and the value of the elements is between (3,10)
+
+
+
+----------------> Some Numpy Functions
+
 
 arr.reshape(5,6)                ---> Makes the previous arr into a 5,6 matrix but note that it should have 5*6 = 30 Elements
 
@@ -86,6 +110,161 @@ arr = np.random.randint(3,8,9)
 print(arr.reshape(3,3).shape)     ----> This is way to make a 1D Array to N dimensional Array
 
 print(arr.dtype)                ---> Returns the data type of the elements
+
+
+
+----------------> Question on  Numpy Arrays
+
+
+
+Q. Find the index of a particular element
+
+Ans ---> np.where('array_name' == np.NaN)                        
+
+
+
+Q. Delete a particular element
+
+Ans ---> np.delete('array_name', "index_of_element_to_be_deleted", axis = 0 / 1 / None)
+
+Note --->   For axis = None it follow the index of the elements
+
+            For axis = 0 / 1 it will delete the entire row / column & index_of_element_to_be_deleted = index_of_(row/column)
+
+
+
+Q. Check if a value is in a Numpy array
+
+Ans ---> 'value' in 'array_name'        # Returns a Bool
+
+
+
+Q. Change a value in a array/ Matrix 
+
+
+Ans ---> arr[1]     = 23                
+         arr[2][4]  = 87            # These will simply change the values
+
+
+
+import numpy as np
+
+arr = np.array([[11,2,34], [36,12,87]])
+arr2 = np.delete(arr, 4)
+print(np.where(arr == 36, axis = None))
+
+
+
+------------------------------>     The Basics of NumPy Arrays      <-----------------------------
+
+
+
+--------------------->  1. Making a Copy
+
+
+
+arr2 = arr1                 ---> This creates a reference to arr1, so chaning arr2 will change arr1 as well
+arr2 = np.copy(arr1)        ---> This creates a different COPY of arr1, so changing arr2 wont change arr1
+
+NOTE - This Concept is also TRUE for MultiDimensional Array/ Matrixes
+
+
+
+--------------------->  2. Indexing
+
+
+
+arr[2]                          ---> Returns the 3rd Element
+
+arr[-1]                         ---> Returns the Last Element
+
+arr[3][2]  (this is a matrix)   ---> Returns the 4th Rows 3rd Column Element
+
+
+
+--------------------->  3. SLicing                      (Inclusive, Exclusive, Step)
+
+
+
+NOTE - We can use Slicing to Set the Values as Well
+
+
+
+For 1D arrays:
+
+
+    arr[1:3]
+
+    arr[1:3:2]
+
+    arr[1:]
+
+    arr[1::2]
+
+    arr[::2]
+
+    arr[::-1]                       ---> Reverses the Array       
+
+    arr[5::-2]
+
+
+
+For MultiDimensional Arrays :
+    
+    arr[1:][::2]                    ----> For All rows, from 1 to end of Matrix , For All columns from start to end with a step of 2
+
+    arr[:][0]                       ----> Returns the 1st Column of the Matrix
+
+
+
+--------------------->  4. Reshaping of Numpy Arrays
+
+
+
+arr.reshape((3,3))                  ----> The arr 'array' should have 3*3 = 9 elements
+
+
+
+--------------------->  5. Array Concatenation and Splitting
+
+
+
+np.concatenate([arr1, arr2, arr3], axis = 0 / 1)        --->    We can concatenate as many as we want and along the row/column  
+                                                                We can concatenate Mult-Dimen. Arrays as well
+
+
+
+NOTE - Make sure the number of elements along the Rows/Columns are appropriate
+
+
+
+Eg.
+                                                                    
+import numpy as np
+print(np.concatenate([np.random.randint(1,10, (3,3)), np.random.randint(1,10, (3,3)), np.random.randint(1,10, (3,3))], axis = 0))
+
+[[5 7 9]
+ [2 4 3]
+ [5 6 1]
+ [4 2 2]
+ [2 3 1]
+ [4 2 4]
+ [4 7 2]
+ [2 4 2]
+ [8 3 1]]
+
+
+
+Eg.
+
+import numpy as np
+print(np.concatenate([np.random.randint(1,10, (3,3)), np.random.randint(1,10, (3,3)), np.random.randint(1,10, (3,3))], axis = 1))
+
+
+
+[[2 5 9 3 9 3 1 9 7]
+ [8 6 6 2 9 5 8 8 5]
+ [9 8 1 6 1 6 4 8 3]]
 
 
 
@@ -135,7 +314,11 @@ arr = np.array([[1,2,3,4],[12,13,543,123]])
 
 2. arr[1,2]         ---> NOTE - This is available only in Numpy Arrays
 
+
+
 ------->  Conditional Selection
+
+
 
 new_arr = arr[arr>5]      ---> This applies the condition on each element and returns the elements(if true) into a new array
 
@@ -167,14 +350,16 @@ arr = np.sqrt(arr)
     = np.min()
     = np.sin(arr)         -----> i.e we can use trigonometric signs as well
     = np.log(arr)         -----> 
+    = np.sum(arr)
     
-    np.where('array_name' == np.NaN)
+    np.where('array_name' == np.NaN)                        
     np.delete('array_name', "index_of_element_to_be_deleted")
-    np.sum('array_name')
 
 
 
 -------------------------------------------->   Python for Data Analysis - PANDAS     <--------------------------------------------------
+
+
 
 Important Functions :
 
