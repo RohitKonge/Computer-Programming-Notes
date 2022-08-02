@@ -516,11 +516,54 @@ NOTE -  We can combine All Operator in Conditional Selection
 
 
 
+------------------------------>   Fancy Indexing   <-----------------------------
+
+
+1. For 1D Array
+
+    x = rand.randint(100, size=10)
+
+
+We want to access three different elements. We could do it like this:
+    
+    x[3], x[7], x[2]
+
+But a more efficient way to do it will be:
+    
+    x[3, 7, 2]
+
+We can also create any Mutli-Dimensional Array using the elements of this array
+
+    x[np.array([1,2,3],[5,6,7])]            ----->  Here, this is a (2,3) Matrtix of the Indexs of the 'x' array which are then 
+                                                    substituted by the elements of the 'x' array
+
+        
+
+2. For MultiDimensional Arrays
+
+    import numpy as np
+
+    X = np.arange(12).reshape((3, 4))
+
+        print(X)
+
+        [[ 0  1  2  3]
+        [ 4  5  6  7]
+        [ 8  9 10 11]]
+
+        print(X[np.array([2,1,1]), np.array([0,2,1])])
+
+        [8 6 5]
 
 
 
+X[np.array([2,1,1]), np.array([0,2,1])]     ----->  Here it will print the indexes --> (2,0) , (1,2), (1,1)
+                                                    
+                                                    i.e X[Rows, Columns]
+                                                    
+                                                    
 
-
+We can also use Fancy Indexing to Change the values of the Arrays
 
 
 
