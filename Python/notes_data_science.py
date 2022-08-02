@@ -229,6 +229,10 @@ arr.reshape((3,3))                  ----> The arr 'array' should have 3*3 = 9 el
 
 
 
+------> Concatenation
+
+
+
 np.concatenate([arr1, arr2, arr3], axis = 0 / 1)        --->    We can concatenate as many as we want and along the row/column  
                                                                 We can concatenate Mult-Dimen. Arrays as well
 
@@ -265,6 +269,35 @@ print(np.concatenate([np.random.randint(1,10, (3,3)), np.random.randint(1,10, (3
 [[2 5 9 3 9 3 1 9 7]
  [8 6 6 2 9 5 8 8 5]
  [9 8 1 6 1 6 4 8 3]]
+
+
+
+------> Splitting (They Return n number of arrays)
+
+
+
+For 1D Array :
+    
+    np.split(arr1, 3)                       ----> Splits the Array in 3 Equal Parts of  Array
+
+    np.split(arr1, [3,7,9])                 ----> Splits the Array at the 3rd, 7th, 9th Indexes
+                                            ----> [1st, 2nd, 3rd] [4th, 5th, 6th, 7th] [8th, 9th]
+
+
+
+NOTE -  Look How it Actually Splits
+
+
+
+For MultiDimensinal Array:
+    
+    np.split(arr1, 4, axis = 0 / 1)         ----> Splits the Matrix in 4 Equal Parts of Matrix
+    
+    np.split(arr1, [2,5], axis = 0)         ----> Splits the Matrix at the 2nd and 5th Rows Vertically
+    
+    np.split(arr1, [4,6,7,9], axis = 1)     ----> Splits the Matrix at the 4th, 6th, 7th and 9th Rows Vertically
+
+
 
 
 
