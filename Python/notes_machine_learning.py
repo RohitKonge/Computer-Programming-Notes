@@ -404,6 +404,77 @@ of minimum and grouping together
 
 
 
+------------------------------------> K-Nearest Neighbors (Classification Algorithm) <----------------------------------------
+
+
+
+Eg. We have a plot of DATA-POINTS with dogs and horses, with heights and weights
+
+Looking at a new data points we have to predict whether it is a DOG/HORSE 
+
+
+
+The Algorithm :
+
+
+    
+    1. Store all the Data
+
+    2. Calculate the 'Distance' between 'x' and all points of the data  ---> Here, 'x' is a point from the Test Data
+    
+    3. Sort those Distances in an 'Ascending' Order
+    
+    4. Then Predict the 'Majority Label' of the 'k' closest points  ---> Here, 'k' is a Number
+
+
+
+for k = 1 we pick up a lot of noise
+
+
+
+---->   But as we increase the value of 'k' i.e k = 5, k = 10, k = 50 we create more bias in our model
+
+        or a cleaner cut-off at the cost of mislabeling some points
+
+
+
+Pro of K-Nearest Neighbors:
+
+
+    1. Training is Trivial
+
+    2. Works with any number of Classes
+
+    3. Easy to add more data
+
+    4. Has Few Parameters:  
+
+        1.      k
+
+        2.      Distance Metric         -----> Chp.4 of Intro to Stats Learning
+
+                We are defining mathematically the distance between test points and the old training points
+    
+        
+Con of K-Nearest Neighbors:  
+    
+    
+    1. Doesnt work well with large data sets as it sorts the distance between the points which is quite an expensive process
+    
+    2. Not good with high dimensional data
+    
+    3. Categorical features dont work well
+
+
+
+
+
+
+
+
+
+
+
 
 
 
