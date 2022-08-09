@@ -467,6 +467,60 @@ Con of K-Nearest Neighbors:
 
 
 
+Since , KNN predicts the Class of a given TEST observation by looking at the nearest points. 
+
+The Scale of the Variable Matters a lot and any variable that are on large scale will have a greater effect on the distances
+
+So we have to 'STANDARDIZE'  everything to the same Scale
+
+
+
+
+
+
+------------------------------------>  Principal Component Analysis  <----------------------------------------
+
+
+
+1.  It is an 'UNSUPERVISED STATISTICAL TECHNIQUE' used to examine the relations between a set of 'VARIABLES' to determine the 
+    underlyign struture of those variables
+
+
+2.  Also Known as 'GENERAL FACTOR ANALYSIS'
+
+
+3.  Regression finds the 'LINE' of best fit for the Data Set,
+    
+    PCA finds the 'ORTHOGONAL LINES' of best fit for the Data Set.      ----> Orthogonal Lines = Perpendicular Lines
+    
+    'ORTHOGONAL LINES' are Perpendicular to each other even in N_DIMENSIONAL Space
+    Eg. For DataSet with 4 variables the Sample Space is 4 dimensional
+    
+
+4.  So we add a Regression Line to the Plot of the Data Set and then we add an ORTHOGONAL Line to the Regression Line
+
+    Then those 2 lines are called the 'COMPONENTS' of the Plot  ---> Since, they are orthogonal, they are unrelated to each other
+    
+    And the Greatest Variance of the DataSet comes to lie on the 1st Axis/Component
+    
+    Then we continue the Analysis on higher dimensions - 3rd, 4th, 5th .......
+    
+    
+Pro :
+    
+    1. For Very Large DataSet we can use few Components to explain the variation
+    
+    2. But interpreting the Component is the Challenging part
+    
+    
+NOTE - This Algo. is most used for DATA ANALYSIS
+
+    
+    
+    
+
+
+
 
 
 
