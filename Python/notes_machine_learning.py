@@ -137,7 +137,7 @@ We organize the PREDICTED VALUES vs REAL VALUES in a CONFUSION MATRIX
 
     NOTE -  We give the images of all 'Tumors' and the model picks 'Malignant Tumor' out of them so either it will be 'Malignant Tumor' or NOT
             So, either it will be say it is 'Malignant Tumor' and in reality it is 'Malignant Tumor', so it is TRUE POSITIVE
-            or it will say its is 'Malignant Tumor' and in realtiy is not 'Malignant Tumor', then it is FALSE POSITIVE
+            or it will say it is 'Malignant Tumor' and in realtiy it is not 'Malignant Tumor', then it is FALSE POSITIVE
 
 
 
@@ -334,7 +334,7 @@ For All Estimators :
 For Supervised Estimators :
     model.predict(X_new)    : For a trained model, it predicts the label for each object in the array
     model.predict_proba()   : For Classification Problems some estimators provide this method.
-                              It return the Probability for each LABEL, label with highest probability is returned by model.predict()
+                              It returns the Probability for each LABEL, label with highest probability is returned by model.predict()
     model.score()           : Return value b/w 0-1, For Classication & Regression, larger value mean greater fit              
 
 
@@ -348,4 +348,68 @@ For Un-Supervised Learning :
 
 ------------------------------------>  Linear Regression <----------------------------------------
     
+
+
+
+
+---------------------------------->  Cross-Validation & Bias-Variance Trade-Off <----------------------------------------
+
+
+
+Used for understanding the models Performance
+
+1. Its the point where we are adding just 'noise', by making the model more complex
+
+2. The 'training error' goes down, But the 'test error' goes up
+
+3. After the bias-variance trade-off the model begins to overfit
+
+
+4 Types of Bias-Variance :
+    
+    
+    
+    Here, we will taking the example of a DartBoard to understand the concept
+    
+    
+    
+    1. Low-Bias     -   Low - Variance
+
+        All The points are at the center and All the points are in the smallest circle of the dartboard 
+    
+    2. Low-Bias     -   High - Variance
+
+        All The points are at the center and All the points are away from the smallest circle of the dartboard 
+        
+    3. High-Bias    -   Low - Variance  
+
+        All The points are away from the center and All the points are close to each other
+    
+    4. High-Bias    -   High - Variance
+
+        All The points are away from the center and All the points are far from each other
+
+
+NOTE - For beginners the common mistake is adding complexity to the model i.e 'OVERFITTING THE MODEL' to the training SET.
+
+This Causes the model to give out wrong predictions for new points
+
+
+We want to balance out the bias & variance of our model to the point where the test data and the training data have reached some sort 
+of minimum and grouping together
+
+
+
+------------------------------------>  Logistic Regression <----------------------------------------
+
+
+
+
+
+
+
+
+
+
+
 

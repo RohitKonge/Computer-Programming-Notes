@@ -1,21 +1,13 @@
 Jupyter Notebook
 
---> Shift + Enter = Run Current Cell and Add new Cell
+- -> Shift + Enter = Run Current Cell and Add new Cell
 
---> Alt + Enter = Add New Cell
+- -> Alt + Enter = Add New Cell
 
---------------------------------------------------------> Index <------------------------------------------------------------------
-
-
+------------------------------------------------------- -> Index < ------------------------------------------------------------------
 
 
-
-
-
-
-
----------------------------------------------> PYTHON FOR DATA ANALYSIS - NUMPY <--------------------------------------------------
-
+-------------------------------------------- -> PYTHON FOR DATA ANALYSIS - NUMPY < --------------------------------------------------
 
 
 Its a Linear Algebra Library
@@ -25,10 +17,10 @@ np.NaN == Not A Number
 Aggregate Function == A function that takes in lots of individual values and then returns a single value
 
 
-For 'axis = None' , We iterate over all the elements of the numpy array/ multidimensional array
-                    Indexing goes from 0 to the last element of the numpy array/ multidimensional array
-                    
-                    
+For 'axis = None', We iterate over all the elements of the numpy array / multidimensional array
+                    Indexing goes from 0 to the last element of the numpy array / multidimensional array
+
+
     'axis = 0 / 1', We iterate over all the elements of the row/ column of the numpy array/ multidimensional array
                     Indexing  == arr[3[4]]
 
@@ -567,6 +559,32 @@ We can also use Fancy Indexing to Change the values of the Arrays
 -------------------------------------------->   Python for Data Analysis - PANDAS     <--------------------------------------------------
 
 
+Most Used Functions in Pandas :
+    
+    1. pd.read_csv("URl")
+    2. df1.head()
+    3. df1.tail()
+    4. df1.info()       ---> To acquire information like columns, data type for each column and some other useful information
+    5. df1.columns      ---> Returns a list of all column names
+    6. df1.dtypes       ---> Data Types of Every Column
+    7. df1.shape        ---> No. of Rows and No. of Columns
+    8. df1.size         ---> No. of Rows * No. of Columns  == No. of Cells in the DataSet
+    9. df1.describe()   ---> Returns Statistical Information of every column 
+    10.df1.isna()       ---> Returns the DataSet with True/False Values
+    11.df1.drop('column_name', axis = 0/1)  ---> Deletes the Column/Row
+    
+
+Map Types which are very useful :
+    1. Histogram
+    2. Scatter Plots
+    3. HeatMap
+
+
+NOTE -  When the return datatype is a DataFrame we use df1.''''''() , i.e these parentheses
+
+        When the return datatype is NOT a DataFrame we use df1.'''''' , i.e NO parentheses
+
+
 
 arr = np.array(df1['column_name']) and then compute the data
 
@@ -610,7 +628,7 @@ d     = {'a' : 10, 'b' : 20, 'c' : 30}
 
 
 
-#Series can be made by 'LAD' - List, Arrays, Dictionary
+# Series can be made by 'LAD' - List, Arrays, Dictionary
 
 print(pd.Series(d))         # We can create Series from Dictionary
 
@@ -2120,7 +2138,7 @@ pd.rea
 
 
 
-#%%
+# %%
 
 import matplotlib.pyplot as plt, numpy as np, pandas as pd
 
@@ -2134,12 +2152,12 @@ plt.ylabel("The Y Label")
 plt.title("The Title")
 plt.plot(x,x**2)
 
-#%%
+# %%
 
 
 --------> Multiple Plot
 
-#%%
+# %%
 
 plt.subplot(1,2,1)
 plt.plot(x,x**3,'r')
@@ -2148,7 +2166,7 @@ plt.subplot(1,2,2)
 plt.plot(x,x**3,'b')
 
 
-#%%
+# %%
 
 
 
@@ -2161,7 +2179,7 @@ plt.plot(x,x**3,'b')
 
 # Figure is an object that contains all the plot elements and it can contain many axes
 
-#%%
+# %%
 fig1 = plt.figure(1,(4,2),100,'b','r')
 axes1 = fig1.add_axes([0.1,0.1,0.9,0.9])
 axes1.set_xlabel("XLABEL")
@@ -2173,7 +2191,7 @@ axes1.plot(x,x**2,label = "x - x^4")
 
 
 
-#%%
+# %%
 
 
 
@@ -2210,7 +2228,7 @@ y = x ** 2
 
 %matplotlib inline                ---> Allows us to see the plot in the jupyter notebook
 
-#%%
+# %%
 import matplotlib.pyplot as plt, numpy as np 
 x = np.linspace(0, 5, 110)
 y = x ** 2
@@ -2230,12 +2248,12 @@ plt.subplot(1,2,2)                      #  ---> plt.subplot(No. of Rows, No. of 
 plt.plot(y,x,"b")
 
 
-#%%
+# %%
 2. Object Oriented Method           (This is a Better Way of Creating a MatplotLib Plot)
 
 We make Figure Objects and call Methods off of it
 
-#%%
+# %%
 
 fig = plt.figure()                       #   ---> Think of it as an Imaginary Canvas and we can add a Set of Axis
 
@@ -2249,7 +2267,7 @@ plot2.set_title("THE TITLE")
 
 plot2.plot(x,y)
 
-#%%
+# %%
 fig = plt.figure()
 axes1 = fig.add_axes([0,0.1,2,2])
 axes2 = fig.add_axes([0.3,0.4,1,1])
@@ -2261,17 +2279,17 @@ NOTE -  1. Here, We added a Figure
         2. Added Axes to the Figures
         3. Then plotted our Data on it i.e ( x,y )
 
-#%%
+# %%
 
 
-#%%
+# %%
 ---------------------------> Matplotlib Part - 2 <----------------------------
 
 
 
 
 
-#%%
+# %%
 import matplotlib.pyplot as plt, numpy as np
 fig, axes = plt.subplots(3,3)       # Here plt.sublplots() automatically calls fig_addaxes( ) for us
 plt.tight_layout()                  # Corrects the Layout as more spaced out
@@ -2281,7 +2299,7 @@ axes.plot(x,x**2)
 
 
 
-#%%
+# %%
 
 
 

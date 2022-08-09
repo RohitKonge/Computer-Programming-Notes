@@ -1657,6 +1657,16 @@ A big part of web scraping is knowing what string syntax to pass in to the soup.
 
 (The Code for grabbing Class is written in "Grabbing the title" section)
 
+Eg.
+
+a  = soup.select('tr > td > a')         Eg. Goes to 'tr' then 'td' then 'a'
+
+b  =  <a href="search.php?req=Lise+Getoor&amp;column=author">Lise Getoor</a>
+
+To get 'href' in the above example we use 
+
+b.get('href')
+
 
 
 --------------------------> Grabbing an Image 
