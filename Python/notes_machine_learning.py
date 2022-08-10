@@ -488,6 +488,9 @@ So we have to 'STANDARDIZE'  everything to the same Scale
 Its a Clustering Algorithm which allows us to Cluster Un-Labeled Data in Unsupervised Learning Algorithm
 
 
+It Tries to Cluster Data based on their Similarities
+
+
 It Attempts to 'group' similar clusters in your data
 
 
@@ -499,9 +502,7 @@ It Attempts to 'group' similar clusters in your data
 Divide the Data into 'Distinct Groups' 
 
 
-
 The Algorithm:
-
 
 
 1. Choose K = No. of clusters
@@ -528,6 +529,9 @@ as 'K' increases
 
 The Best value of 'K' happens to be at the point where the 'Elbow Appears'    
 
+
+
+from sklearn.datasets import make_blobs  ---> make_blobs gives us artificial data to play with the Clustering Algos
 
         
 
