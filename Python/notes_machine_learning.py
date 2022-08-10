@@ -508,21 +508,38 @@ So we have to 'STANDARDIZE'  everything to the same Scale
     
 Pro :
     
-    1. For Very Large DataSet we can use few Components to explain the variation
+    1. For Very Large DataSet we can use few Components to explain the variation/ REDUCE the dimensions as well
     
     2. But interpreting the Component is the Challenging part
     
-    
-NOTE - This Algo. is most used for DATA ANALYSIS
 
     
+NOTE - This Algo. is mostly used for DATA ANALYSIS
+
+
+
+This is not exatly a machine learnign algorithm, but instead its an 'UNSUPERVISED LEARNING' algorithm used for 'COMPONENT REDUCTION'
+
+
+NOTE -  PCA is just a 'TRANSFORMATION' of your data and it attempts to find 
+        out the 'FEATURES'/'COMPONENTS' that explains the most 'VARIANCE' in your data 
     
     
 
+Step to use PCA :
+    
+    
+    
+    1. Like other pre-processing functions like 'Standard Scalar' we instantiate PCA
+    
+    2. Use fit() method to find the 'PRINCIPAL COMPONENT'   
+    
+    3. Apply the rotation in 'Dimensionality Reduction' 
 
 
+'COMPONENTS' correspond to the combination of the  Original features of the component themselves
 
-
+Note - Instead of doing Liner Regression, etc on the Original Data we can do it on the Reduced Data as well 
 
 
 
