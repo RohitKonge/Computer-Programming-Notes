@@ -2,8 +2,14 @@
 ------------------------------------>  Introduction to Machine Learning <----------------------------------------
 
 
-
 Domain Knowledge Plays a Very Important Role in Machine Learning
+
+
+For instance, if you're trying to predict the type of pet someone will choose
+
+Feature - Features might include age, home region, family income, etc
+
+Labels -  Label is the final choice, such as dog, fish, iguana, rock, etc.
 
 
 
@@ -472,6 +478,65 @@ Since , KNN predicts the Class of a given TEST observation by looking at the nea
 The Scale of the Variable Matters a lot and any variable that are on large scale will have a greater effect on the distances
 
 So we have to 'STANDARDIZE'  everything to the same Scale
+
+
+
+------------------------------------>  K-Means Clustering   <----------------------------------------
+
+
+
+Its a Clustering Algorithm which allows us to Cluster Un-Labeled Data in Unsupervised Learning Algorithm
+
+
+It Attempts to 'group' similar clusters in your data
+
+
+1.  Cluster Similar Documents
+
+2.  Cluster Customers based on Features
+
+
+Divide the Data into 'Distinct Groups' 
+
+
+
+The Algorithm:
+
+
+
+1. Choose K = No. of clusters
+
+2. Randomly assign each point to a Cluster
+
+3. While Clusters dont stop changing :
+
+    1. Compute 'Centroid of Cluster' by taking the 'Mean Vector of Points' in the Cluster
+    
+    2. Points which are closest to the respective centroid are assigned to that particular Cluster 
+    
+
+
+To Choose the Best Number of 'K' we use the 'Elbow Method' :
+
+    1.  Computer SSE(Sum of Sqaured Error) for a 'K' (2,4,6,8........)
+
+        SSE = Sum of ( The Distance b/w the point and the centroid of the cluster)^2
+        
+
+Now, If we plot 'K' vs 'SSE' we find that as 'K' Increases the Values of 'SSE' decreases , because the numnber of points in each cluster decreases
+as 'K' increases
+
+The Best value of 'K' happens to be at the point where the 'Elbow Appears'    
+
+
+        
+
+
+
+
+
+
+
 
 
 
