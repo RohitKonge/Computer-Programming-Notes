@@ -481,6 +481,70 @@ So we have to 'STANDARDIZE'  everything to the same Scale
 
 
 
+------------------------------------>  Decision Trees and Random Forests <----------------------------------------
+
+
+
+Structure of a Decision Tree :
+
+
+1. Root -   First Node of the Tree
+
+2. Edge -   The Branches of the Tree
+
+3. Node -   They Split the values of a ceratin attribute
+
+4. Leaves - The End Nodes where we get the Outcome 
+
+
+
+Weakness of Decision Trees :
+
+
+
+1.  They dont have the 'best predictive accuracy' , this is due to 'high variance' , means different splits in the training data can lead to
+    different Tree
+
+'BAGGING' is a general purpose procedure to reduce the 'variance' in a ML Model 
+
+
+
+To improve performance, we use many trees with a 'RANDOM SAMPLE OF FEATURES' chosen as the split
+
+1.  For every single tree at every single split a new random sample of features is chosen
+
+2.  For Classification, 'm' is typically chosen to be the square root of 'p'   -----> p = Full set of features 
+
+
+
+
+1.  With Random Forests we create an ensemble of 'decision trees' using 'bootstrap samples' of the training set
+
+2.  'BOOTSTRAP SAMPLES' means sampling from the Training Set with replacement 
+
+3.  When Building each Random Tree, each time a split is considered a random sample of M features is chosen
+    as a split candidate from the 'p' features
+
+4.  If there is 1 very strong feature in the Data Set. Then when we use 'bagged' trees, most of the trees will use that feature, which will 
+    result in an enemble of trees that are correlated
+
+5.  Averaging these 'highly correlated quantities' will not reduce the Variance
+
+6.  By randomly leaving out candidate features at each split, we 'DECORRELATE' the Random Trees, such that the overall process reduces the 
+    Variance of the Model
+
+
+
+
+
+
+
+
+
+
+
+
+
 ------------------------------------>  K-Means Clustering   <----------------------------------------
 
 
