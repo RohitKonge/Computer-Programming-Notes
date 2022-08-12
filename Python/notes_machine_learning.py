@@ -12,6 +12,17 @@ Feature - Features might include age, home region, family income, etc
 Labels -  Label is the final choice, such as dog, fish, iguana, rock, etc.
 
 
+Four branches of machine learning 
+
+1. Supervised learning
+
+2. Unsupervised learning
+
+3. Self-supervised learning
+
+4. Reinforcement learning
+
+
 
 ---------------------> Supervised Learning Algorithms
 
@@ -537,6 +548,19 @@ To improve performance, we use many trees with a 'RANDOM SAMPLE OF FEATURES' cho
 
 
 
+
+
+------------------------------------>  Support Vector Machines (SVM) <----------------------------------------
+
+
+
+SVMs are SuperVised Learning Models, with learning algorithms that analyse 'DATA' & 'PATTERNS' for Classication and Regression 
+
+Given a Binary Classification, SVM Algorithm builds a model that assigns new examples into one of the 2 categories
+
+The examples are mapped such that the examples of the separate categories are divided by a clear gap which is as wide as possible 
+
+New Examples are then predicted to a Category based on which side of the gap they fall onto
 
 
 
