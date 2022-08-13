@@ -107,7 +107,19 @@ We organize the PREDICTED VALUES vs REAL VALUES in a CONFUSION MATRIX
 
 
 
-2. Recall (Identification of 'Malignant Tumor') (Here we give only the 'Malignant Tumor' Images)  <-------------------------------------
+2. MisClassification Rate (Error Rate) :
+
+
+    Error Rate  =           False Positive + False Negative         =               Total No. of Wrong Identification
+                    --------------------------------------------         -------------------------------------------------------
+                            Total Number of Predictions                                 Total Number of Predictions
+                       
+                       
+            Total No. of Wrong Identification = False Positive + False Negative   
+    
+
+
+3. Recall (Identification of 'Malignant Tumor') (Here we give only the 'Malignant Tumor' Images)  <-------------------------------------
 
     
 
@@ -133,7 +145,7 @@ We organize the PREDICTED VALUES vs REAL VALUES in a CONFUSION MATRIX
                 
                 
                 
-3. Precision (Picking out 'Malignant Tumor' out of all the Tumors) (Here we give the Images of all Tumors)  <-------------------------------------------
+4. Precision (Picking out 'Malignant Tumor' out of all the Tumors) (Here we give the Images of all Tumors)  <-------------------------------------------
 
 
 
@@ -172,7 +184,7 @@ NOTE -  There is a Tug of War between RECALL and PRECISION i.e
 
 
 
-4. F1-Score   <------------------------------------------
+5. F1-Score   <------------------------------------------
 
 
 
@@ -207,6 +219,10 @@ Condition Positive          True  Positive              False Negative
 
 Condition Negative          False Positive              True  Negative
 
+
+False Positive - Type 1 Error
+
+False Negative - Type 2 Error
 
 
 ---------------------> Evaluating performance - Regression Error Metrics
@@ -365,8 +381,7 @@ For Un-Supervised Learning :
 
 ------------------------------------>  Linear Regression <----------------------------------------
     
-
-
+Residual =  (Actual 'y' value)  -   (Predicted 'y' value)     
 
 
 ---------------------------------->  Cross-Validation & Bias-Variance Trade-Off <----------------------------------------
@@ -418,6 +433,44 @@ of minimum and grouping together
 
 
 ------------------------------------>  Logistic Regression <----------------------------------------
+
+
+
+We use Logistic Regression as a Method for 'Classification'
+
+
+We cant use Linear Regression Model on Binary Classification as it wont lead to a good fit 
+
+
+'SIGMOID' function is the key to understanding Logistic Regression. Its a Function that takes in any 'VALUE' and the output is between '0' & '1'
+
+
+The Function :
+
+
+f(x) =          1
+        -------------------
+            1  +  e^(-x)
+            
+            
+Remember the Graph of the Sigmoid Function
+
+
+The '0.5' is the cut-off point where anything above it, is labeled as '1' and anything below, is labeled as '0'
+
+
+After Training the 'Logistic Model' on a 'Training Data' we evaluate the performance of the model on some 'Test Data'
+
+
+We can use 'CONFUSION MATRIX' to evalute 'CLASSIFICATION MODEL'  
+
+
+
+
+
+
+
+
 
 
 

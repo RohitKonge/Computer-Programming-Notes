@@ -1491,7 +1491,7 @@ def norm_by_data2(x):                  # x is a DataFrame of group values
 
 df.groupby('key').apply(norm_by_data2)
 
-
+NOTE - for df.appluy(func, axis = )
 
 4. Filter
 
