@@ -1528,7 +1528,7 @@ from numpy.random import randn
 
 df1 = pd.DataFrame(np.arange(1,10).reshape(3,3), index=np.arange(1, 4), columns = np.arange(1,4))
 df2 = pd.DataFrame(np.arange(10,19).reshape(3,3), index=np.arange(1, 4), columns = np.arange(4,7))
-df3 = pd.DataFrame(np.arange(19,28).reshape(3,3), index=np.arange(7, 10), columns = np.arange(7,10))
+df3 = pd.DataFrame(np.arange(19,28).reshape(3,3), index=np.arange(7, 10), columns = np.arange(7, 10))
 
 
 
@@ -1602,7 +1602,7 @@ print(pd.concat([df1, df2, df3], axis = 1))
 
 
 
-Note - While Concatenating along the coumns it sees whether that row indices match up or not, if not then it creates the NaN matrix
+Note - While Concatenating along the columns it sees whether that row indices match up or not, if not then it creates the NaN matrix
        On top bottom sides accordingly
 
 Eg. for df1 it doesnt have rows ,7,8,9 so it creates those columns with NaN values and then concatenates accordinly
@@ -1855,7 +1855,7 @@ lstrip()    swapcase()      istitle()       rpartition()
 
 
 NOTE -  df1['toys_name'].str.contains('string_name', re.IGNORECASE)         -----> Returns True if the string contains it
-        df1['car_name'].str.cat('str1', 'str2')                          -----> Adds the two strings
+        df1['car_name'].str.cat('str1', 'str2')                             -----> Adds the two strings
         
         
 
@@ -1936,39 +1936,6 @@ NOTE -  The ability to concisely apply regular expressions across Series or Data
     3. Time Delta / Duration
 
         An exact length of time (e.g., a duration of 22.56 seconds).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2113,15 +2080,32 @@ We can also use Local Variables :
 
 
 
-CSV 
-EXCEL
-HTML 
-SQL
+1. CSV 
+
+
+
+    pd.read_csv("some_name.csv", header = None, nrows = 5)
+    
+    pd.to_csv("name_of_file.csv")
+
+
+
+2. EXCEL
+
+    pd.read_excel("some_name.xlsx")
+    
+    pd.to_excel("name_of_file.xlsx", sheet_name = "Sheet_1" )
+
+
+3. HTML 
+
+    pd.read_html("URL or the HTML itself")          -----> Read HTML tables into a list of DataFrame objects.
+    
+    pd.to_html("name_of_file.html")                 -----> Render a DataFrame as an HTML table.
+
+
+4. SQL
                  
-import pandas as pd
-
-pd.rea
-
 
 
 
