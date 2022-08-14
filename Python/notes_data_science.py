@@ -17,7 +17,7 @@ np.NaN == Not A Number
 Aggregate Function == A function that takes in lots of individual values and then returns a single value
 
 
-For 'axis = None', We iterate over all the elements of the numpy array / multidimensional array
+For 'axis = None',  We iterate over all the elements of the numpy array / multidimensional array
                     Indexing goes from 0 to the last element of the numpy array / multidimensional array
 
 
@@ -717,11 +717,60 @@ NOTE -  In Series and DataFrames Integers are converted to Floats
         
         We can perform Set Operation on df1.index and df2.index
 
-        We can change the values of a DataFrame by using ----> df1.loc['index_number', 'column_name'] = 'new_value'
+        We can change the values of a DataFrame by using ----> 
         
-        Eg. df1.loc[df1['some_columns_name'] == 'some_value', 'another_columns_name'] = 'some_new_value'
+        df1.loc['index_number', 'column_name'] = 'new_value'
+        
+        df1.loc[df1['some_columns_name'] == 'some_value', 'another_columns_name'] = 'some_new_value'
 
         We can make,        arr = np.array(df1['column_name']) and then compute the data
+
+
+
+NOTE - If you want to change the string of a column of a Dataframe : 
+
+
+1. df1["Watch Time"] = df1["Watch Time"].str.strip("min")       -----> Will remove 'min' from every cell of the df1["Watch Time"] Series
+
+
+
+2. df1["Watch Time"] = df1["Watch Time"].str.replace("min","")
+
+
+
+3.  for i in df1.index:                                     -----> Iterate through the indices of the dataframe and do it in this way
+        a = str(df1.loc[i,"Gross"])
+
+        if(a.startswith("$")) :
+            a = a.replace("$","").replace("M","")
+            df1.loc[i,"Gross"]  = a
+
+
+
+NOTE - If you want to change the datatype of a "Series", "Columns of a DataFrame", "Whole DataFrame"
+
+
+
+1. For Series
+
+
+
+    s = s.astype(str)
+
+
+2. Columns of a DataFrame
+
+
+
+    df = df.astype({"a": int, "b": complex})
+
+
+
+3. Whole DataFrame
+
+
+
+    df = df.astype(int)
 
 
 
@@ -751,7 +800,7 @@ Important Functions for DataFrame:
     15. set_index(pd.Series([33,44,55,66]), inplace = True)
     16. nunique()
     17. index.names = ["Name1", "Name2"]
-    
+    18. astype(some_datatype)               some_datatype ----> int, str, float, complex
     
     
 ----------------------> Creating DataFrame
@@ -790,6 +839,8 @@ Note - df1, df2, df3, df4 = (pd.DataFrame(rng.rand(nrows, ncols)) for i in range
 
 
 1. From a Single Series Object
+
+
 
 A DataFrame is a collection of Series objects, and a single column DataFrame can be constructed from a single Series.
 
@@ -955,6 +1006,13 @@ df3 = df1 + df2
 1   50
 2   47   
 3   NaN
+
+
+
+------------------> Changing the value of a column
+
+
+df1['column4'] = a      -----> Here, 'a' is a List
 
 
 
@@ -1170,7 +1228,7 @@ Pandas Treats --->  NaN = None
 
 
 
---------------->Functions used for Missing Data:
+---------------> Functions used for Missing Data:
     
     
     
@@ -1215,7 +1273,7 @@ df.dropna(  how = 'any' / 'all')        ----->  Will Drop Row if 'Any Cell has a
 
 
 
-df.fillna(value = "New Vlue", inplace=True)
+df.fillna(value = "New Value", inplace=True)
 
 df["A"].fillna(value=df["A"].mean(), inplace=True)
 
@@ -1235,7 +1293,7 @@ Aggregate functions :       NOTE : we can use, ----> axis = 'rows'/ 'columns'
     
     4.std(), var()              ----> Standard Deviation & Variance
     
-    5.firt(), last()            ----> First & Last Item
+    5.first(), last()            ----> First & Last Item
     
     6.mad()                     ----> Mean Absolute Deviation
     
@@ -1491,7 +1549,9 @@ def norm_by_data2(x):                  # x is a DataFrame of group values
 
 df.groupby('key').apply(norm_by_data2)
 
-NOTE - for df.appluy(func, axis = )
+NOTE - for df.apply(func, axis = 0)
+
+
 
 4. Filter
 

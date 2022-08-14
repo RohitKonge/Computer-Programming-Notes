@@ -402,14 +402,15 @@ s.partition("ll")           --->    Returns a list with the input, the part befo
                                     i.e it will have 3 elements in the list
 ('he', 'll', 'o world')
 
-s.strip()
-s.trim()
+s.strip()                   ---> Deletes the " " from the starting and ending of a string
+s.strip("$MJ")              ---> Will Delete the letter "$", "M", "J" from the String
+
 
 
 
 \t              ---> tab 
 
-NOTE -  The difference between split and partition - In SPLI the input does not get returned in the List 
+NOTE -  The difference between split and partition - In SPLIT the input does not get returned in the List 
         but in PARTITION we do get the input in the list.
 
     
@@ -845,7 +846,10 @@ print(a)    ---> __main__.Dog object at 0x00aeff70
 NOTE -  All Instance of a Child Class are also the instances of the Parent Class Although they may not be instances of other child class
 
 
+
 -----------------------------------> INHERITANCE, POLYMORPHISM, ABSTRACT CLASSES, DUNDER CLASSES <---------------------------------------
+
+
 
 ----------------------------->  INHERITANCE
 
@@ -970,6 +974,8 @@ class Dog(Animal) :
 
 -------------------------------> DUNDER/SPECIAL/MAGIC Methods of a CLASS
 
+
+
 These are called DUNDER Methods because they begin and end with double underscores
 
 Here we override the builtin functions to suit our Data Type made with the use of Class
@@ -997,12 +1003,18 @@ print(str(Book("Potter", 240)))  --> we overrided the str for our class to retur
 likewise we can also override ---> len, del 
 
 
+
 ----------------------------------------> Python DECORATORS (Advanced topic) - <-------------------------------------------------------
+
+
 
     Used when we want to add new capabilities to our function
     
     
+    
     ----------------------> DECORATOR and RETURN A FUNCTION
+    
+    
     
      Decorators may be applied to any function definition, including methods inside a class
     
@@ -1062,8 +1074,12 @@ weqwwq2
             3. Here, new_decorator is called as Factory Function
             
             4. We can also have nested Decorators
+    
+    
              
     ----------------------> function inside a function
+    
+    
     
     def cool(args):
         
@@ -1073,7 +1089,10 @@ weqwwq2
         return supercool
       
   
+  
     ---------------------> Passing a function as an argument
+    
+    
     
 def other(some_def_func):
       
@@ -1083,7 +1102,11 @@ def other(some_def_func):
 
 other(other)  
     
+    
+    
  -----------------------------------> Python GENERATORS (Advanced topic) (YIELD, NEXT, ITER)  <----------------------------------------
+ 
+ 
  
     Generator functions send back a single value and then pick up where
     it left 
@@ -1177,7 +1200,11 @@ print(my_dog)
 
 Dog1(name='sam', age=12)
 
+
+
 ----------------------> Opening and Reading, Files and Folders using Python OS Modules
+
+
 
 Python OS Module and Shell Utilities Module allow us to move or delete Files
 
@@ -1217,6 +1244,8 @@ for grabbing a random item from a python list
 
 import math   --> just learn Numpy library, this is a basic math module
 math.cos(x)
+
+
 import random
 
 random.randint(0,100)  --> Gives a random number from 0 to 100
@@ -1354,7 +1383,7 @@ print(re.findall(r"....at", "sd sd swe waat s at adsf asdat erw tat"))  ---> Ret
 
 print(re.findall(r"^\d", "1dsf  sdsdf 4s  fs 75asdfasd"))      #--> ^ this symbol searchs at the start of the string
 
-print(re.findall(r"\d$", "asd3 asda asaq 999asda wqeqw12"))    --> $ this symbol searchs at the end of the string
+print(re.findall(r"\d$", "asd3 asda asaq 999asda wqeqw12"))    #--> $ this symbol searchs at the end of the string
 
 
 Exclude something from the search and Search everything else
@@ -1491,7 +1520,7 @@ Types of Error (NASTIIIIKAM)
 1. NameError
     1. Misspelt variable, function, method name
     2. Did not define variable, function and still calling it
-    3. Calling variable outside its scop3
+    3. Calling variable outside its scope
     4. Forgot to put quotes in print statement
 
 2. Attribute Error
