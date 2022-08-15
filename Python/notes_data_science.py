@@ -4,10 +4,61 @@ Jupyter Notebook
 
 - -> Alt + Enter = Add New Cell
 
+
+
+7 Most Important Types of Plots in Data Science (PALS HHB):
+    
+    1. Pie Chart
+    
+    2. Area Plot
+    
+    3. Line PLot
+    
+    4. Scatter Plot
+
+    5. Histogram
+    
+    6. Heat Map
+    
+    7. Bar Plot
+    
+    
+    
+MatplotLib      --->            Does not have   'Line Plot'   &   'Heat Map'    
+
+1. Pie Chart
+
+2. Area Plot
+
+3. Scatter Plot
+
+4. HistGram
+
+5. Bar Plot
+
+
+
+SeaBorn     ----->              Does not have   'Pie Chart'   &   'Area Plot'    
+
+
+1. Line Plot
+
+2. Scatter Plot
+
+3. Heat Map
+
+4. HistoGram
+
+5. Bar Plot
+
+
+
 ------------------------------------------------------- -> Index < ------------------------------------------------------------------
 
 
+
 -------------------------------------------- -> PYTHON FOR DATA ANALYSIS - NUMPY < --------------------------------------------------
+
 
 
 Its a Linear Algebra Library
@@ -724,6 +775,15 @@ NOTE -  In Series and DataFrames Integers are converted to Floats
         df1.loc[df1['some_columns_name'] == 'some_value', 'another_columns_name'] = 'some_new_value'
 
         We can make,        arr = np.array(df1['column_name']) and then compute the data
+
+
+
+NOTE - To Compute something on the elements of a Columns we can do,
+
+1. arr = np.array(df1['column_name']) and then compute the data
+
+2. df1["Watch Time"] =  pd.Series(arr)
+
 
 
 
