@@ -6,25 +6,30 @@ Jupyter Notebook
 
 
 
-7 Most Important Types of Plots in Data Science (PALS HHB):
+8 Most Important Types of Plots in Data Science (PPALS HHB):
+    
     
     1. Pie Chart
     
-    2. Area Plot
+    2. Pair Plot
     
-    3. Line PLot
+    3. Area Plot
     
-    4. Scatter Plot
+    4. Line PLot
+    
+    5. Scatter Plot
 
-    5. Histogram
+    6. Histogram
     
-    6. Heat Map
+    7. Heat Map
     
-    7. Bar Plot
+    8. Bar Plot
     
     
     
-MatplotLib      --->            Does not have   'Line Plot'   &   'Heat Map'    
+    
+    
+MatplotLib      --->            Does not have   'Line Plot'   &   'Pair Plot'  &   'Heat Map'    
 
 1. Pie Chart
 
@@ -40,16 +45,17 @@ MatplotLib      --->            Does not have   'Line Plot'   &   'Heat Map'
 
 SeaBorn     ----->              Does not have   'Pie Chart'   &   'Area Plot'    
 
+1. Pair Plot
 
-1. Line Plot
+2. Line Plot
 
-2. Scatter Plot
+3. Scatter Plot
 
-3. Heat Map
+4. Heat Map
 
-4. HistoGram
+5. HistoGram
 
-5. Bar Plot
+6. Bar Plot
 
 
 
