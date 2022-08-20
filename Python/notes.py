@@ -1684,17 +1684,36 @@ A big part of web scraping is knowing what string syntax to pass in to the soup.
 5.  soup.select("div > example")           --> Elements named "example" directly within div element,
                                                wit nothing in between
 
+6.  soup.find("tag_name", atrribute_name = "attribute_input")       --->    Finds 1 Element with "tag_name" and "attribute_name"
+
+7.  soup.find_all("tag_name", atrribute_name = "attribute_input")   --->    Finds all Elements with "tag_name" and "attribute_name"    
+
+
 (The Code for grabbing Class is written in "Grabbing the title" section)
 
-Eg.
 
-a  = soup.select('tr > td > a')         Eg. Goes to 'tr' then 'td' then 'a'
 
-b  =  <a href="search.php?req=Lise+Getoor&amp;column=author">Lise Getoor</a>
+Eg.1
 
-To get 'href' in the above example we use 
+    a  = soup.select('tr > td > a')         Eg. Goes to 'tr' then 'td' then 'a'
 
-b.get('href')
+    b  =  <a href="search.php?req=Lise+Getoor&amp;column=author">Lise Getoor</a>
+
+    To get 'href' in the above example we use 
+
+    b.get('href')
+
+
+    
+Eg.2
+
+    <h3 itemprop="name">
+    <a href="/book/2590777/c6d0b1" style="text-decoration: underline;">The Art of Data Science: A Guide for Anyone Who Works with Data</a>
+    </h3>
+
+    Now, to Get the 'Anchor Tag',
+
+    .select("a")[0]         -----> Because, .select("a")  returns a list with only 1 Element
 
 
 
